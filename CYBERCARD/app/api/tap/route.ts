@@ -9,7 +9,7 @@ import { render } from '@react-email/render'
 import { createHash } from 'crypto'
 import { FirstTapEmail, ReturningTapEmail } from '@/emails/templates'
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 
 const resend = new Resend(process.env.RESEND_API_KEY!)
 

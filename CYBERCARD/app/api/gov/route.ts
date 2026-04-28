@@ -16,7 +16,7 @@ import { createClient } from '@/lib/supabase/server'
 import { SignJWT, jwtVerify, importJWK } from 'jose'
 import { randomUUID, createHash, randomBytes } from 'crypto'
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 
 const SERVER_SECRET = new TextEncoder().encode(process.env.GOV_JWT_SECRET!)
 const CHALLENGE_TTL_S = 120

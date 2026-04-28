@@ -9,7 +9,7 @@ import { Resend } from 'resend'
 import { render } from '@react-email/render'
 import { FirstTapEmail } from '@/emails/templates'
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-06-20',

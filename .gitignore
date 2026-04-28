@@ -4,6 +4,8 @@ node_modules/
 .next/
 out/
 .vercel/
+.venv/
+mnt/
 *.log
 proxmark_docs/
 __pycache__/

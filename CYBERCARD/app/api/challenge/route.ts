@@ -8,7 +8,7 @@ import { SignJWT } from 'jose'
 import { createHash } from 'crypto'
 import { Resend } from 'resend'
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 
 const REWARD_TTL_S = 3600 * 24          // reward JWT valid 24h
 const SECRET = new TextEncoder().encode(process.env.GOV_JWT_SECRET!)

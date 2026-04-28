@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-proxmark_scraper.py — recursive mirror of proxmark.org/files/Documents/
-Furulie LLC · CyberFlipper Research Archive
+proxmark_scraper.py - recursive mirror of proxmark.org/files/Documents/
+Furulie LLC / CyberFlipper Research Archive
 
 Usage:
     pip install requests beautifulsoup4 tqdm
@@ -32,7 +32,7 @@ try:
     from tqdm import tqdm
 except ImportError:
     sys.exit(
-        "Missing deps — run:  pip install requests beautifulsoup4 tqdm"
+        "Missing deps - run:  pip install requests beautifulsoup4 tqdm"
     )
 
 # ── known directory structure (pre-seeded from live crawl 2026-04-28) ──────────
@@ -70,25 +70,25 @@ PRIORITY_FILES = {
     "125 kHz - Hitag/HT1protocol.pdf":                        "Hitag1 full protocol spec",
     "125 kHz - Hitag/HT2protocol.pdf":                        "Hitag2 full protocol spec",
     "125 kHz - Hitag/HitagS.V11.pdf":                        "HitagS spec",
-    "125 kHz - Hitag/Gone_in_360_Seconds_Hijacking_with_Hitag2-USENIX_2012.pdf": "USENIX 2012 — car key relay attack",
+    "125 kHz - Hitag/Gone_in_360_Seconds_Hijacking_with_Hitag2-USENIX_2012.pdf": "USENIX 2012 - car key relay attack",
     "125 kHz - Hitag/Breaking_Hitag_2_Revisited.pdf":         "Crypto-1 break on Hitag2",
     "125 kHz - Hitag/2006.07.18-HITAGS-PS(079231).pdf":       "NXP Hitag S product spec",
     "125 kHz - HID/HID_format_example.pdf":                   "HID wiegand format reference",
     "125 kHz - Indala/HID.Indala.FlexSecur.Technology.pdf":   "HID Indala FlexSecur whitepaper",
     "125 kHz - Q5B/Q5B.pdf":                                  "EM Micro Q5/T5577 datasheet",
-    "13.56 MHz - MIFARE Classic/Reverse-Engineering.a.Cryptographic.RFID.Tag-USENIX.2008.pdf": "Original MIFARE Classic crack — USENIX 2008",
-    "13.56 MHz - MIFARE Classic/Dismantling.MIFARE.Classic-ESORICS.2008.pdf":     "Dismantling MIFARE — ESORICS 2008",
-    "13.56 MHz - MIFARE Classic/A.Practical.Attack.on.the.MIFARE.Classic-CARDIS.2008.pdf": "Practical attack — CARDIS 2008",
+    "13.56 MHz - MIFARE Classic/Reverse-Engineering.a.Cryptographic.RFID.Tag-USENIX.2008.pdf": "Original MIFARE Classic crack - USENIX 2008",
+    "13.56 MHz - MIFARE Classic/Dismantling.MIFARE.Classic-ESORICS.2008.pdf":     "Dismantling MIFARE - ESORICS 2008",
+    "13.56 MHz - MIFARE Classic/A.Practical.Attack.on.the.MIFARE.Classic-CARDIS.2008.pdf": "Practical attack - CARDIS 2008",
     "13.56 MHz - MIFARE Classic/The_MIFARE_Hack.pdf":         "The MIFARE Hack",
     "13.56 MHz - MIFARE Classic/Design_Weaknesses_in_MIFARE_Classic.pdf":         "Design weaknesses analysis",
-    "13.56 MHz - MIFARE Classic/Practical_Attacks_on_the_MIFARE Classic.pdf":     "Practical Attacks (3.4 MB — comprehensive)",
+    "13.56 MHz - MIFARE Classic/Practical_Attacks_on_the_MIFARE Classic.pdf":     "Practical Attacks (3.4 MB - comprehensive)",
     "13.56 MHz - MIFARE Classic/Cryptanalysis.of.Crypto-1.pdf":                   "Crypto-1 cryptanalysis",
-    "NFC/BH_US_12_Miller_NFC_attack_surface_WP.pdf":          "Black Hat 2012 — NFC attack surface (5.6 MB)",
+    "NFC/BH_US_12_Miller_NFC_attack_surface_WP.pdf":          "Black Hat 2012 - NFC attack surface (5.6 MB)",
     "NFC/Potential_misuse_of_NFC_enabled_mobile_phones_with_embedded_security_elements_as_contactless_attack_platforms.pdf": "NFC phone as attack platform",
     "NFC/Practical_attacks_on_NFC_enabled_cell_phones-NFC_2011.pdf":              "Practical NFC phone attacks",
-    "NFC/ECMA-373.pdf":                                       "ECMA 373 — NFC standard",
-    "NFC/ECMA-390.pdf":                                       "ECMA 390 — NFC standard",
-    "SSTIC2021-Article-eeprom_it_will_all_end_in_tears-herrmann_teuwen.pdf":      "SSTIC 2021 — EEPROM side-channel",
+    "NFC/ECMA-373.pdf":                                       "ECMA 373 - NFC standard",
+    "NFC/ECMA-390.pdf":                                       "ECMA 390 - NFC standard",
+    "SSTIC2021-Article-eeprom_it_will_all_end_in_tears-herrmann_teuwen.pdf":      "SSTIC 2021 - EEPROM side-channel",
 }
 
 # ── category tags for manifest ────────────────────────────────────────────────
@@ -231,13 +231,13 @@ def write_manifest(files: list[dict], out_dir: Path, manifest_path: Path):
         "files": files,
     }
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    print(f"[manifest] written → {manifest_path}")
+    print(f"[manifest] written -> {manifest_path}")
 
     # Also write a human-readable study guide
     guide_path = out_dir / "STUDY_GUIDE.md"
     lines = [
-        "# Proxmark Research Archive — CyberFlipper Study Guide",
-        f"_Generated {manifest['generated']} · {len(files)} documents_",
+        "# Proxmark Research Archive - CyberFlipper Study Guide",
+        f"_Generated {manifest['generated']} / {len(files)} documents_",
         "",
         "## Priority Reading (CyberCard threat model relevance)",
         "",
@@ -253,7 +253,7 @@ def write_manifest(files: list[dict], out_dir: Path, manifest_path: Path):
         lines.append("")
 
     guide_path.write_text("\n".join(lines), encoding="utf-8")
-    print(f"[guide]    written → {guide_path}")
+    print(f"[guide]    written -> {guide_path}")
 
 
 def main():
@@ -273,18 +273,18 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     manifest_path = Path(args.manifest) if args.manifest else out_dir / "manifest.json"
 
-    print(f"[crawl] enumerating {args.base_url} …")
+    print(f"[crawl] enumerating {args.base_url} ...")
     files = crawl(args.base_url)
     print(f"[crawl] found {len(files)} files across {len(set(f['category'] for f in files))} categories")
 
     if args.dry_run:
         write_manifest(files, out_dir, manifest_path)
         for f in files:
-            flag = " ⭐ PRIORITY" if f["priority"] else ""
+            flag = " *PRIORITY*" if f["priority"] else ""
             print(f"  [{f['category']:25s}] {f['rel_path']}{flag}")
         return
 
-    print(f"[dl]    downloading → {out_dir}  workers={args.workers}  resume={resume}")
+    print(f"[dl]    downloading -> {out_dir}  workers={args.workers}  resume={resume}")
     results = []
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures = {
@@ -314,7 +314,7 @@ def main():
     print("[ready] priority papers:")
     for rel in PRIORITY_FILES:
         dest = out_dir / rel
-        status = "✓" if dest.exists() else "✗"
+        status = "OK" if dest.exists() else "MISSING"
         print(f"  {status}  {rel}")
 
 

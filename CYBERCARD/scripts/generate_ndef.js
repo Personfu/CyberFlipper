@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// scripts/generate_ndef.js — NTAG216 NDEF payload generator
-// Furulie LLC · CyberFlipper
+// scripts/generate_ndef.js - NTAG216 NDEF payload generator
+// Furulie LLC / CyberFlipper
 //
 // Usage:
 //   node scripts/generate_ndef.js --url "https://fllc.net/tap?card_id=metal_v1&utm_source=nfc&utm_medium=card"
@@ -24,7 +24,7 @@ const rawUrl = getArg('--url', 'https://fllc.net/tap?card_id=metal_v1&utm_source
 const cardId = getArg('--card-id', 'metal_v1')
 const dryRun = args.includes('--dry-run')
 
-// ── URI prefix table (NFC URI Record type) ─────────────────────────────────
+// URI prefix table (NFC URI Record type)
 const URI_PREFIXES = {
   ''              : 0x00,
   'http://www.'   : 0x01,
@@ -114,45 +114,45 @@ function toPages(buf) {
   return pages
 }
 
-// ── Main ───────────────────────────────────────────────────────────────────
+// Main
 const ndefPayload = encodeUri(rawUrl)
 const pages       = toPages(ndefPayload)
 const hexString   = ndefPayload.toString('hex').toUpperCase()
 
 console.log('')
-console.log('═══════════════════════════════════════════════')
+console.log('===============================================')
 console.log('  CyberCard NDEF Payload Generator')
-console.log('  Furulie LLC · CyberFlipper')
-console.log('═══════════════════════════════════════════════')
+console.log('  Furulie LLC / CyberFlipper')
+console.log('===============================================')
 console.log('')
 console.log(`  Card ID  : ${cardId}`)
 console.log(`  URL      : ${rawUrl}`)
 console.log(`  Bytes    : ${ndefPayload.length}`)
-console.log(`  Pages    : ${pages.length} (NTAG216 pages 4–${3 + pages.length})`)
+console.log(`  Pages    : ${pages.length} (NTAG216 pages 4-${3 + pages.length})`)
 console.log('')
-console.log('── Raw hex (copy to NFC Tools / Proxmark3) ────')
+console.log('-- Raw hex (copy to NFC Tools / Proxmark3) ----')
 console.log('')
 console.log('  ' + hexString)
 console.log('')
-console.log('── Per-page breakdown ──────────────────────────')
+console.log('-- Per-page breakdown -------------------------')
 pages.forEach((p, i) => {
   console.log(`  Page ${(4 + i).toString().padStart(2, '0')}: ${p.toString('hex').toUpperCase()}`)
 })
 console.log('')
-console.log('── Write instructions ──────────────────────────')
+console.log('-- Write instructions -------------------------')
 console.log('')
 console.log('  Flipper Zero:')
-console.log('    NFC → Saved NFC → Add Manually → NTAG216')
+console.log('    NFC -> Saved NFC -> Add Manually -> NTAG216')
 console.log('    Paste above hex into NDEF payload')
 console.log('')
 console.log('  Proxmark3:')
 console.log(`    hf mfu ndefwrite -d ${hexString.toLowerCase()}`)
 console.log('')
 console.log('  NFC Tools (Android):')
-console.log('    Write → URL → paste full URL')
+console.log('    Write -> URL -> paste full URL')
 console.log('')
 console.log('  This firmware (ESP32):')
-console.log('    Set TAP_URL in cybercard_v0.ino → flash → MODE_NFC_WRITE → tap tag')
+console.log('    Set TAP_URL in cybercard_v0.ino -> flash -> MODE_NFC_WRITE -> tap tag')
 console.log('')
-console.log('═══════════════════════════════════════════════')
+console.log('===============================================')
 console.log('')
