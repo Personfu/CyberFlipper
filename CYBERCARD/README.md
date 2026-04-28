@@ -198,6 +198,7 @@ Core equations used throughout the hardware docs:
 |---|---|---|---|---|
 | tap event | NFC/QR/AR/Wi-Fi portal | card_id, source, medium, fingerprint hash, coarse geo | `tap_events` | first contact, repeat visitor |
 | challenge attempt | DEFCON page | challenge hash, answer hash result, fingerprint hash | `challenge_attempts` | engagement depth, first solver |
+| risk event | `/risk` consent page | safe snapshot, indicators, actor hash | `risk_events` | awareness and detection training |
 | restricted access | gov gate | JWT jti, actor hash, country, status | `audit_events` | auth forensics |
 | device health | ESP32 | battery, firmware, mode, RSSI bucket, error code | planned `device_telemetry` | fleet health |
 | Stripe event | webhook | customer, plan, subscription state | `orgs` + audit | billing automation |
@@ -211,6 +212,8 @@ Core equations used throughout the hardware docs:
 supabase db push
 # Apply CYBERCARD/supabase/001_cybercard_init.sql
 # Apply CYBERCARD/supabase/002_audit_and_tenancy.sql
+# Apply CYBERCARD/supabase/003_break_glass_and_device_telemetry.sql
+# Apply CYBERCARD/supabase/004_risk_awareness_events.sql
 ```
 
 ### 2. Web App Environment
@@ -251,6 +254,10 @@ python CYBERCARD/scripts/proxmark_scraper.py --out ~/Downloads/proxmark_docs --w
 
 RF TX test is for shielded bench validation or legal lab conditions only.
 
+### 6. Safe Risk Awareness Page
+
+Deploy `/risk` at `https://fllc.net/risk` as a consent-based training page. It previews a limited browser snapshot, records only after explicit consent, and refuses drive-by downloads, exploit execution, credential collection, clipboard access, file access, and hidden script behavior.
+
 ## Documentation Index
 
 | Doc | Purpose |
@@ -263,6 +270,7 @@ RF TX test is for shielded bench validation or legal lab conditions only.
 | [docs/TELEMETRY_SOC.md](docs/TELEMETRY_SOC.md) | audit, SOC, SIEM, analytics model |
 | [docs/INSTALLATION.md](docs/INSTALLATION.md) | software, hardware, NFC, Flipper setup |
 | [docs/RED_TEAM_ENGINEERING_CARD.md](docs/RED_TEAM_ENGINEERING_CARD.md) | chapter redesign, system model, physics/control loops |
+| [docs/RISK_AWARENESS_PAGE.md](docs/RISK_AWARENESS_PAGE.md) | safe fllc.net/risk alternative to grabber links |
 | [docs/BREAK_GLASS_ADMIN.md](docs/BREAK_GLASS_ADMIN.md) | visible admin controls that replace backdoors |
 | [docs/AUTHORIZED_USE_POLICY.md](docs/AUTHORIZED_USE_POLICY.md) | legal/safety scope |
 | [modules/display_engine/README.md](modules/display_engine/README.md) | LED/OLED visualization engine model |
@@ -346,6 +354,7 @@ sequenceDiagram
 | QR scan | `/tap?card_id=scan_v1&utm_source=qr` | `qr` | POST `/api/tap` | profile or redirect |
 | AR marker | `ar/index.html` -> `/tap?card_id=ar_v1` | `ar` | POST `/api/tap` | AR identity scene |
 | DEFCON puzzle | `/challenge/<hash>` | `challenge` | POST `/api/challenge` | reward JWT |
+| Risk awareness | `/risk` | `risk` | POST `/api/risk` after consent | safe telemetry lesson |
 | File download | `/tap?card_id=file_v1` | `file` | asset lookup | one-time asset |
 | Gov gate | `/tap?card_id=gov_v1` | `gov` | `/api/gov` JWT handshake | restricted view |
 | BLE beacon | `CyberCard-FLLC` | `ble` | future telemetry | nearby discovery |

@@ -14,6 +14,7 @@ CyberCard turns physical interactions into observable events without treating th
 | `audit_events` | admin, challenge, gov gate, export actions |
 | `challenges` | DEFCON puzzle state |
 | `challenge_attempts` | challenge solver telemetry |
+| `risk_events` | consent-based `/risk` page telemetry for awareness training |
 
 ## SOC Queries
 
@@ -43,6 +44,15 @@ group by utm_source
 order by total desc;
 ```
 
+```sql
+-- risk awareness event volume
+select scenario, count(*) as events
+from risk_events
+where created_at > now() - interval '24 hours'
+group by scenario
+order by events desc;
+```
+
 ## Detection Matrix
 
 | Detection | Threshold | Action |
@@ -52,6 +62,7 @@ order by total desc;
 | gov gate failure | >3/hour/hash | alert and require cooldown |
 | unknown card_id | >20/hour/IP bucket | rate-limit at edge |
 | asset download repeated | >3/card/day | revoke one-time link |
+| risk demo burst | >50/day/scenario | review campaign source |
 
 ## Break-Glass Admin Model
 

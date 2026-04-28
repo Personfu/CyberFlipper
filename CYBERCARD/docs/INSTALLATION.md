@@ -20,6 +20,8 @@ Migration files:
 ```text
 supabase/001_cybercard_init.sql
 supabase/002_audit_and_tenancy.sql
+supabase/003_break_glass_and_device_telemetry.sql
+supabase/004_risk_awareness_events.sql
 ```
 
 ## 3. Next.js Environment
@@ -61,3 +63,13 @@ flipper/infrared/*.ir  -> /infrared/
 ## 7. ESP32-S3 Firmware
 
 Open `firmware/cybercard_v0.ino`, update `TAP_URL`, flash the board, and test status/NFC/RF modes. RF TX validation must be shielded or legally authorized.
+
+## 8. Safe Risk Awareness Page
+
+Deploy `/risk` at:
+
+```text
+https://fllc.net/risk
+```
+
+This is a consent-first awareness page. It records only the disclosed safe snapshot after a visitor clicks consent. It must not be modified into a drive-by download, exploit runner, credential collector, or hidden script launcher.
