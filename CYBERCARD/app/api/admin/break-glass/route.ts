@@ -55,17 +55,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'insert_failed' }, { status: 500 })
   }
 
-  await supabase.from('audit_events').insert({
-    card_id: body.target_type === 'card' ? body.target_id : 'system',
-    event_type: 'admin_view',
-    actor_hash: requestedBy,
-    metadata: {
-      break_glass_event_id: data.id,
-      action: body.action,
-      target_type: body.target_type,
-      reason: body.reason,
-    },
-  }).catch(() => {})
+  try {
+    await supabase.from('audit_events').insert({
+      card_id: body.target_type === 'card' ? body.target_id : 'system',
+      event_type: 'admin_view',
+      actor_hash: requestedBy,
+      metadata: {
+        break_glass_event_id: data.id,
+        action: body.action,
+        target_type: body.target_type,
+        reason: body.reason,
+      },
+    })
+  } catch {}
 
   return NextResponse.json({ ok: true, break_glass_event_id: data.id, expires_at: data.expires_at })
 }

@@ -79,14 +79,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'insert_failed' }, { status: 500 })
   }
 
-  await supabase.from('audit_events').insert({
-    card_id: 'system',
-    event_type: 'admin_view',
-    actor_hash,
-    ip_country: req.headers.get('x-vercel-ip-country'),
-    ua_raw: (req.headers.get('user-agent') ?? '').slice(0, 300),
-    metadata: { risk_event_id: data.id, scenario: body.scenario ?? 'risk_awareness' },
-  }).catch(() => {})
+  try {
+    await supabase.from('audit_events').insert({
+      card_id: 'system',
+      event_type: 'admin_view',
+      actor_hash,
+      ip_country: req.headers.get('x-vercel-ip-country'),
+      ua_raw: (req.headers.get('user-agent') ?? '').slice(0, 300),
+      metadata: { risk_event_id: data.id, scenario: body.scenario ?? 'risk_awareness' },
+    })
+  } catch {}
 
   return NextResponse.json({ ok: true, risk_event_id: data.id })
 }

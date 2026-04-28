@@ -5,6 +5,8 @@
 ```bash
 git clone https://github.com/Personfu/CyberFlipper.git
 cd CyberFlipper/CYBERCARD
+npm install
+cp .env.example .env.local
 ```
 
 ## 2. Supabase
@@ -26,7 +28,7 @@ supabase/004_risk_awareness_events.sql
 
 ## 3. Next.js Environment
 
-Set these in your deployment provider:
+Set these in `.env.local` for development and in your deployment provider for production:
 
 ```text
 NEXT_PUBLIC_SUPABASE_URL=
@@ -36,6 +38,23 @@ RESEND_API_KEY=
 GOV_JWT_SECRET=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
+DEVICE_TELEMETRY_TOKEN=
+BREAK_GLASS_ENABLED=false
+BREAK_GLASS_ADMIN_TOKEN=
+NEXT_PUBLIC_SITE_URL=https://fllc.net
+```
+
+Run locally:
+
+```bash
+npm run dev
+```
+
+Production build check:
+
+```bash
+npm run typecheck
+npm run build
 ```
 
 ## 4. NFC Programming

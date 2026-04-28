@@ -111,8 +111,8 @@ export async function POST(req: NextRequest) {
       body.signature.match(/.{1,2}/g)!.map((b) => parseInt(b, 16))
     )
     const ok = await crypto.subtle.verify(
-      key.algorithm,
-      key as never,
+      { name: 'Ed25519' },
+      key as CryptoKey,
       sigBytes,
       new TextEncoder().encode(nonce),
     )

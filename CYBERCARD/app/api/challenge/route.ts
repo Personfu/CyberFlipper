@@ -12,7 +12,9 @@ export const runtime = 'nodejs'
 
 const REWARD_TTL_S = 3600 * 24          // reward JWT valid 24h
 const SECRET = new TextEncoder().encode(process.env.GOV_JWT_SECRET!)
-const resend = new Resend(process.env.RESEND_API_KEY!)
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY!)
+}
 
 function sha256(s: string) {
   return createHash('sha256').update(s.trim().toLowerCase()).digest('hex')
@@ -93,7 +95,7 @@ export async function POST(req: NextRequest) {
     .sign(SECRET)
 
   // Notify Preston
-  await resend.emails.send({
+  await getResend().emails.send({
     from:    'CyberCard <noreply@fllc.net>',
     to:      'preston@fllc.net',
     subject: first
@@ -113,15 +115,17 @@ jti         : ${jti}
   }).catch(() => {})   // non-blocking, log in audit
 
   // Audit
-  await supabase.from('audit_events').insert({
-    card_id:    'challenge',
-    event_type: 'challenge_solved',
-    actor_hash: fp,
-    jwt_jti:    jti,
-    ip_country: req.headers.get('x-vercel-ip-country'),
-    ua_raw:     (req.headers.get('user-agent') ?? '').slice(0, 300),
-    metadata:   { first_solver: first, solve_count: updates.solved_count },
-  }).catch(() => {})
+  try {
+    await supabase.from('audit_events').insert({
+      card_id:    'challenge',
+      event_type: 'challenge_solved',
+      actor_hash: fp,
+      jwt_jti:    jti,
+      ip_country: req.headers.get('x-vercel-ip-country'),
+      ua_raw:     (req.headers.get('user-agent') ?? '').slice(0, 300),
+      metadata:   { first_solver: first, solve_count: updates.solved_count },
+    })
+  } catch {}
 
   return NextResponse.json({
     correct:      true,

@@ -1,4 +1,8 @@
 'use client'
+
+// Skip static prerender; dashboard depends on runtime env vars.
+export const dynamic = 'force-dynamic'
+
 // app/dashboard/cards/page.tsx
 // CFO panel — org billing health + tap stream analytics
 // Reads from org_billing_health view + tap_events realtime
@@ -6,10 +10,17 @@
 import { useEffect, useState } from 'react'
 import { createBrowserClient } from '@supabase/ssr'
 
-const supabase = createBrowserClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-)
+type SB = ReturnType<typeof createBrowserClient>
+
+let _supabase: SB | null = null
+function getSupabase(): SB | null {
+  if (_supabase) return _supabase
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!url || !key) return null
+  _supabase = createBrowserClient(url, key)
+  return _supabase
+}
 
 interface BillingRow {
   plan:        string
@@ -52,6 +63,8 @@ export default function CardsDashboard() {
   const [loading, setLoading]     = useState(true)
 
   useEffect(() => {
+    const supabase = getSupabase()
+    if (!supabase) { setLoading(false); return }
     void load()
 
     // Realtime tap stream
@@ -68,6 +81,8 @@ export default function CardsDashboard() {
   }, [])
 
   async function load() {
+    const supabase = getSupabase()
+    if (!supabase) return
     const [billingRes, tapsRes, fpRes] = await Promise.all([
       supabase.from('org_billing_health').select('*'),
       supabase.from('tap_events').select('id,card_id,geo_city,geo_country,utm_source,is_first_tap,tapped_at')

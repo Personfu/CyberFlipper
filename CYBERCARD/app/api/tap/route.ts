@@ -11,7 +11,9 @@ import { FirstTapEmail, ReturningTapEmail } from '@/emails/templates'
 
 export const runtime = 'nodejs'
 
-const resend = new Resend(process.env.RESEND_API_KEY!)
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY!)
+}
 
 interface TapBody {
   card_id:    string
@@ -146,7 +148,7 @@ export async function POST(req: NextRequest) {
             tapped_at:  new Date().toISOString(),
           }),
         )
-        await resend.emails.send({
+        await getResend().emails.send({
           from:    'CyberCard System <noreply@fllc.net>',
           to:      card.owner_email,
           subject: `● New tap on ${body.card_id} — ${geo.city ?? 'unknown location'}`,
@@ -161,7 +163,7 @@ export async function POST(req: NextRequest) {
             tap_count:   (existingContact!.tap_count ?? 0) + 1,
           }),
         )
-        await resend.emails.send({
+        await getResend().emails.send({
           from:    'CyberCard System <noreply@fllc.net>',
           to:      card.owner_email,
           subject: `○ Returning contact on ${body.card_id} — tap #${(existingContact!.tap_count ?? 0) + 1}`,

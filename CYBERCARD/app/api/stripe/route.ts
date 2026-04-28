@@ -11,10 +11,15 @@ import { FirstTapEmail } from '@/emails/templates'
 
 export const runtime = 'nodejs'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-06-20',
-})
-const resend = new Resend(process.env.RESEND_API_KEY!)
+function getStripe() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: '2025-02-24.acacia',
+  })
+}
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY!)
+}
 
 const PLAN_QUOTA: Record<string, number> = {
   free:       1,
@@ -90,7 +95,7 @@ async function provisionOrg(
         tapped_at:  new Date().toISOString(),
       }),
     )
-    await resend.emails.send({
+    await getResend().emails.send({
       from:    'CyberCard <noreply@fllc.net>',
       to:      email,
       subject: `Your CyberCard is live — ${cardId}`,
@@ -110,7 +115,7 @@ export async function POST(req: NextRequest) {
 
   let event: Stripe.Event
   try {
-    event = await stripe.webhooks.constructEventAsync(
+    event = await getStripe().webhooks.constructEventAsync(
       body,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET!,

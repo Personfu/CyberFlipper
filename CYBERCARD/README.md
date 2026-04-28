@@ -22,7 +22,14 @@ CyberCard is a premium metal business card that behaves like an identity system,
 
 ```text
 CYBERCARD/
+  package.json                  Next.js runtime scripts and dependencies
+  .env.example                  Required deployment variables
+  next.config.mjs               Next.js app config
+  tailwind.config.ts            UI styling config
   app/
+    page.tsx                    Operator landing page
+    tap/page.tsx                NFC/QR tap landing page
+    tap/TapClient.tsx           Browser-side tap event trigger
     api/tap/route.ts            Tap intake, fingerprinting, geo, email trigger
     api/vcard/route.ts          vCard delivery
     api/challenge/route.ts      DEFCON challenge verification
@@ -35,6 +42,7 @@ CYBERCARD/
   emails/templates.tsx          Resend email templates
   firmware/cybercard_v0.ino     ESP32-S3 + NFC + CC1101 prototype firmware
   flipper/                      Safe Flipper Zero example files
+  lib/supabase/server.ts        Supabase service-role server client
   modules/                      System-model modules for display/input/IMU/network/identity
   n8n/                          Tap-to-revenue workflow
   payloads/scannables/          Harmless QR/NFC/contact automation samples
@@ -152,6 +160,95 @@ flowchart LR
 
 The Wi-Fi board path is for owned-network demos: show why rogue SSIDs and captive portals are risky by building a transparent, consent-first portal that states what it collects and routes users to the normal `/tap` workflow. No credential capture. No deceptive login clones.
 
+## Engineering Model: S={C,I,O,N}
+
+The CyberCard system is intentionally modeled as a composable node in a network.
+
+- `C = Compute` — the ESP32-S3, browser JS, and backend logic.
+- `I = Inputs` — NFC, QR, AR marker, Wi-Fi portal, buttons, IMU.
+- `O = Outputs` — LED matrix, status light, browser render, vCard download.
+- `N = Network interfaces` — Wi-Fi, BLE, USB, HTTP, Supabase, Resend.
+
+### Connectivity = Attack Surface
+
+System behavior is not just "it fetches weather." The real flow is:
+
+```text
+Data_in → Parse → Render
+```
+
+Critical timing model:
+
+```text
+T_total = T_tx + T_processing + T_render
+```
+
+Where:
+
+- `T_tx` = network delay
+- `T_processing` = CPU parsing and business logic
+- `T_render` = LED or browser update latency
+
+### Human Interface Layer
+
+Inputs are not all the same:
+
+- Buttons → discrete state transitions
+- IMU → continuous vector data
+
+IMU physics:
+
+```text
+a = (a_x, a_y, a_z)
+θ = atan2(a_x, a_y)
+```
+
+### Identity Systems
+
+Offline, near-field, and online identity combine to create a multi-channel persona:
+
+```text
+Identity = f(QR, NFC, Network)
+```
+
+This means:
+
+- `QR` is static offline identity
+- `NFC` is near-field identity with event handoff
+- `Network` is online identity with backend audit and telemetry
+
+### LED Matrix Visualization Engine
+
+The LED matrix is not decoration. It is a parallel output system.
+
+```text
+Display(x,y) = RGB(x,y)
+Bandwidth ∝ N × ColorDepth × FPS
+```
+
+For a 17×9 matrix:
+
+```text
+153 LEDs
+```
+
+### Games as Control Loops
+
+Snake and Pong are closed-loop systems:
+
+```text
+State_{t+1} = f(State_t, Input_t)
+```
+
+### Sensor Fusion
+
+Motion simulation uses integration:
+
+```text
+v = ∫ a dt
+x = ∫ v dt
+```
+
 ## Safe Payload and Scannable Model
 
 The project includes harmless examples in [flipper/](flipper) and [payloads/scannables/](payloads/scannables). They are designed to be fun at DEFCON without crossing into abuse.
@@ -159,10 +256,49 @@ The project includes harmless examples in [flipper/](flipper) and [payloads/scan
 | Payload Type | File | Behavior |
 |---|---|---|
 | BadUSB safe demo | `flipper/badusb/cybercard_contact_demo.txt` | Opens a browser to your CyberCard tap URL and types a consent notice |
+| BadUSB Wi-Fi portal demo | `flipper/badusb/cybercard_wifi_portal_demo.txt` | Opens the consent portal URL and types a safety notice |
+| BadUSB risk awareness demo | `flipper/badusb/cybercard_risk_awareness_demo.txt` | Opens `/risk` and highlights safe telemetry learning |
 | NFC card sample | `flipper/nfc/cybercard_metal_v1.nfc` | Stores a URL record for `metal_v1` |
 | IR demo | `flipper/infrared/cybercard_presentation_remote.ir` | Placeholder for owned presentation clicker workflow |
+| Wi-Fi portal page | `payloads/scannables/wifi_consent_portal.html` | Consent-first captive portal handoff |
 | QR matrix | `payloads/scannables/SCANNABLES.md` | QR/NFC/AR URL patterns and event mapping |
 | vCard automation | `payloads/scannables/preston_furulie.vcf` | Contact card sample |
+
+## Flipper Wi-Fi Board and Payload Extensibility
+
+The Flipper Wi-Fi board is a lab companion, not a stealth weapon. It should host owned-network demos and benign captive portals.
+
+- Use `https://fllc.net/tap?card_id=demo_v1&utm_source=wifi_portal&utm_medium=flipper` for safe portal handoff.
+- Use `https://fllc.net/risk` for explicit consent-based risk awareness training.
+- Use `https://fllc.net/challenge/<hash>` for challenge engagement.
+- Use `https://fllc.net/tap?card_id=metal_v1&utm_source=card&utm_medium=business` for physical business card handoff.
+
+This architecture is replicable by the business card because the same URL schema is used for NFC, QR, AR, Wi-Fi portal, and USB HID launch.
+
+### Wi-Fi Board Payload Capabilities
+
+The Wi-Fi board can be used to demonstrate safely:
+
+- captive-portal routing to a known CyberCard profile
+- explicit consent to record only disclosed session metadata
+- browser-only handoff without shell commands or credential capture
+- safe telemetry events that map directly into the CyberCard audit model
+
+### Advanced Payload Extension Files
+
+| File | Type | Behavior |
+|---|---|---|
+| `flipper/badusb/cybercard_contact_demo.txt` | USB HID text | Opens browser to `metal_v1` and types a consent message |
+| `flipper/badusb/cybercard_wifi_portal_demo.txt` | USB HID text | Opens the safe portal page and types the demo intent |
+| `flipper/badusb/cybercard_risk_awareness_demo.txt` | USB HID text | Opens `/risk` and reinforces safe telemetry collection |
+| `flipper/nfc/cybercard_metal_v1.nfc` | NFC URL | Stores `metal_v1` tap URL for Flipper NFC demo |
+| `payloads/scannables/wifi_consent_portal.html` | HTML portal | Owned captive portal page for Wi-Fi demos |
+
+### Critical Engineering Notes
+
+- The Wi-Fi board runs on 2.4 GHz only; do not attempt to use it for unlicensed sub-GHz transmission.
+- The captive portal page must not contain password fields, downloads, or hidden forms.
+- The same payloads should be usable from a business card QR or NFC tag, providing a single schema across all delivery channels.
 
 ## RF and Physics Reference
 
@@ -204,7 +340,50 @@ Core equations used throughout the hardware docs:
 | Stripe event | webhook | customer, plan, subscription state | `orgs` + audit | billing automation |
 | n8n workflow | webhook | branch, draft status, resend status | audit row | outreach queue |
 
+## FLLC.net Website Content Model
+
+The `fllc.net` site is the public execution layer for CyberCard and CyberFlipper. It should expose the following safe pages:
+
+| Page | Purpose | Safe behavior |
+|---|---|---|
+| `/` | Public landing for CyberCard | explain system, links to tap and risk lab |
+| `/tap` | Card handoff landing page | capture consent-first tap event and show contact actions |
+| `/risk` | Risk awareness lab | explicit consent before safe telemetry collection |
+| `/challenge/<hash>` | Puzzle reward funnel | JWT-based challenge and audit chain |
+| `/dashboard/cards` | Live dashboard | internal org health and tap analytics |
+| `/api/*` | Data intake and webhooks | service-role-only access and Supabase audit |
+
+Each page is designed to be replicable by NFC, QR, AR, Wi-Fi portal, and USB HID launch.
+
+### FLLC.net Safe Page Rules
+
+- never collect passwords or secret tokens from visitors
+- never auto-execute downloads or shell commands
+- always disclose any recording of browser/session metadata
+- keep the backend audit model authoritative, not the physical tag
+- any link to `/risk` must be explicit and consent-based
+
 ## Installation Tutorial
+
+### 0. Install And Run
+
+```bash
+cd CYBERCARD
+cp .env.example .env.local
+npm install
+npm run dev
+```
+
+Core runtime paths:
+
+| Path | Purpose |
+|---|---|
+| `/` | Operator landing page for the executable CyberCard stack |
+| `/tap?card_id=metal_v1` | NFC/QR landing path, tap insert, contact update, optional email |
+| `/risk` | Consent-based blue-team risk awareness event |
+| `/dashboard/cards` | Live tap stream, contacts, org billing health |
+| `/api/device/telemetry` | ESP32-S3 device health intake |
+| `/api/admin/break-glass` | Explicitly enabled, token-gated, auditable admin control |
 
 ### 1. Database
 
@@ -226,7 +405,13 @@ RESEND_API_KEY=re_xxx
 GOV_JWT_SECRET=<256-bit-secret>
 STRIPE_SECRET_KEY=sk_live_xxx
 STRIPE_WEBHOOK_SECRET=whsec_xxx
+DEVICE_TELEMETRY_TOKEN=<shared-device-token>
+BREAK_GLASS_ENABLED=false
+BREAK_GLASS_ADMIN_TOKEN=<only-if-enabled>
+NEXT_PUBLIC_SITE_URL=https://fllc.net
 ```
+
+Server routes use `SUPABASE_SERVICE_ROLE_KEY`. Keep it out of client code and browser bundles.
 
 ### 3. NFC Payload
 
@@ -573,3 +758,225 @@ runtime_hours = capacity_mAh * derating / load_mA
 CyberCard should feel like a serious artifact: something a recruiter, founder, red teamer, or DEFCON hallway contact can tap once and immediately understand that the builder thinks in systems.
 
 The flex is not a noisy payload. The flex is a full-stack physical identity system with math, RF discipline, telemetry, backend security, and consent-aware automation stitched into a business card.
+
+---
+
+## Senior Hardware Engineering: CyberCard Wallet Device (ESP32-S3 + Sub-GHz + NFC + BadUSB)
+
+The CyberCard wallet device is a credit-card-thick PCB designed to carry the full Personfu identity-and-RF capability set into a wallet. It is a senior-engineering reference build for an authorized red-team / DEFCON / executive demo wallet: NFC, sub-GHz CC1101, ESP32-S3, USB HID BadUSB demo class, IR transceiver, microSD, e-ink/OLED, Bluetooth LE, status LEDs, and a tactile center button. Every capability has a documented safe scope.
+
+### 1. Mechanical Footprint
+
+| Parameter | Value | Notes |
+|---|---|---|
+| PCB outline | 85.60 mm x 53.98 mm | ID-1 / ISO 7810 credit card dimensions |
+| Stack height | 2.6 mm typical / 3.0 mm max | fits standard wallet sleeve |
+| PCB thickness | 1.0 mm 4-layer FR-4 / hybrid Rogers RO4350B in RF region | controlled-impedance 50 ohm RF traces |
+| Edge radius | 3.18 mm | matches ID-1 standard |
+| Battery | 3.7 V LiPo 250 mAh (60 x 35 x 1.5 mm) | adhesive on back, JST-PH 2-pin |
+| Coil antenna | 13.56 MHz 4-turn etched copper, ~2.5 uH, tuned to 13.56 MHz with 17-22 pF | for PN5180 / NTAG216 emulation |
+| Sub-GHz antenna | meandered F-antenna or u.FL pigtail to external whip | optional ext. antenna for ranged work |
+
+```text
+        +-------------------------------------------------------+
+        |  [USB-C]   [LED]  [LED]  [LED]                   [SW] | <- top edge
+        |                                                       |
+        |   ESP32-S3-WROOM-1U     CC1101 868/915 MHz module     |
+        |                                                       |
+        |   PN5180 NFC reader     NTAG216 emulator IC           |
+        |                                                       |
+        |   IR TX/RX  +  uSD slot  +  OLED 0.96" or e-ink 1.54" |
+        |                                                       |
+        |  [BTN_CENTER]   battery JST-PH   GPIO test pads       |
+        +-------------------------------------------------------+
+              |<------------ 85.60 mm ------------>|
+                              53.98 mm tall
+```
+
+### 2. Block Diagram (Logical)
+
+```mermaid
+flowchart LR
+  USB[USB-C 5V] --> PMIC[BQ24074 charger + LDO 3.3V]
+  BAT[LiPo 3.7V 250 mAh] --> PMIC
+  PMIC --> MCU[ESP32-S3-WROOM-1U<br/>240 MHz dual-core, Wi-Fi 2.4 GHz, BLE 5.0]
+  MCU -->|SPI0| NFC[PN5180 13.56 MHz NFC reader]
+  MCU -->|I2C| EMU[NTAG216 NFC emulation IC]
+  NFC --> COIL[(13.56 MHz coil antenna)]
+  EMU --> COIL
+  MCU -->|SPI1| RF[CC1101 sub-GHz radio<br/>300-348 / 387-464 / 779-928 MHz]
+  RF --> SUBANT[(F-antenna or u.FL whip)]
+  MCU -->|GPIO| IRTX[IR LED 940 nm]
+  MCU -->|GPIO| IRRX[IR demod 38 kHz]
+  MCU -->|SDIO| SD[microSD card]
+  MCU -->|I2C| DISP[OLED 128x64 / e-ink 1.54"]
+  MCU -->|GPIO| LEDS[3x WS2812 status LEDs]
+  MCU -->|GPIO| BTN[Center tactile switch]
+  MCU -->|USB OTG| HID[USB HID BadUSB demo class]
+  MCU -->|UART| DBG[Serial debug header]
+```
+
+### 3. Pin Map (ESP32-S3-WROOM-1U)
+
+| Function | Pin | Notes |
+|---|---|---|
+| PN5180 NFC SCK / MOSI / MISO / CS / BUSY / RESET | 12 / 11 / 13 / 10 / 8 / 9 | SPI0 |
+| CC1101 SCK / MOSI / MISO / CS / GDO0 / GDO2 | 36 / 35 / 37 / 34 / 4 / 5 | SPI1, GDO0 = sync interrupt |
+| IR TX / IR RX | 17 / 18 | 38 kHz carrier on TX |
+| OLED I2C SDA / SCL | 6 / 7 | shared with NTAG216 emulator |
+| microSD SDIO CLK / CMD / D0 / D1 / D2 / D3 | 39 / 38 / 40 / 41 / 42 / 2 | 4-bit SDIO |
+| Center button | 0 | also bootstrap, hold-to-enter-config |
+| LiPo voltage sense | 1 (ADC1_CH0) | divider 100k / 100k |
+| WS2812 LED data | 48 | 3 LEDs daisy chained |
+| USB D+ / D- | 19 / 20 | native USB OTG |
+
+### 4. Frequency / Wavelength Table
+
+CyberCard touches several distinct radio bands. Each is used inside an authorized scope only.
+
+| Band | Frequency | Wavelength λ = c / f | Use in CyberCard | Authorized scope |
+|---|---|---|---|---|
+| LF RFID (HID Prox) | 125 kHz | 2398 m | educational reference only | not transmitted by this device |
+| HF NFC (ISO 14443A/B, ISO 15693, FeliCa) | 13.56 MHz | 22.12 m | NFC tap, vCard, NDEF URL, identity emulation | own cards / lab cards |
+| Sub-GHz US ISM | 315 / 433.92 / 915 MHz | 0.952 / 0.691 / 0.328 m | CC1101 RX/TX learning, key-fob format research | own equipment / lab transmitters only |
+| Sub-GHz EU ISM | 433.92 / 868.3 MHz | 0.691 / 0.345 m | EU lab pairing | local regulation compliant |
+| 2.4 GHz Wi-Fi / BLE | 2.412-2.484 GHz | ~12.4 cm | provisioning, telemetry, captive portal demo | owned lab network |
+| IR remote | 38 kHz subcarrier (940 nm optical) | 320 nm vacuum / λ_c = 7.89 km for 38 kHz | learn / replay own remotes | owned remotes |
+| QUANSHENG UV-K5 (companion) | 18-1300 MHz RX, VHF 136-174 + UHF 400-470 TX | varies | external companion radio for ham/Project 0 / spectrum awareness | licensed amateur use only |
+
+The relation $c = f \lambda$ (with $c \approx 2.998 \times 10^{8}\ \text{m/s}$) is used directly during antenna design. For example, the 13.56 MHz NFC half-wavelength is far larger than the device, so the coil operates as a near-field magnetic loop at distances $r \ll \lambda / 2\pi$ where the magnetic field dominates and energy transfer is governed by mutual inductance, not radiation.
+
+### 5. NFC Coil Math
+
+For a planar rectangular coil of $N$ turns, average length $l_{avg}$ and average width $w_{avg}$, the inductance can be approximated by the modified Wheeler formula:
+
+$$
+L \approx \frac{K_1 \mu_0 N^2 d_{avg}}{1 + K_2 \rho}
+$$
+
+where $d_{avg} = (d_{out} + d_{in})/2$, $\rho = (d_{out} - d_{in})/(d_{out} + d_{in})$, and for rectangular coils $K_1 \approx 2.34$, $K_2 \approx 2.75$.
+
+For tuning at $f_0 = 13.56\ \text{MHz}$:
+
+$$
+C = \frac{1}{(2\pi f_0)^2 L}
+$$
+
+A 4-turn 50 mm x 30 mm coil with $L \approx 2.5\ \mu\text{H}$ tunes with $C \approx 55\ \text{pF}$ split between matching and parasitic. The PN5180 datasheet recommends a Q-factor between 30 and 40 for ISO 14443 read range; that means a tuning resistance:
+
+$$
+R_Q = \frac{2 \pi f_0 L}{Q} \approx 5.3\ \Omega \ \text{at}\ Q = 40
+$$
+
+is added in series.
+
+### 6. Sub-GHz Link Budget
+
+Free-space path loss between transmitter and receiver:
+
+$$
+\text{FSPL}(\text{dB}) = 20 \log_{10}(d) + 20 \log_{10}(f) + 32.45
+$$
+
+For CC1101 at 433.92 MHz, $P_{tx} = +10$ dBm, $G_{tx} = G_{rx} = 2$ dBi, receiver sensitivity $-110$ dBm:
+
+$$
+\text{Link margin} = P_{tx} + G_{tx} + G_{rx} - \text{FSPL} - S_{rx}
+$$
+
+At $d = 50$ m: FSPL $\approx 59.2$ dB, link margin $\approx 64.8$ dB. This is the budget we use for owned lab key-fob research at short range.
+
+### 7. Power Budget
+
+| Mode | Current draw | Notes |
+|---|---|---|
+| Deep sleep, NFC field-detect wake | 25 uA | NTAG216 passively powered by reader field |
+| Idle, OLED off, BLE adv | 12 mA | beacon mode |
+| NFC active read with PN5180 | 70-90 mA | RF field on |
+| CC1101 RX | 17 mA | listening |
+| CC1101 TX +10 dBm | 30 mA | short bursts |
+| Wi-Fi connected | 80-180 mA | provisioning + telemetry |
+
+Estimated battery life from a 250 mAh cell:
+$t \approx 250 / I_{avg}$ hours. With duty-cycled use ($I_{avg} \approx 3$ mA), $t \approx 83$ h ≈ 3.5 days.
+
+### 8. Telemetry Matrix
+
+Each subsystem emits a typed event into Supabase via `/api/device/telemetry`:
+
+| Event | Source | Required fields | Severity |
+|---|---|---|---|
+| `nfc.read` | PN5180 | uid, atqa, sak, rssi_proxy | info |
+| `nfc.emulate.activated` | NTAG216 emu | tag_id | info |
+| `subghz.rx` | CC1101 | freq_hz, modulation, length, captured_in_lab=true | info |
+| `subghz.tx` | CC1101 | freq_hz, modulation, length, authorized_by | warn |
+| `ir.learn` | IR RX | protocol, code | info |
+| `ir.replay` | IR TX | protocol, code, authorized_by | warn |
+| `usb.hid.demo` | USB OTG | demo_id, ran_in_lab=true | warn |
+| `wifi.portal.show` | ESP32 Wi-Fi | ssid, page=consent | info |
+| `wifi.portal.consent` | ESP32 Wi-Fi | session_id, accepted=true | info |
+| `power.low` | PMIC ADC | mv, percent | warn |
+| `tamper.detect` | gyro/accel | g_peak | crit |
+
+All `warn` and `crit` events page on-call via the Supabase audit log + n8n route to PagerDuty.
+
+### 9. Vector Coverage and Authorization Gate
+
+| Vector | Hardware | CyberCard scope | Authorization required |
+|---|---|---|---|
+| NFC HF 13.56 MHz | PN5180 + NTAG216 | tap-to-URL + emulated identity | own card or written consent |
+| Sub-GHz | CC1101 | listen / replay own remotes / lab fobs | own equipment |
+| IR | IR LED + demod | learn-and-replay own remotes | own remotes |
+| Wi-Fi | ESP32 Wi-Fi | provisioning, captive portal demo on owned SSID | owned network |
+| BLE | ESP32 BLE | telemetry + identity beacon | own clients |
+| USB HID | ESP32-S3 OTG | open browser + paste consent disclosure | own host |
+| OSINT / Project 0 | Quansheng UV-K5 (separate) | spectrum awareness, ham radio | licensed operator |
+
+Every TX-class action is gated by a hardware long-press confirmation, a `authorized_by` field, and a server-side allow-list. Without the gate, the firmware refuses to transmit.
+
+### 10. Installation / Bring-up Checklist
+
+1. Flash ESP32-S3 with `firmware/cybercard_v0.ino` using `arduino-cli` or PlatformIO.
+2. Hold center button at boot to enter Wi-Fi provisioning portal (consent page only).
+3. Set `BACKEND_URL = https://fllc.net`, `DEVICE_ID`, and a per-device shared secret in NVS.
+4. NFC tune: bring blank NTAG216 close, press center button to write the configured `/tap?card_id=...` URL.
+5. Sub-GHz: edit `firmware/config.h` to your local ISM band; uncomment only legal frequencies.
+6. Smoke test: tap the card on an Android phone and confirm `tap_events` row in Supabase.
+7. SOC: confirm `device_telemetry` rows for `nfc.read`, `power.low`, `wifi.portal.show`.
+
+### 11. Spectrum Awareness, ISR, OSINT, Captive Portals (Companion Doctrine)
+
+CyberCard treats Quansheng UV-K5 (Project 0 firmware), Hak5 lab payloads, Flipper Zero, and Wi-Fi dev board as **companion** devices. The card is the system of record; companions are sensors and effectors. A single OSINT/ISR doctrine applies:
+
+- Always operate on owned spectrum, owned cards, owned hosts, owned networks.
+- Always log to the SOC pipeline; an action that does not log did not happen.
+- Always require dual confirmation (physical + backend) for anything that transmits.
+- Captive portals are consent landing pages, not credential graves.
+- Spectrum analysis with UV-K5 / RTL-SDR is observe-only; transmissions only on amateur bands by a licensed operator.
+- BadUSB is a HID demo class that opens the consent portal; not an exploit dropper.
+
+### 12. Math Appendix Quick Reference
+
+- Free space path loss: $\text{FSPL} = 20\log_{10}(d) + 20\log_{10}(f) + 32.45$
+- Friis equation: $P_r = P_t \, G_t \, G_r \, \left(\frac{\lambda}{4\pi d}\right)^2$
+- Resonant frequency LC: $f_0 = \frac{1}{2\pi\sqrt{LC}}$
+- Quality factor: $Q = \frac{2\pi f_0 L}{R}$
+- Skin depth: $\delta = \sqrt{\frac{2}{\omega \mu \sigma}}$
+- Shannon capacity: $C = B \log_2(1 + \mathrm{SNR})$
+- Required NFC coil voltage to power passive tag: $V_{coil} \geq V_{tag,min} \cdot k^{-1}$ where $k$ is coupling coefficient
+- Wavelength-to-coil ratio for 13.56 MHz: $\lambda \approx 22.12\ \text{m}$, so the card is electrically tiny ($\ll \lambda / 10$) and must be designed as a near-field loop, not a radiator.
+
+### 13. Visual Asset Index
+
+Diagrams referenced from `docs/assets/`. Where an asset is not yet committed, the README lists the spec so it can be generated reproducibly.
+
+| Asset | File | Purpose |
+|---|---|---|
+| System stack | `docs/assets/cybercard-system-stack.svg` | top-of-README diagram |
+| Hardware block | inline mermaid above | logical block diagram |
+| PCB outline | ASCII above | mechanical reference |
+| Pin map | table above | firmware reference |
+| Frequency map | table above | RF reference |
+
+For polished diagrams, regenerate via `npx @mermaid-js/mermaid-cli -i docs/diagrams/<name>.mmd -o docs/assets/<name>.svg`.
+

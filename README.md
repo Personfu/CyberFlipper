@@ -4,11 +4,16 @@ Personfu research workspace for the **CyberCard** identity system and companion 
 
 The active product and engineering package lives in [CYBERCARD/README.md](CYBERCARD/README.md).
 
+`CYBERCARD/` is now a standalone Next.js application as well as the hardware/security documentation package. It includes the runtime files needed to install, configure, run, and deploy the tap flow, dashboard, risk-awareness lab, Supabase API routes, Resend alerts, Stripe hooks, and device telemetry intake.
+
 ## What This Repo Contains
 
 ```text
 CYBERCARD/
+  package.json          Standalone Next.js runtime scripts and dependencies
+  .env.example          Required deployment/runtime environment variables
   app/                  Next.js tap, vCard, Stripe, challenge, dashboard, and gov-gate routes
+  lib/                  Supabase service-role server client
   ar/                   Marker-based AR identity scene
   docs/                 Hardware, RF, telemetry, threat, install, and compliance docs
   emails/               Resend/React Email templates
@@ -30,8 +35,17 @@ The project intentionally emphasizes **network-anchored trust, consent-aware tel
 
 1. Read the flagship system document: [CYBERCARD/README.md](CYBERCARD/README.md)
 2. Review the safety boundary: [CYBERCARD/docs/AUTHORIZED_USE_POLICY.md](CYBERCARD/docs/AUTHORIZED_USE_POLICY.md)
-3. Generate an NFC URL payload: `node CYBERCARD/scripts/generate_ndef.js`
-4. Mirror the public Proxmark research archive to Downloads:
+3. Run the web/API app:
+
+```bash
+cd CYBERCARD
+cp .env.example .env.local
+npm install
+npm run dev
+```
+
+4. Generate an NFC URL payload: `node CYBERCARD/scripts/generate_ndef.js`
+5. Mirror the public Proxmark research archive to Downloads:
 
 ```bash
 pip install requests beautifulsoup4 tqdm
@@ -41,6 +55,7 @@ python CYBERCARD/scripts/proxmark_scraper.py --out ~/Downloads/proxmark_docs --w
 ## Current Status
 
 - CyberCard web/API layer: implemented
+- Standalone Next.js execution scaffolding: implemented
 - Supabase schema and audit layer: implemented
 - ESP32-S3 lab firmware: implemented as v0 prototype
 - Flipper Zero integration: safe examples and docs added
