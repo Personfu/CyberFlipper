@@ -181,7 +181,7 @@ def _categorize(rel_path: str) -> str:
     return "misc"
 
 
-def download_file(file_info: dict, out_dir: Path, resume: bool) -> dict:
+def download_file(file_info: dict, out_dir: Path, resume: bool, max_retries: int) -> dict:
     """Download a single file. Returns status dict."""
     dest = out_dir / file_info["rel_path"]
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -189,16 +189,32 @@ def download_file(file_info: dict, out_dir: Path, resume: bool) -> dict:
     if resume and dest.exists() and dest.stat().st_size > 0:
         return {**file_info, "status": "skipped"}
 
-    try:
-        r = SESSION.get(file_info["url"], timeout=60, stream=True)
-        r.raise_for_status()
-        total = int(r.headers.get("content-length", 0))
-        with open(dest, "wb") as f:
-            for chunk in r.iter_content(chunk_size=65536):
-                f.write(chunk)
-        return {**file_info, "status": "ok", "bytes": dest.stat().st_size}
-    except requests.RequestException as e:
-        return {**file_info, "status": "error", "error": str(e)}
+    last_error = ""
+    for attempt in range(max_retries + 1):
+        try:
+            r = SESSION.get(file_info["url"], timeout=60, stream=True)
+            r.raise_for_status()
+            with open(dest, "wb") as f:
+                for chunk in r.iter_content(chunk_size=65536):
+                    f.write(chunk)
+            return {
+                **file_info,
+                "status": "ok",
+                "bytes": dest.stat().st_size,
+                "attempts": attempt + 1,
+            }
+        except requests.RequestException as e:
+            last_error = str(e)
+            # Exponential backoff helps with transient remote resets.
+            if attempt < max_retries:
+                time.sleep(min(8, 2 ** attempt))
+
+    return {
+        **file_info,
+        "status": "error",
+        "error": last_error,
+        "attempts": max_retries + 1,
+    }
 
 
 def write_manifest(files: list[dict], out_dir: Path, manifest_path: Path):
@@ -214,7 +230,7 @@ def write_manifest(files: list[dict], out_dir: Path, manifest_path: Path):
         "categories": {k: len(v) for k, v in categories.items()},
         "files": files,
     }
-    manifest_path.write_text(json.dumps(manifest, indent=2))
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     print(f"[manifest] written → {manifest_path}")
 
     # Also write a human-readable study guide
@@ -232,11 +248,11 @@ def write_manifest(files: list[dict], out_dir: Path, manifest_path: Path):
     for cat, cat_files in sorted(categories.items()):
         lines.append(f"### {cat}  ({len(cat_files)} files)")
         for f in cat_files:
-            tag = " ⭐" if f["priority"] else ""
+            tag = " *PRIORITY*" if f["priority"] else ""
             lines.append(f"- [{f['filename']}]({f['rel_path']}){tag}")
         lines.append("")
 
-    guide_path.write_text("\n".join(lines))
+    guide_path.write_text("\n".join(lines), encoding="utf-8")
     print(f"[guide]    written → {guide_path}")
 
 
@@ -249,6 +265,7 @@ def main():
     ap.add_argument("--no-resume",action="store_true",      default=False)
     ap.add_argument("--manifest", default="",               help="manifest output path (default: <out>/manifest.json)")
     ap.add_argument("--dry-run",  action="store_true",      help="enumerate only, no download")
+    ap.add_argument("--max-retries", type=int, default=3,    help="retry attempts per file")
     args = ap.parse_args()
 
     resume = not args.no_resume
@@ -270,7 +287,10 @@ def main():
     print(f"[dl]    downloading → {out_dir}  workers={args.workers}  resume={resume}")
     results = []
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = {pool.submit(download_file, f, out_dir, resume): f for f in files}
+        futures = {
+            pool.submit(download_file, f, out_dir, resume, args.max_retries): f
+            for f in files
+        }
         with tqdm(total=len(futures), unit="file") as bar:
             for fut in as_completed(futures):
                 r = fut.result()
