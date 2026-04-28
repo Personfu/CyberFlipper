@@ -1,0 +1,13 @@
+.env.local
+.env
+node_modules/
+.next/
+out/
+.vercel/
+*.log
+proxmark_docs/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.vcf
