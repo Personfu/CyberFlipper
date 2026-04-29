@@ -2,6 +2,14 @@
 
 This document defines safe CyberCard-compatible Flipper workflows.
 
+## Visuals
+
+| Diagram | Render |
+|---|---|
+| Wi-Fi dev board pinout (ESP32-S2, BQ24295, USB-C) | ![wifi](assets/flipper-wifi-board.svg) |
+| RF spectrum coverage (shared with CyberCard) | ![rf](assets/cybercard-rf-spectrum.svg) |
+| Threat model trust boundaries | ![threat](assets/cybercard-threat-model.svg) |
+
 ## Flipper Folder Map
 
 | Flipper folder | CyberCard folder | Purpose |

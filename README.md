@@ -11,6 +11,38 @@ Both halves implement the same Personfu authorization gate: consent-first scanna
 
 ---
 
+## Concept Gallery
+
+Vector renders + schematics in the FLLC.net theme. Sources in [CYBERCARD/docs/assets/](CYBERCARD/docs/assets).
+
+<table>
+  <tr>
+    <td width="33%"><a href="CYBERCARD/docs/assets/cybercard-front-concept.svg"><img src="CYBERCARD/docs/assets/cybercard-front-concept.svg" alt="Front concept"/></a><br/><sub>Card front concept</sub></td>
+    <td width="33%"><a href="CYBERCARD/docs/assets/cybercard-back-schematic.svg"><img src="CYBERCARD/docs/assets/cybercard-back-schematic.svg" alt="Back schematic"/></a><br/><sub>Back NFC coil + QR</sub></td>
+    <td width="33%"><a href="CYBERCARD/docs/assets/cybercard-exploded.svg"><img src="CYBERCARD/docs/assets/cybercard-exploded.svg" alt="Exploded view"/></a><br/><sub>Mechanical exploded view</sub></td>
+  </tr>
+  <tr>
+    <td><a href="CYBERCARD/docs/assets/cybercard-pcb-stackup.svg"><img src="CYBERCARD/docs/assets/cybercard-pcb-stackup.svg" alt="PCB stackup"/></a><br/><sub>4-layer PCB stackup</sub></td>
+    <td><a href="CYBERCARD/docs/assets/cybercard-coil-geometry.svg"><img src="CYBERCARD/docs/assets/cybercard-coil-geometry.svg" alt="Coil geometry"/></a><br/><sub>NFC coil geometry + Wheeler math</sub></td>
+    <td><a href="CYBERCARD/docs/assets/cybercard-block-diagram.svg"><img src="CYBERCARD/docs/assets/cybercard-block-diagram.svg" alt="Block diagram"/></a><br/><sub>System block diagram</sub></td>
+  </tr>
+  <tr>
+    <td><a href="CYBERCARD/docs/assets/cybercard-rf-spectrum.svg"><img src="CYBERCARD/docs/assets/cybercard-rf-spectrum.svg" alt="RF spectrum"/></a><br/><sub>RF spectrum coverage</sub></td>
+    <td><a href="CYBERCARD/docs/assets/cybercard-power-arch.svg"><img src="CYBERCARD/docs/assets/cybercard-power-arch.svg" alt="Power"/></a><br/><sub>Power architecture + budget</sub></td>
+    <td><a href="CYBERCARD/docs/assets/cybercard-tap-flow.svg"><img src="CYBERCARD/docs/assets/cybercard-tap-flow.svg" alt="Tap flow"/></a><br/><sub>Tap-to-revenue sequence</sub></td>
+  </tr>
+  <tr>
+    <td><a href="CYBERCARD/docs/assets/cybercard-threat-model.svg"><img src="CYBERCARD/docs/assets/cybercard-threat-model.svg" alt="Threat model"/></a><br/><sub>STRIDE threat model</sub></td>
+    <td><a href="CYBERCARD/docs/assets/cybercard-scannables-matrix.svg"><img src="CYBERCARD/docs/assets/cybercard-scannables-matrix.svg" alt="Scannables"/></a><br/><sub>Scannable identity vectors</sub></td>
+    <td><a href="CYBERCARD/docs/assets/cybercard-ar-overlay.svg"><img src="CYBERCARD/docs/assets/cybercard-ar-overlay.svg" alt="AR"/></a><br/><sub>AR overlay (WebXR)</sub></td>
+  </tr>
+  <tr>
+    <td colspan="3"><a href="CYBERCARD/docs/assets/flipper-wifi-board.svg"><img src="CYBERCARD/docs/assets/flipper-wifi-board.svg" alt="Wi-Fi board"/></a><br/><sub>Flipper Wi-Fi dev board pinout (ESP32-S2)</sub></td>
+  </tr>
+</table>
+
+---
+
 ## Repo Map
 
 ```text

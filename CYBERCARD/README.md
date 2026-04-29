@@ -4,6 +4,28 @@
 
 CyberCard is a premium metal business card that behaves like an identity system, not just a tag. It combines NFC, QR, AR, vCard, LinkedIn, one-time email automation, Supabase analytics, and controlled lab instrumentation. CyberFlipper is the capability layer around Flipper Zero and the Flipper Wi-Fi dev board. CyberCard Device is the active ESP32-S3/CC1101/NFC prototype that proves the same workflows can be carried in a wallet form factor.
 
+## Concept Gallery
+
+Vector renders + schematics rendered in the FLLC.net theme palette (`#0a0a0c` / `#00e5c8` / `#c9a84c`, monospaced, log-grid).
+
+| Concept | Render |
+|---|---|
+| Front concept (metal, NFC tap target, brushed Ti) | ![front](docs/assets/cybercard-front-concept.svg) |
+| Back schematic (4-turn NFC spiral + QR fallback + B-field) | ![back](docs/assets/cybercard-back-schematic.svg) |
+| Mechanical exploded view (5-layer stack, BOM highlights) | ![exploded](docs/assets/cybercard-exploded.svg) |
+| 4-layer PCB stackup (impedance + via map) | ![pcb](docs/assets/cybercard-pcb-stackup.svg) |
+| NFC coil geometry (Wheeler math, range envelope) | ![coil](docs/assets/cybercard-coil-geometry.svg) |
+| System block diagram (ESP32-S3 + PN5180 + CC1101 + SE) | ![block](docs/assets/cybercard-block-diagram.svg) |
+| RF spectrum coverage (LF → 5 GHz, RX vs licensed TX) | ![rf](docs/assets/cybercard-rf-spectrum.svg) |
+| Power architecture + budget | ![pwr](docs/assets/cybercard-power-arch.svg) |
+| Tap-to-revenue sequence (≤ 600 ms p95) | ![tap](docs/assets/cybercard-tap-flow.svg) |
+| STRIDE threat model + trust boundaries | ![threat](docs/assets/cybercard-threat-model.svg) |
+| Scannable identity vector matrix (9 vectors, consent-first) | ![scan](docs/assets/cybercard-scannables-matrix.svg) |
+| AR overlay concept (A-Frame / WebXR HUD) | ![ar](docs/assets/cybercard-ar-overlay.svg) |
+| Flipper Wi-Fi dev board pinout (ESP32-S2) | ![wifi](docs/assets/flipper-wifi-board.svg) |
+
+All renders are pure SVG (no raster, no external fonts). Source files live in [docs/assets/](docs/assets).
+
 > Authorized use only. This project is for owned hardware, lab environments, consent-based demos, security education, and defensive validation. It does not include instructions for unauthorized exploitation, credential theft, stealth, persistence, or evasion.
 
 ![CyberCard System Stack](docs/assets/cybercard-system-stack.svg)
