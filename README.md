@@ -1,11 +1,11 @@
-﻿# CyberFlipper / CyberCard
+# CyberFlipper / CyberCard
 
-**Personfu @ FurulieLLC â€” unified Flipper Zero custom firmware kit + CyberCard identity-and-RF wallet system.**
+**Personfu @ FurulieLLC -- unified Flipper Zero custom firmware kit + CyberCard identity-and-RF wallet system.**
 
 This single repository contains two cohesive product lines that share one safety doctrine, one telemetry surface (`fllc.net`), and one threat model:
 
-1. **CyberFlipper** â€” Flipper Zero F-series custom SD card distribution: BadUSB CVE awareness payloads, NFC, Sub-GHz, 125 kHz RFID, IR, U2F, dolphin assets, Wi-Fi dev board portal demos, Lab401 catalog integration, and the full HTML/JS dashboard at `personfu.github.io/CyberFlipper/`.
-2. **CyberCard** â€” premium metal NFC/QR/AR business card + ESP32-S3 wallet device + Next.js web/API stack (`/tap`, `/risk`, `/challenge`, `/dashboard`, Supabase + Resend + Stripe). Lives under [CYBERCARD/](CYBERCARD/).
+1. **CyberFlipper** -- Flipper Zero F-series custom SD card distribution: BadUSB CVE awareness payloads, NFC, Sub-GHz, 125 kHz RFID, IR, U2F, dolphin assets, Wi-Fi dev board portal demos, Lab401 catalog integration, and the full HTML/JS dashboard at `personfu.github.io/CyberFlipper/`.
+2. **CyberCard** -- premium metal NFC/QR/AR business card + ESP32-S3 wallet device + Next.js web/API stack (`/tap`, `/risk`, `/challenge`, `/dashboard`, Supabase + Resend + Stripe). Lives under [CYBERCARD/](CYBERCARD/).
 
 Both halves implement the same Personfu authorization gate: consent-first scannables, audit-everything, no credential-capture portals, no CVE droppers, no auto-execute payloads. Authorized blue-team / DEFCON / lab use only.
 
@@ -15,63 +15,48 @@ Both halves implement the same Personfu authorization gate: consent-first scanna
 
 ```text
 CyberFlipper/
-â”œâ”€â”€ README.md                     â† this unified doc
-â”œâ”€â”€ CYBERFLIPPER_Logo.png
-â”œâ”€â”€ CYBERFLIPPER-v1.2.1-SD_CARD.zip      Flipper SD card distribution (release artifact)
-â”œâ”€â”€ CYBERFLIPPER-v1.2.1-UPDATE.zip       Flipper update bundle
-â”œâ”€â”€ CYBERFLIPPER-v1.2.1-SD_CARD/         expanded SD card tree
-â”œâ”€â”€ SD_CARD_READY/                       ready-to-copy SD card payload set
-â”œâ”€â”€ badusb/                              CVE-awareness BadUSB payloads (auto-generated)
-â”œâ”€â”€ nfc/                                 NFC card dumps + research
-â”œâ”€â”€ subghz/                              Sub-GHz signal captures + research notes
-â”œâ”€â”€ lfrfid/                              125 kHz RFID dumps
-â”œâ”€â”€ infrared/                            IR remote universal databases
-â”œâ”€â”€ u2f/                                 U2F key assets
-â”œâ”€â”€ dolphin/                             Dolphin animation pack
-â”œâ”€â”€ apps/                                .fap apps (Wi-Fi/RF/BLE/SubGHz/Games/GPIO/NFC)
-â”œâ”€â”€ firmware/                            firmware source mirrors
-â”œâ”€â”€ dist/                                build outputs
-â”œâ”€â”€ docs/                                project docs (LEGAL, install, hardware)
-â”œâ”€â”€ images/, assets/                     web/dashboard assets
-â”œâ”€â”€ web/                                 GitHub Pages dashboard
-â”œâ”€â”€ third_party/                         vendor sources
-â”œâ”€â”€ legacy/                              legacy artifacts
-â”œâ”€â”€ scripts/                             build/release scripts
-â”œâ”€â”€ manifest.json, manifest.txt          release manifests
-â”œâ”€â”€ update.fuf, update.txt, updater.bin  Flipper update files
-â”œâ”€â”€ radio.bin, splash.bin, firmware.dfu  Flipper binaries
-â”œâ”€â”€ resources.tar (.bak)                 Flipper resources tarball
-â”œâ”€â”€ inspect_tar.py, test_tar.py          tar diagnostics
-â”œâ”€â”€ .github/, .gitea/                    CI workflows (daily CVE BadUSB, pages, release)
-â””â”€â”€ CYBERCARD/                           CyberCard identity system + ESP32-S3 wallet device + Next.js app
-    â”œâ”€â”€ package.json, tsconfig.json, next.config.mjs, tailwind.config.ts, .env.example
-    â”œâ”€â”€ app/                             Next.js routes (tap, risk, challenge, dashboard, api/*)
-    â”œâ”€â”€ lib/supabase/server.ts
-    â”œâ”€â”€ docs/                            19+ deep-dive docs
-    â”‚   â”œâ”€â”€ HARDWARE_BLUEPRINT.md, HARDWARE_BOM.md
-    â”‚   â”œâ”€â”€ RF_SPECTRUM_MATRIX.md, FIRMWARE_PROTOCOLS.md
-    â”‚   â”œâ”€â”€ FLIPPER_WIFI_BOARD.md        â† cross-surface payload methodology
-    â”‚   â”œâ”€â”€ FLLC_SITE_CONTENT.md         â† public website spec
-    â”‚   â”œâ”€â”€ QUANSHENG_UVK5_BRIDGE.md
-    â”‚   â”œâ”€â”€ PROXMARK_THREAT_PRIMER.md
-    â”‚   â”œâ”€â”€ TELEMETRY_SOC.md, THREAT_MODEL.md
-    â”‚   â”œâ”€â”€ BREAK_GLASS_ADMIN.md, HARDENING_CHECKLIST.md
-    â”‚   â”œâ”€â”€ AUTHORIZED_USE_POLICY.md, RISK_AWARENESS_PAGE.md
-    â”‚   â”œâ”€â”€ DEFCON_CARD.md, RED_TEAM_ENGINEERING_CARD.md
-    â”‚   â”œâ”€â”€ ARCHITECTURE.md, INSTALLATION.md
-    â”‚   â””â”€â”€ assets/
-    â”œâ”€â”€ firmware/cybercard_v0.ino        ESP32-S3 + PN5180 + CC1101 prototype
-    â”œâ”€â”€ flipper/                         safe Flipper integration files
-    â”‚   â”œâ”€â”€ badusb/                      consent-only HID demos (open profile, type disclosure)
-    â”‚   â”œâ”€â”€ nfc/                         URL-only NDEF demos
-    â”‚   â””â”€â”€ infrared/                    owned-remote demos
-    â”œâ”€â”€ payloads/scannables/SCANNABLES.md
-    â”œâ”€â”€ ar/index.html                    A-Frame AR identity scene
-    â”œâ”€â”€ emails/templates.tsx             Resend / React Email
-    â”œâ”€â”€ n8n/                             tap-to-revenue workflow
-    â”œâ”€â”€ modules/                         display/input/IMU/network/identity modules
-    â”œâ”€â”€ scripts/                         NDEF generator + Proxmark mirror tool
-    â””â”€â”€ supabase/                        DB migrations + RLS
+├── README.md                            # this unified doc
+├── CYBERFLIPPER_Logo.png
+├── CYBERFLIPPER-v1.2.1-SD_CARD.zip      # Flipper SD card distribution (release artifact)
+├── CYBERFLIPPER-v1.2.1-UPDATE.zip       # Flipper update bundle
+├── CYBERFLIPPER-v1.2.1-SD_CARD/         # expanded SD card tree
+├── SD_CARD_READY/                       # ready-to-copy SD card payload set
+├── badusb/                              # CVE-awareness BadUSB payloads (auto-generated)
+├── nfc/                                 # NFC card dumps + research
+├── subghz/                              # Sub-GHz signal captures + research notes
+├── lfrfid/                              # 125 kHz RFID dumps
+├── infrared/                            # IR remote universal databases
+├── u2f/                                 # U2F key assets
+├── dolphin/                             # Dolphin animation pack
+├── apps/                                # .fap apps (Wi-Fi/RF/BLE/SubGHz/Games/GPIO/NFC)
+├── firmware/                            # firmware source mirrors
+├── dist/                                # build outputs
+├── docs/                                # project docs (LEGAL, install, hardware)
+├── images/, assets/                     # web/dashboard assets
+├── web/                                 # GitHub Pages dashboard
+├── third_party/                         # vendor sources
+├── legacy/                              # legacy artifacts
+├── scripts/                             # build/release scripts
+├── manifest.json, manifest.txt          # release manifests
+├── update.fuf, update.txt, updater.bin  # Flipper update files
+├── radio.bin, splash.bin, firmware.dfu  # Flipper binaries
+├── resources.tar (.bak)                 # Flipper resources tarball
+├── inspect_tar.py, test_tar.py          # tar diagnostics
+├── .github/, .gitea/                    # CI workflows
+└── CYBERCARD/                           # CyberCard identity system
+    ├── package.json, tsconfig.json, next.config.mjs, tailwind.config.ts, .env.example
+    ├── app/                             # Next.js routes (tap, risk, challenge, dashboard, api/*)
+    ├── lib/supabase/server.ts
+    ├── docs/                            # 19+ deep-dive docs
+    ├── firmware/cybercard_v0.ino        # ESP32-S3 + PN5180 + CC1101 prototype
+    ├── flipper/                         # safe Flipper integration files
+    ├── payloads/scannables/SCANNABLES.md
+    ├── ar/index.html                    # A-Frame AR identity scene
+    ├── emails/templates.tsx             # Resend / React Email
+    ├── n8n/                             # tap-to-revenue workflow
+    ├── modules/                         # display/input/IMU/network/identity modules
+    ├── scripts/                         # NDEF generator + Proxmark mirror tool
+    └── supabase/                        # DB migrations + RLS
 ```
 
 ## Two Halves, One System
@@ -82,7 +67,7 @@ CyberFlipper/
 | Distribution | qFlipper SD card copy | NFC tap / QR / AR / Wi-Fi portal |
 | RF surface | CC1101, ST25R3916, 125 kHz, BLE 5.4 | PN5180, NTAG216, CC1101 module, Wi-Fi/BLE |
 | Backend | static GitHub Pages dashboard | Next.js app on fllc.net + Supabase + Stripe + Resend |
-| Audit | local SD card events, manual review | realtime `tap_events` + `device_telemetry` + dashboard |
+| Audit | local SD card events, manual review | realtime tap_events + device_telemetry + dashboard |
 | Public URL | `personfu.github.io/CyberFlipper/` | `fllc.net/tap` and `fllc.net/risk` |
 | Safety boundary | CISA KEV-derived BadUSB payloads for awareness, no live exploitation | consent-first scannables, no credential capture, no auto-execute |
 
@@ -92,8 +77,8 @@ The CyberCard `/tap` flow is replicable from any CyberFlipper surface: a Flipper
 
 ### CyberFlipper SD card distribution
 1. Download `CYBERFLIPPER-v1.2.1-SD_CARD.zip` from the [Releases page](https://github.com/Personfu/CyberFlipper/releases).
-2. Extract â€” you will see `badusb/`, `infrared/`, `nfc/`, `subghz/`, `lfrfid/`, `dolphin/`, `apps/`, `u2f/`.
-3. Open qFlipper â†’ connect Flipper via USB â†’ SD Card tab.
+2. Extract -- you will see `badusb/`, `infrared/`, `nfc/`, `subghz/`, `lfrfid/`, `dolphin/`, `apps/`, `u2f/`.
+3. Open qFlipper -> connect Flipper via USB -> SD Card tab.
 4. Drag the extracted folders onto the SD card root.
 5. Eject and reboot.
 
@@ -113,7 +98,6 @@ Then visit `http://localhost:3000/tap?card_id=demo_v1&utm_source=local&utm_mediu
 This repository is for owned hardware, lab environments, consent-based demos, security education, and defensive validation. It does not include instructions for unauthorized exploitation, credential theft, stealth, persistence, or evasion. Sub-GHz transmissions and Wi-Fi captive portals must be operated only on owned hardware, owned spectrum, and owned networks; ham bands require a licensed operator. See [CYBERCARD/docs/AUTHORIZED_USE_POLICY.md](CYBERCARD/docs/AUTHORIZED_USE_POLICY.md).
 
 ---
-
 
 <p align="center">
   <img src="CYBERFLIPPER_Logo.png" alt="CYBERFLIPPER F-SERIES" width="300">
@@ -136,7 +120,7 @@ This repository is for owned hardware, lab environments, consent-based demos, se
 
 ---
 
-## ΓûôΓûÆΓûæ I. HARDWARE SCHEMATIC ARCHITECTURE
+## ▓▒░ I. HARDWARE SCHEMATIC ARCHITECTURE
 **CYBERFLIPPER** operates natively on the official [MAIN_PCB_12.1.F7B9C6](CYBERFLIPPER_BUILD/CYBERFLIPPER/MAIN_PCB_12.1.F7B9C6_Assembly.pdf) framework. It exploits the dual-core **STM32WB55** microprocessor, pushing the limits of the embedded CC1101 transceiver and physical HID bus arrays to create an autonomous, pocket-operable signal intercept pipeline. 
 
 *(For raw engineering blueprints, cross-reference the official [Flipper Development Hardware Schematic](https://docs.flipper.net/zero/development/hardware/schematic#)).*
@@ -156,7 +140,7 @@ graph TD
 
 ---
 
-## ΓûôΓûÆΓûæ II. PROTOCOL VECTORS & TELEMETRY MATRIX
+## ▓▒░ II. PROTOCOL VECTORS & TELEMETRY MATRIX
 
 | Vector | Internal Silicon Driver | Attack / Capture Simulation Capabilities |
 | :--- | :--- | :--- |
@@ -172,40 +156,40 @@ graph TD
 
 ---
 
-## ΓûôΓûÆΓûæ III. EDC ECOSYSTEM & TITAN MODULARITY
+## ▓▒░ III. EDC ECOSYSTEM & TITAN MODULARITY
 CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss Army Knife of cybersecurity tools" for an extensive Everyday Carry (EDC) loadout. We integrate directly with the greatest external penetration hardware on the market:
 
 *   **Wireless Exploitation:**
-    *   ≡ƒôí **[ESP32 Marauder (JustCallMeKoko)](https://github.com/justcallmekoko/ESP32Marauder):** Pinned over UART TX(13) / RX(14). Essential 802.11 deauth mapping, beacon spamming, and PMKID capture.
-    *   ΓÜí **[Awake Dynamics ESP32-C5](https://awakedynamics.com/):** Next-generation 2.4/5GHz Wi-Fi overrides natively synthesized over the GPIO backbone.
+    *   📡 **[ESP32 Marauder (JustCallMeKoko)](https://github.com/justcallmekoko/ESP32Marauder):** Pinned over UART TX(13) / RX(14). Essential 802.11 deauth mapping, beacon spamming, and PMKID capture.
+    *   ⚡ **[Awake Dynamics ESP32-C5](https://awakedynamics.com/):** Next-generation 2.4/5GHz Wi-Fi overrides natively synthesized over the GPIO backbone.
 *   **Rogue Signal & IMSI Detection:**
-    *   ≡ƒò╡∩╕ÅΓÇìΓÖé∩╕Å **[Nyan Box](https://github.com/inAudible1/NyanBox):** Correlates Axon Camera network density to passively track law enforcement grids.
-    *   ≡ƒô▒ **[Ray Hunter](https://rayhunter.net/):** Verizon hotspot mod specifically dedicated to Stingray (Cell-Site Simulator) detection and IMSI catcher awareness.
+    *   🕵️‍♂️ **[Nyan Box](https://github.com/inAudible1/NyanBox):** Correlates Axon Camera network density to passively track law enforcement grids.
+    *   📱 **[Ray Hunter](https://rayhunter.net/):** Verizon hotspot mod specifically dedicated to Stingray (Cell-Site Simulator) detection and IMSI catcher awareness.
 *   **Captive Portals & Micro-Computing:**
-    *   ≡ƒÿê **[M5Stick S3](https://docs.m5stack.com/en/core/m5stickc_plus2):** Running the "Evil" educational project for rapid captive-portal phishing emulation.
-    *   ≡ƒûÑ∩╕Å **[M5Stack Cardputer Advanced](https://shop.m5stack.com/products/m5stack-cardputer-esp32-s3-mini-keyboard-computer):** Running Porkchop firmware by Octo as a standalone serial analysis terminal.
+    *   😈 **[M5Stick S3](https://docs.m5stack.com/en/core/m5stickc_plus2):** Running the "Evil" educational project for rapid captive-portal phishing emulation.
+    *   🖥️ **[M5Stack Cardputer Advanced](https://shop.m5stack.com/products/m5stack-cardputer-esp32-s3-mini-keyboard-computer):** Running Porkchop firmware by Octo as a standalone serial analysis terminal.
 *   **Spectrum Analysis & VHF/UHF Comms:**
-    *   ≡ƒô╗ **[HackRF Portapack H4](https://greatscottgadgets.com/hackrf/one/) & RTL-SDR:** Making the invisible world visible. When the Flipper's CC1101 bottlenecks, escalate to external 1MHz-6GHz SDR arrays via physical SPI bridging.
-    *   ≡ƒÄÖ∩╕Å **[Quansheng UV-K5](https://github.com/egzumer/uv-k5-firmware-custom):** A highly capable, hackable handheld radio. The Flipper's GPIO serves as a programmable PTT interface to transmit encrypted digital APRS payloads.
-*   **≡ƒôí [ProjectZero](https://github.com/C5Lab/projectZero) & OWASP Intelligence:** Integrated security logic and protocol manipulation derived from official Project Zero vulnerability mapping and the [OWASP CheatSheet Series](https://github.com/OWASP/CheatSheetSeries).
-*   **≡ƒªå Hak5 Tactical Payloads:** Native translation of master payload repositories: [USB Rubber Ducky](https://github.com/hak5/usbrubberducky-payloads), [WiFi Pineapple](https://github.com/hak5/wifipineapplepager-payloads), [Bash Bunny](https://github.com/hak5/bashbunny-payloads), and [OMG Cable](https://github.com/hak5/omg-payloads).
-*   **≡ƒ¢á∩╕Å Cyber-Analytic Arrays:** Logic and conversion matrices sourced from [CyberChef (GCHQ)](https://github.com/gchq/CyberChef), [SecLists](https://github.com/Personfu/seclists), and [Awesome-Hacking](https://github.com/Hack-with-Github/Awesome-Hacking).
-*   **≡ƒîì Signal ISR (Intelligence, Surveillance, Reconnaissance):** Direct integration of cellular tower and satellite tracking logic via [Tower-Hunter](https://github.com/Ringmast4r/Tower-Hunter) and [GNSS](https://github.com/Ringmast4r/GNSS) frameworks.
+    *   📻 **[HackRF Portapack H4](https://greatscottgadgets.com/hackrf/one/) & RTL-SDR:** Making the invisible world visible. When the Flipper's CC1101 bottlenecks, escalate to external 1MHz-6GHz SDR arrays via physical SPI bridging.
+    *   🎙️ **[Quansheng UV-K5](https://github.com/egzumer/uv-k5-firmware-custom):** A highly capable, hackable handheld radio. The Flipper's GPIO serves as a programmable PTT interface to transmit encrypted digital APRS payloads.
+*   **📡 [ProjectZero](https://github.com/C5Lab/projectZero) & OWASP Intelligence:** Integrated security logic and protocol manipulation derived from official Project Zero vulnerability mapping and the [OWASP CheatSheet Series](https://github.com/OWASP/CheatSheetSeries).
+*   **🦆 Hak5 Tactical Payloads:** Native translation of master payload repositories: [USB Rubber Ducky](https://github.com/hak5/usbrubberducky-payloads), [WiFi Pineapple](https://github.com/hak5/wifipineapplepager-payloads), [Bash Bunny](https://github.com/hak5/bashbunny-payloads), and [OMG Cable](https://github.com/hak5/omg-payloads).
+*   **🛠️ Cyber-Analytic Arrays:** Logic and conversion matrices sourced from [CyberChef (GCHQ)](https://github.com/gchq/CyberChef), [SecLists](https://github.com/Personfu/seclists), and [Awesome-Hacking](https://github.com/Hack-with-Github/Awesome-Hacking).
+*   **🌍 Signal ISR (Intelligence, Surveillance, Reconnaissance):** Direct integration of cellular tower and satellite tracking logic via [Tower-Hunter](https://github.com/Ringmast4r/Tower-Hunter) and [GNSS](https://github.com/Ringmast4r/GNSS) frameworks.
 
 > *We operate closely mapped alongside heavily customized smartphones and physical tools: **Nothing Phone 3** (Brute-force cloud processing), **Civivi Elementum Button Lock** (Physical override architecture), and the **Zebra F-701** (Tactical scribing).*
 
 ---
 
-## ΓûôΓûÆΓûæ IV. INSTALLATION ΓÇö SD CARD VIA qFlipper
+## ▓▒░ IV. INSTALLATION — SD CARD VIA qFlipper
 
 > **The only supported install method is SD card content copy via the qFlipper SD Card tab. No firmware flashing is required or supported.**
 
-### CyberFlipper v1.2.1 ΓÇö Release 2026-04-20
+### CyberFlipper v1.2.1 — Release 2026-04-20
 
 **What's New**
 - Daily CVE BadUSB payloads (auto-generated from CISA KEV catalog)
 - Extra apps bundle updated
-- SD card only distribution ΓÇö no OTA flash required
+- SD card only distribution — no OTA flash required
 
 **Included BadUSB CVE Payloads:** See [badusb/](badusb/) for the full CVE payload listing.
 
@@ -214,8 +198,8 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 ### Steps
 
 1. Download **`CYBERFLIPPER-v1.2.1-SD_CARD.zip`** from the [Releases page](https://github.com/Fu-LLC/CyberFlipper/releases).
-2. Extract the zip ΓÇö you will see: `badusb/`, `infrared/`, `nfc/`, `subghz/`, `lfrfid/`, `dolphin/`, `apps/`, `u2f/`
-3. Open **qFlipper** ΓåÆ connect Flipper via USB ΓåÆ click the **SD Card** tab.
+2. Extract the zip — you will see: `badusb/`, `infrared/`, `nfc/`, `subghz/`, `lfrfid/`, `dolphin/`, `apps/`, `u2f/`
+3. Open **qFlipper** → connect Flipper via USB → click the **SD Card** tab.
 4. Drag and drop the extracted folders onto the SD card root.
 5. Eject and reboot your Flipper Zero.
 
@@ -234,17 +218,17 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 
 ---
 
-## ΓûôΓûÆΓûæ V. NATIVE SOFTWARE TOPOLOGY
+## ▓▒░ V. NATIVE SOFTWARE TOPOLOGY
 *   **PASSIVE_NODE Integrations:** Background mapping software (wardriver.c). Natively formats 802.11 / NMEA frames to .csv for direct database sync without external parsing.
-*   **qFlipper SD Card Protocol:** All content distributed as SD card data only. Copy via qFlipper SD Card tab ΓÇö no firmware flash, no OTA update required.
+*   **qFlipper SD Card Protocol:** All content distributed as SD card data only. Copy via qFlipper SD Card tab — no firmware flash, no OTA update required.
 
 ---
 
-## ΓûôΓûÆΓûæ VI. HARDWARE TECHNICAL SPECIFICATIONS
+## ▓▒░ VI. HARDWARE TECHNICAL SPECIFICATIONS
 
 > *Full specifications reference: [Official Flipper Zero Tech Specs](https://docs.flipper.net/zero/development/hardware/tech-specs) | [Hardware Schematics](https://docs.flipper.net/zero/development/hardware/schematic#)*
 
-### ≡ƒôÉ Body
+### 📐 Body
 
 | Parameter | Value |
 | :--- | :--- |
@@ -254,17 +238,17 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 | **Depth** | 25.6 mm (1.01 inches) |
 | **Weight** | 102 grams (3.6 ounces) |
 
-### ≡ƒûÑ∩╕Å Display
+### 🖥️ Display
 
 | Parameter | Value |
 | :--- | :--- |
 | **Type** | Monochrome LCD |
-| **Resolution** | 128├ù64 pixels |
+| **Resolution** | 128×64 pixels |
 | **Controller** | ST7567 |
 | **Interface** | SPI |
 | **Diagonal** | 1.4" |
 
-### ΓÜÖ∩╕Å Microcontroller Unit (MCU)
+### ⚙️ Microcontroller Unit (MCU)
 
 | Parameter | Value |
 | :--- | :--- |
@@ -275,24 +259,24 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 | **Flash** | 1024 KB (shared between application & radio) |
 | **SRAM** | 256 KB (shared between application & radio) |
 
-### ≡ƒôí Sub-1 GHz Module
+### 📡 Sub-1 GHz Module
 
 | Parameter | Value |
 | :--- | :--- |
 | **Transceiver** | CC1101 |
 | **TX Power** | -20 dBm max |
-| **Frequency Bands** | 315 MHz ┬╖ 433 MHz ┬╖ 868 MHz ┬╖ 915 MHz (region-dependent) |
+| **Frequency Bands** | 315 MHz · 433 MHz · 868 MHz · 915 MHz (region-dependent) |
 
-### ≡ƒô▒ NFC (13.56 MHz)
+### 📱 NFC (13.56 MHz)
 
 | Parameter | Value |
 | :--- | :--- |
 | **Transceiver** | ST25R3916 |
 | **Frequency** | 13.56 MHz |
 | **Protocols** | ISO-14443A/B, NFC Forum |
-| **Supported Cards** | MIFARE Classic┬«, Ultralight┬«, DESFire┬«, FeliCaΓäó, HID iClass (Picopass) |
+| **Supported Cards** | MIFARE Classic®, Ultralight®, DESFire®, FeliCa™, HID iClass (Picopass) |
 
-### ≡ƒöæ RFID 125 kHz
+### 🔑 RFID 125 kHz
 
 | Parameter | Value |
 | :--- | :--- |
@@ -301,7 +285,7 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 | **Coding** | ASK, PSK |
 | **Supported Cards** | EM4100, HID H10301, Indala 26, IoProx XSF, AWID, FDX-A, FDX-B, Pyramid, Viking, Jablotron, Paradox, PAC Stanley, Keri, Gallagher, Nexwatch, Electra, Securakey |
 
-### ≡ƒöî GPIO
+### 🔌 GPIO
 
 | Parameter | Value |
 | :--- | :--- |
@@ -310,42 +294,42 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 | **Input Tolerance** | 5V tolerant (See AN4899) |
 | **Max Current** | Up to 20 mA per digital pin |
 
-### ≡ƒö┤ Infrared
+### 🔴 Infrared
 
 | Parameter | Value |
 | :--- | :--- |
-| **RX Wavelength** | 950 nm (┬▒100 nm) |
-| **RX Carrier** | 38 KHz (┬▒5%) |
+| **RX Wavelength** | 950 nm (±100 nm) |
+| **RX Carrier** | 38 KHz (±5%) |
 | **TX Wavelength** | 940 nm |
-| **TX Carrier** | 0ΓÇô2 MHz |
+| **TX Carrier** | 0–2 MHz |
 | **TX Power** | 300 mW |
 | **Protocols** | NEC, Kaseikyo, RCA, RC5, RC6, Samsung, SIRC |
 
-### ≡ƒù¥∩╕Å iButton 1-Wire
+### 🗝️ iButton 1-Wire
 
 | Parameter | Value |
 | :--- | :--- |
 | **Protocols** | Dallas DS199x, DS1971, CYFRAL, Metakom, TM2004, RW1990 |
 
-### ≡ƒöï Battery
+### 🔋 Battery
 
 | Parameter | Value |
 | :--- | :--- |
 | **Type** | Lithium Polymer (LiPo) |
 | **Capacity** | 2100 mAh |
 | **Battery Life** | Up to 28 days |
-| **Operating Temp** | 0┬░ to 40┬░C (32┬░ to 104┬░F) |
+| **Operating Temp** | 0° to 40°C (32° to 104°F) |
 
-### ≡ƒÆ╛ MicroSD Card
+### 💾 MicroSD Card
 
 | Parameter | Value |
 | :--- | :--- |
 | **Max Capacity** | Up to 256 GB |
-| **Recommended** | 2ΓÇô32 GB |
+| **Recommended** | 2–32 GB |
 | **Interface** | SPI |
 | **R/W Speed** | Up to 5 Mbps |
 
-### ≡ƒöù USB
+### 🔗 USB
 
 | Parameter | Value |
 | :--- | :--- |
@@ -354,7 +338,7 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 | **Data Speed** | 12 Mbps |
 | **Max Charge** | 1 A |
 
-### ≡ƒô╢ Bluetooth LE 5.4
+### 📶 Bluetooth LE 5.4
 
 | Parameter | Value |
 | :--- | :--- |
@@ -362,11 +346,11 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 | **RX Sensitivity** | -96 dBm |
 | **Data Rate** | 2 Mbps |
 
-### ≡ƒöè Buzzer & Vibration
+### 🔊 Buzzer & Vibration
 
 | Parameter | Value |
 | :--- | :--- |
-| **Buzzer Frequency** | 100ΓÇô2500 Hz |
+| **Buzzer Frequency** | 100–2500 Hz |
 | **Sound Output** | 87 dB |
 | **Buzzer Type** | Coin |
 | **Vibration Force** | 30 N |
@@ -374,12 +358,12 @@ CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss
 
 ---
 
-## ΓûôΓûÆΓûæ VII. EDC ECOSYSTEM
+## ▓▒░ VII. EDC ECOSYSTEM
 CYBERFLIPPER serves as the core bridging microcontroller representing the "Swiss Army Knife of cybersecurity tools" for an extensive Everyday Carry (EDC) loadout. We integrate directly with the greatest external penetration hardware on the market:
 
-## ΓûôΓûÆΓûæ VIII. LAB401 PRODUCT CATALOG INTEGRATION
+## ▓▒░ VIII. LAB401 PRODUCT CATALOG INTEGRATION
 
-### ≡ƒ¢Æ Live Lab401 Catalog
+### 🛒 Live Lab401 Catalog
 The CyberFlipper dashboard now features a fully integrated, live-updating product catalog from [Lab401](https://lab401.com/collections/all-products). This catalog is available at [lab401.html](lab401.html) and is updated daily via GitHub Actions. All product data is stored in [assets/lab401_catalog.json](assets/lab401_catalog.json) and rendered dynamically for a seamless user experience.
 
 **Features:**
@@ -393,24 +377,24 @@ All product data is sourced from Lab401 and is for informational and convenience
 
 ---
 
-## ΓûôΓûÆΓûæ IX. BRANDING & ASSET PIPELINE
-### ≡ƒÄ¿ Custom Animation Standards
+## ▓▒░ IX. BRANDING & ASSET PIPELINE
+### 🎨 Custom Animation Standards
 CYBERFLIPPER uses the **F-SERIES** bitmap specification. To create custom animations for the intelligence deck:
 1. **Design:** Use Aseprite or Photoshop for 128x64 pixel art.
 2. **Compile:** Convert PNG frames to `.bm` using `asset_packer.py`.
 3. **Register:** Add your animation to `/dolphin/manifest.txt` with a designated weight.
 
-### ≡ƒöù Contributor Uplink
+### 🔗 Contributor Uplink
 Join the **F-SERIES** core on Discord for development blueprints:
-Γ₧í∩╕Å **[https://discord.gg/Cd9qyvht7X](https://discord.gg/Cd9qyvht7X)**
+➡️ **[https://discord.gg/Cd9qyvht7X](https://discord.gg/Cd9qyvht7X)**
 
 ---
 <p align="center">&copy; 2026 FurulieLLC | Personfu | NEON_DUSK_PROTOCOL</p>
 
-## ΓûôΓûÆΓûæ X. APPENDIX: FLIPPER ANIMATION ARCHITECTURE
+## ▓▒░ X. APPENDIX: FLIPPER ANIMATION ARCHITECTURE
 *A technical guide for the CyberFlipper Neural Interface.*
 
-### ≡ƒ¢á∩╕Å SOFTWARE TOPOLOGY
+### 🛠️ SOFTWARE TOPOLOGY
 **Local Engineering:**
 1. **Aseprite** (Primary)
 2. **Adobe Photoshop** (High Fidelity)
@@ -418,25 +402,24 @@ Join the **F-SERIES** core on Discord for development blueprints:
 
 **Web-Link Arrays:** EzGIF, Piskel, Lopaka, Photopea.
 
-### ≡ƒôé FILE STRUCTURE PROTOCOLS
+### 📂 FILE STRUCTURE PROTOCOLS
 **CFW (Custom Firmware) Standard:**
 ```text
 Animation_Pack_Name/
-    Γö£ΓöÇΓöÇ Anims/
-    Γöé   Γö£ΓöÇΓöÇ Animation_1/
-    Γöé   Γöé   Γö£ΓöÇΓöÇ frame_0.bm
-    Γöé   Γöé   Γö£ΓöÇΓöÇ frame_1.bm
-    Γöé   Γöé   ΓööΓöÇΓöÇ meta.txt
-    Γöé   ΓööΓöÇΓöÇ manifest.txt
-    ΓööΓöÇΓöÇ Icons/
-        ΓööΓöÇΓöÇ Passport/
-            ΓööΓöÇΓöÇ passport_128x64.bmx
+    ├── Anims/
+    │   ├── Animation_1/
+    │   │   ├── frame_0.bm
+    │   │   ├── frame_1.bm
+    │   │   └── meta.txt
+    │   └── manifest.txt
+    └── Icons/
+        └── Passport/
+            └── passport_128x64.bmx
 ```
 
-### ΓÜÖ∩╕Å COMPILATION VECTORS
+### ⚙️ COMPILATION VECTORS
 Use `compile_assets.py` or official FBT logs to debug:
 - `log debug`: The optimal verbosity for signal analysis.
 - `log trace`: High-intensity telemetry (overwhelming).
 
 *For errors regarding 'frames order', verify the passive/active frame counts in your meta.txt against the .bm library.*
-
