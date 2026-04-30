@@ -17,7 +17,7 @@ Vector renders + schematics in the FLLC.net theme. Sources in [CYBERCARD/docs/as
 
 <table>
   <tr>
-    <td width="33%"><a href="CYBERCARD/docs/assets/cybercard-front-concept.svg"><img src="CYBERCARD/docs/assets/cybercard-front-concept.svg" alt="Front concept"/></a><br/><sub>Card front concept</sub></td>
+    <td width="33%"><a href="CYBERCARD/docs/assets/cybercard-front-concept.svg"><img src="CYBERCARD/docs/assets/cybercard-john-doe.svg" alt="Front concept"/></a><br/><sub>Card front concept</sub></td>
     <td width="33%"><a href="CYBERCARD/docs/assets/cybercard-back-schematic.svg"><img src="CYBERCARD/docs/assets/cybercard-back-schematic.svg" alt="Back schematic"/></a><br/><sub>Back NFC coil + QR</sub></td>
     <td width="33%"><a href="CYBERCARD/docs/assets/cybercard-exploded.svg"><img src="CYBERCARD/docs/assets/cybercard-exploded.svg" alt="Exploded view"/></a><br/><sub>Mechanical exploded view</sub></td>
   </tr>
