@@ -272,8 +272,124 @@ body::before {
   color: #fff;
 }
 
+/* Workbench manifest additions */
+.workbench-rail {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+}
+
+.workbench-step {
+  position: relative;
+  border: 1px solid rgba(0,255,204,0.18);
+  background:
+    linear-gradient(135deg, rgba(7,10,24,0.88), rgba(12,8,30,0.72)),
+    radial-gradient(circle at 0 0, rgba(255,176,32,0.10), transparent 14rem);
+  padding: 1.2rem 1.2rem 1.2rem 4.2rem;
+  min-height: 112px;
+  overflow: hidden;
+}
+
+.workbench-step::before {
+  content: attr(data-step);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,176,32,0.65);
+  color: var(--fllc-amber);
+  background: rgba(255,176,32,0.08);
+  font: 900 0.78rem 'Orbitron', monospace;
+  box-shadow: 0 0 18px rgba(255,176,32,0.12);
+}
+
+.workbench-step::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,255,204,0.48), transparent);
+}
+
+.workbench-step h5 {
+  font-family: 'Orbitron', monospace;
+  color: #fff;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.45rem;
+}
+
+.workbench-step p {
+  color: rgba(221,224,240,0.68);
+  margin-bottom: 0;
+  font-size: 0.92rem;
+}
+
+.manifest-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border: 1px solid rgba(0,255,204,0.14);
+}
+
+.manifest-table th,
+.manifest-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  vertical-align: top;
+}
+
+.manifest-table th {
+  color: var(--cf-cyan);
+  font: 700 0.68rem 'Orbitron', monospace;
+  letter-spacing: 0.12em;
+  background: rgba(0,255,204,0.055);
+}
+
+.manifest-table td {
+  color: rgba(221,224,240,0.76);
+  font-size: 0.9rem;
+}
+
+.part-chip {
+  display: inline-flex;
+  margin: 0.18rem;
+  border: 1px solid rgba(79,209,255,0.28);
+  color: rgba(226,247,255,0.9);
+  background: rgba(79,209,255,0.055);
+  padding: 0.32rem 0.55rem;
+  font: 600 0.62rem 'Courier New', monospace;
+}
+
+.blueprint-panel {
+  border: 1px solid rgba(79,209,255,0.24);
+  background:
+    linear-gradient(135deg, rgba(3, 18, 35, 0.82), rgba(6, 6, 20, 0.88)),
+    repeating-linear-gradient(0deg, rgba(79,209,255,0.035) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(90deg, rgba(79,209,255,0.035) 0 1px, transparent 1px 22px);
+  padding: 1.4rem;
+  height: 100%;
+  box-shadow: inset 0 0 44px rgba(79,209,255,0.045);
+}
+
+.blueprint-panel .bp-label {
+  color: var(--fllc-blue);
+  font: 900 0.68rem 'Orbitron', monospace;
+  letter-spacing: 0.14em;
+}
+
+.blueprint-panel .bp-line {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(79,209,255,0.75), transparent);
+  margin: 0.8rem 0 1rem;
+}
+
 @media (max-width: 768px) {
   .badge-hero-card { min-height: 360px; }
   .badge-board { width: min(72%, 260px); }
   .visual-card { padding: 1.15rem; }
+  .workbench-step { padding: 4rem 1rem 1rem; }
+  .manifest-table { display: block; overflow-x: auto; }
 }
