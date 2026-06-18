@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CyberFlipper by FLLC: free developer content, hardware lab notes, and authorized security education for Flipper Zero, Proxmark, Hak5, Badgelife, RF, NFC, and embedded systems." />
+  <meta name="description" content="CyberFlipper by FLLC: free developer content, hardware lab notes, Badgelife engineering, 3D printing, soldering, sensors, Flipper Zero, Proxmark, Hak5-style training, Arduino, Raspberry Pi, and ESP32 education." />
   <title>CYBERFLIPPER | FLLC Developer Hardware Lab</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fllc-visuals.css">
 </head>
-<body class="theme-dark">
+<body class="theme-dark visual-shell">
   <div class="loading-screen" id="loadingScreen">
     <div class="loading-logo">CF</div>
     <div class="loading-text">LOADING FLLC DEV LAB</div>
@@ -63,6 +64,7 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav mx-auto gap-1">
           <li class="nav-item"><a class="nav-link active" href="#hero">HOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="engineering.html">ENGINEERING</a></li>
           <li class="nav-item"><a class="nav-link" href="#labs">DEV LANES</a></li>
           <li class="nav-item"><a class="nav-link" href="free-labs.html">FREE LABS</a></li>
           <li class="nav-item"><a class="nav-link" href="intel.html"><i class="bi bi-cpu"></i> CVE INTEL</a></li>
@@ -75,7 +77,7 @@
   </nav>
 
   <div class="cyber-ticker" aria-label="CyberFlipper content ticker">
-    <span class="ticker-track">⚡ CYBERFLIPPER BY FLLC — Flipper Zero add-ons · Proxmark notes · Hak5 payload engineering concepts · DEF CON Badgelife · Tamper-evident lab discipline · Aerospace and embedded security education · Free public content for authorized research only</span>
+    <span class="ticker-track">⚡ CYBERFLIPPER BY FLLC — DEF CON Badgelife · DEF CON 34 SAO reference · 3D printing · soldering · sensor telemetry · Arduino · Raspberry Pi · ESP32 · Flipper Zero add-ons · Proxmark notes · Hak5-style authorized training payloads · free public content</span>
   </div>
 
   <main>
@@ -84,32 +86,29 @@
         <div class="row w-100 g-5 align-items-center">
           <div class="col-lg-7 hero-content">
             <div class="hud-label mb-2">[ FLLC DEV CONTENT ADDITION ]</div>
-            <h2 class="display-3 fw-black glitch-text mb-0" style="font-family:'Orbitron',monospace;font-weight:900;" data-text="BUILD THE LAB">
-              BUILD THE <span class="text-cyan">LAB</span>
+            <h2 class="display-3 fw-black glitch-text mb-0" style="font-family:'Orbitron',monospace;font-weight:900;" data-text="BUILD THE FORGE">
+              BUILD THE <span class="text-cyan">FORGE</span>
             </h2>
             <p class="lead hero-lead mt-4">
-              CyberFlipper is evolving from a loose tool dump into FLLC's public hardware-security developer hub: Flipper Zero resources, Proxmark workflows, Hak5-inspired lab discipline, DEF CON Badgelife builds, tamper-evident education, and embedded/RF notes for authorized learning.
+              CyberFlipper is now a public FLLC engineering showcase: Badgelife visuals, DEF CON 34 SAO reference planning, 3D-printed housings, soldering practice, sensor telemetry, Arduino/Raspberry Pi/ESP32 builds, Flipper Zero resources, Proxmark workflows, and Hak5-style training payload discipline.
             </p>
             <div class="safety-banner mt-4">
               <i class="bi bi-shield-check"></i>
-              <span>Public content is framed for owned hardware, classroom labs, CTF ranges, and written-scope security work.</span>
+              <span>Public content is framed for owned hardware, classroom labs, CTF ranges, portfolio builds, and written-scope security work.</span>
             </div>
             <div class="mt-5 d-flex gap-3 flex-wrap">
-              <a href="free-labs.html" class="btn btn-cyber btn-lg neon-pulse"><i class="bi bi-journal-code"></i> FREE LABS</a>
-              <a href="#labs" class="btn btn-outline-cyber btn-lg">VIEW DEV LANES</a>
+              <a href="engineering.html" class="btn btn-cyber btn-lg neon-pulse"><i class="bi bi-cpu"></i> ENGINEERING FORGE</a>
+              <a href="free-labs.html" class="btn btn-outline-cyber btn-lg"><i class="bi bi-journal-code"></i> FREE LABS</a>
               <a href="https://fllc.net" class="btn btn-outline-cyber btn-lg" target="_blank" rel="noopener">FLLC SERVICES</a>
             </div>
           </div>
           <div class="col-lg-5">
-            <div class="holographic-card">
-              <h3 class="hud-label text-center mb-4">CONTENT TELEMETRY</h3>
-              <div class="stat-grid">
-                <div class="stat-item text-center"><div class="label">DEV LANES</div><div class="value" data-val="6">0</div></div>
-                <div class="stat-item text-center"><div class="label">FREE GUIDES</div><div class="value" data-val="12">0</div></div>
-                <div class="stat-item text-center"><div class="label">LAB RULES</div><div class="value" data-val="5">0</div></div>
+            <div class="badge-hero-card">
+              <div class="badge-board">
+                <div class="sao-header" aria-label="Stylized SAO header"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                <i class="badge-led one"></i><i class="badge-led two"></i><i class="badge-led three"></i><i class="badge-led four"></i>
+                <i class="trace-line a"></i><i class="trace-line b"></i><i class="trace-line c"></i>
               </div>
-              <div class="mt-3"><canvas id="signalWave" style="width:100%;height:60px;display:block;"></canvas></div>
-              <p class="text-white-50 small mb-0 mt-3 text-center">Signal craft, firmware hygiene, and physical security education without loose public misuse paths.</p>
             </div>
           </div>
         </div>
@@ -119,7 +118,7 @@
     <section id="stats" class="py-5">
       <div class="container">
         <div class="row g-4">
-          <div class="col-md-3"><div class="stat-card text-center"><div class="stat-icon"><i class="bi bi-usb-c"></i></div><div class="stat-num counter" data-val="4">4</div><div class="stat-title">HARDWARE FAMILIES</div></div></div>
+          <div class="col-md-3"><div class="stat-card text-center"><div class="stat-icon"><i class="bi bi-badge-3d"></i></div><div class="stat-num counter" data-val="4">4</div><div class="stat-title">FAB LANES</div></div></div>
           <div class="col-md-3"><div class="stat-card text-center"><div class="stat-icon"><i class="bi bi-broadcast"></i></div><div class="stat-num counter" data-val="3">3</div><div class="stat-title">RF STUDY TRACKS</div></div></div>
           <div class="col-md-3"><div class="stat-card text-center"><div class="stat-icon"><i class="bi bi-cpu"></i></div><div class="stat-num counter" data-val="8">8</div><div class="stat-title">EMBEDDED TOPICS</div></div></div>
           <div class="col-md-3"><div class="stat-card text-center"><div class="stat-icon"><i class="bi bi-patch-check"></i></div><div class="stat-num counter" data-val="100">100</div><div class="stat-title">AUTHORIZED SCOPE</div></div></div>
@@ -127,19 +126,42 @@
       </div>
     </section>
 
-    <section id="labs" class="py-5" style="background:linear-gradient(135deg,rgba(6,6,20,0.97),rgba(12,12,40,0.97));">
+    <section class="py-5" style="background:linear-gradient(135deg,rgba(6,6,20,0.97),rgba(12,12,40,0.97));">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-5">
+            <div class="glass-card p-4 h-100">
+              <div class="hud-label text-purple mb-2">▸ NEW FLAGSHIP SECTION</div>
+              <h3 class="font-orbitron text-white">Engineering that looks like workbench proof, not AI filler.</h3>
+              <p class="text-white-50 mt-3">The new Engineering Forge page shows the actual FLLC build identity: badge design, SAO readiness, 3D printing, soldering, sensors, microcontrollers, and public-safe payload examples.</p>
+              <a href="engineering.html" class="btn btn-cyber mt-3"><i class="bi bi-arrow-right"></i> OPEN ENGINEERING FORGE</a>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="spec-grid h-100">
+              <div class="spec-tile"><div class="k">BADGELIFE</div><div class="v">DEF CON-style badge/SAO planning, art layers, connector orientation, power budget, and bring-up logs.</div></div>
+              <div class="spec-tile"><div class="k">3D PRINTING</div><div class="v">Enclosures, stands, fixtures, sensor pods, heat-set insert notes, and portfolio photos.</div></div>
+              <div class="spec-tile"><div class="k">SOLDERING</div><div class="v">Flux, tinning, SMD practice, microscope inspection, continuity, ESD, and rework discipline.</div></div>
+              <div class="spec-tile"><div class="k">PAYLOADS</div><div class="v">Scope banners, consent pages, local logs, and defensive test-case cards only.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="labs" class="py-5">
       <div class="container">
         <div class="text-center mb-5">
           <div class="hud-label text-cyan">DEV CONTENT LANES</div>
           <p class="text-white-50 mt-2">A professional public roadmap for FLLC hardware-security education and consulting.</p>
         </div>
         <div class="row g-4">
-          <div class="col-md-4"><div class="glass-card p-4 h-100"><div class="stat-icon mb-2"><i class="bi bi-usb-symbol"></i></div><h5 class="hud-label text-cyan">FLIPPER ZERO ADD-ONS</h5><p class="text-white-50 small">SD-card organization, IR/NFC/RFID learning sets, GPIO safety, app notes, and controlled demo payload patterns for owned devices.</p><ul class="data-list mt-2"><li><strong>Free:</strong> setup checklists and lab safety</li><li><strong>Pro:</strong> custom classroom packs</li></ul></div></div>
-          <div class="col-md-4"><div class="glass-card p-4 h-100"><div class="stat-icon mb-2"><i class="bi bi-credit-card-2-front"></i></div><h5 class="hud-label text-cyan">PROXMARK + NFC</h5><p class="text-white-50 small">Card technology explainers, reader/writer lab boundaries, MIFARE/NTAG terminology, and defensible access-control assessment templates.</p><ul class="data-list mt-2"><li><strong>Focus:</strong> owned tags and test cards</li><li><strong>Outcome:</strong> clean assessment notes</li></ul></div></div>
-          <div class="col-md-4"><div class="glass-card p-4 h-100"><div class="stat-icon mb-2"><i class="bi bi-router"></i></div><h5 class="hud-label text-cyan">HAK5-STYLE WORKFLOWS</h5><p class="text-white-50 small">Payload engineering as documentation: operator prompts, consent banners, logging, reversibility, and defensive validation for lab ranges.</p><ul class="data-list mt-2"><li><strong>No:</strong> public credential theft kits</li><li><strong>Yes:</strong> auditable training patterns</li></ul></div></div>
-          <div class="col-md-4"><div class="glass-card p-4 h-100"><div class="stat-icon mb-2"><i class="bi bi-cpu"></i></div><h5 class="hud-label text-cyan">DEF CON BADGELIFE</h5><p class="text-white-50 small">PCB bring-up notes, soldering practice, badge art pipelines, microcontroller basics, and repeatable build logs.</p><ul class="data-list mt-2"><li><strong>Boards:</strong> ESP32, RP2040, STM32</li><li><strong>Artifacts:</strong> BOMs, test plans, photos</li></ul></div></div>
-          <div class="col-md-4"><div class="glass-card p-4 h-100"><div class="stat-icon mb-2"><i class="bi bi-lock"></i></div><h5 class="hud-label text-cyan">TAMPER-EVIDENT LAB</h5><p class="text-white-50 small">Seal taxonomy, inspection practice, chain-of-custody thinking, and integrity checks for containers, envelopes, equipment, and documents.</p><ul class="data-list mt-2"><li><strong>Village-inspired:</strong> learn how evidence works</li><li><strong>Boundary:</strong> education and defense</li></ul></div></div>
-          <div class="col-md-4"><div class="glass-card p-4 h-100"><div class="stat-icon mb-2"><i class="bi bi-rocket-takeoff"></i></div><h5 class="hud-label text-cyan">AEROSPACE + EMBEDDED</h5><p class="text-white-50 small">NASA-style reliability notes, telemetry mindset, secure firmware practices, and embedded troubleshooting for student teams and makers.</p><ul class="data-list mt-2"><li><strong>FLLC angle:</strong> engineering documentation</li><li><strong>Deliverable:</strong> portfolio-grade writeups</li></ul></div></div>
+          <div class="col-md-4"><div class="visual-card"><div class="visual-icon"><i class="bi bi-usb-symbol"></i></div><h5 class="hud-label text-cyan">FLIPPER ZERO ADD-ONS</h5><p class="text-white-50 small">SD-card organization, IR/NFC/RFID learning sets, GPIO safety, app notes, and controlled demo payload patterns for owned devices.</p><ul class="data-list mt-2"><li><strong>Free:</strong> setup checklists and lab safety</li><li><strong>Pro:</strong> custom classroom packs</li></ul></div></div>
+          <div class="col-md-4"><div class="visual-card"><div class="visual-icon"><i class="bi bi-credit-card-2-front"></i></div><h5 class="hud-label text-cyan">PROXMARK + NFC</h5><p class="text-white-50 small">Card technology explainers, reader/writer lab boundaries, MIFARE/NTAG terminology, and defensible access-control assessment templates.</p><ul class="data-list mt-2"><li><strong>Focus:</strong> owned tags and test cards</li><li><strong>Outcome:</strong> clean assessment notes</li></ul></div></div>
+          <div class="col-md-4"><div class="visual-card"><div class="visual-icon"><i class="bi bi-router"></i></div><h5 class="hud-label text-cyan">HAK5-STYLE WORKFLOWS</h5><p class="text-white-50 small">Payload engineering as documentation: operator prompts, consent language, logging, reversibility, and defensive validation for lab ranges.</p><ul class="data-list mt-2"><li><strong>No:</strong> public credential theft kits</li><li><strong>Yes:</strong> auditable training patterns</li></ul></div></div>
+          <div class="col-md-4"><div class="visual-card"><div class="visual-icon"><i class="bi bi-cpu"></i></div><h5 class="hud-label text-cyan">DEF CON BADGELIFE</h5><p class="text-white-50 small">PCB bring-up notes, soldering practice, badge art pipelines, microcontroller basics, SAO planning, and repeatable build logs.</p><ul class="data-list mt-2"><li><strong>Boards:</strong> ESP32, RP2040, STM32</li><li><strong>Artifacts:</strong> BOMs, test plans, photos</li></ul></div></div>
+          <div class="col-md-4"><div class="visual-card"><div class="visual-icon"><i class="bi bi-lock"></i></div><h5 class="hud-label text-cyan">TAMPER-EVIDENT LAB</h5><p class="text-white-50 small">Seal taxonomy, inspection practice, chain-of-custody thinking, and integrity checks for containers, envelopes, equipment, and documents.</p><ul class="data-list mt-2"><li><strong>Village-inspired:</strong> learn how evidence works</li><li><strong>Boundary:</strong> education and defense</li></ul></div></div>
+          <div class="col-md-4"><div class="visual-card"><div class="visual-icon"><i class="bi bi-rocket-takeoff"></i></div><h5 class="hud-label text-cyan">AEROSPACE + EMBEDDED</h5><p class="text-white-50 small">NASA-style reliability notes, telemetry mindset, secure firmware practices, and embedded troubleshooting for student teams and makers.</p><ul class="data-list mt-2"><li><strong>FLLC angle:</strong> engineering documentation</li><li><strong>Deliverable:</strong> portfolio-grade writeups</li></ul></div></div>
         </div>
       </div>
     </section>
