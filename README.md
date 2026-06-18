@@ -4,6 +4,7 @@
 
 Public site: `https://personfu.github.io/CyberFlipper/`  
 Engineering Forge: `https://personfu.github.io/CyberFlipper/engineering.html`  
+Workbench Manifest: `https://personfu.github.io/CyberFlipper/workbench.html`  
 Primary FLLC site: `https://fllc.net`  
 Repository: `https://github.com/Personfu/CyberFlipper`
 
@@ -34,6 +35,21 @@ The public site now emphasizes:
 
 The Engineering Forge is intentionally positioned as educational/fan engineering content. CyberFlipper/FLLC does not claim official DEF CON affiliation.
 
+## Workbench Manifest
+
+`web/workbench.html` is the portfolio-grade build pipeline. It turns FLLC hardware content into repeatable deliverables:
+
+- Scope and safety card
+- CAD/STL or enclosure render
+- KiCad/schematic or wiring reference
+- BOM with part alternates and substitution risks
+- Firmware with version output, serial diagnostics, and safe failure behavior
+- Sensor telemetry examples such as CSV logs or dashboard screenshots
+- Public-safe payload cards: consent prompts, scope banners, local-only logs, and defensive test cases
+- Test report: continuity, smoke test, enclosure fit, photos, and lessons learned
+
+This page exists to make the project look like real engineering work: proof on the bench, not loose claims.
+
 ## Authorized-use boundary
 
 This repository is for owned hardware, classroom labs, CTF ranges, client-approved scopes, and defensive education.
@@ -46,6 +62,7 @@ Do not use CyberFlipper content for unauthorized access, credential capture, ste
 web/
 ├── index.html          # FLLC dev lab landing page
 ├── engineering.html    # Engineering Forge: Badgelife, SAO, fabrication, sensors, safe payloads
+├── workbench.html      # Workbench Manifest: build pipeline, artifacts, deliverables
 ├── free-labs.html      # free safe starter labs and content lanes
 ├── about.html          # project positioning, policy, and service paths
 ├── stats.html          # content metrics and publication standards
