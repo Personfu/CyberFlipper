@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-06-18",
+  "safetyModel": "Public-safe payload engineering: visible, reversible, local-only, documented, and authorized.",
+  "redTeamValidation": [
+    {
+      "name": "Scope Banner Launcher",
+      "platform": "Windows / macOS / Linux",
+      "purpose": "Display authorization, operator, ticket, and test window before a lab action begins.",
+      "safeOutput": "Local timestamped scope log",
+      "blockedContent": "No stealth, no credential access, no persistence"
+    },
+    {
+      "name": "USB Training Consent Card",
+      "platform": "Flipper / Hak5-style classroom workflow",
+      "purpose": "Teach users how physical payload demos should announce scope and produce an audit note.",
+      "safeOutput": "Visible prompt and local-only training marker",
+      "blockedContent": "No hidden shells, no bypass flags, no exfiltration"
+    },
+    {
+      "name": "NFC Owned-Tag Inventory",
+      "platform": "Proxmark / Flipper notes",
+      "purpose": "Document owned test-card technology, UID format, memory size, and lab photo references.",
+      "safeOutput": "Inventory card for owned tags only",
+      "blockedContent": "No access-control cloning workflow"
+    },
+    {
+      "name": "Sensor Bench Telemetry",
+      "platform": "Arduino / Raspberry Pi / ESP32",
+      "purpose": "Capture harmless temperature, humidity, light, motion, or voltage-demo readings for dashboard practice.",
+      "safeOutput": "CSV or JSON telemetry file",
+      "blockedContent": "No surveillance deployment guidance"
+    }
+  ],
+  "blueTeamResponse": [
+    {
+      "name": "CVE Presence Audit",
+      "platform": "PowerShell visible run",
+      "purpose": "Collect product, service, version, and patch-evidence hints for a remediation ticket.",
+      "safeOutput": "Local text report",
+      "blockedContent": "No exploitability test against production"
+    },
+    {
+      "name": "Patch Ticket Evidence Pack",
+      "platform": "IT / SOC workflow",
+      "purpose": "Attach advisory links, owner, asset list, patch due date, rollback note, and verification result.",
+      "safeOutput": "Ticket-ready markdown checklist",
+      "blockedContent": "No public target lists"
+    },
+    {
+      "name": "EDR/SIEM Detection Sketch",
+      "platform": "Defensive analytics",
+      "purpose": "Describe log sources, fields, expected events, false-positive handling, and owner follow-up.",
+      "safeOutput": "Detection card, not weaponized exploit logic",
+      "blockedContent": "No evasion or bypass recipes"
+    },
+    {
+      "name": "Hardware Lab Test Report",
+      "platform": "Workbench manifest",
+      "purpose": "Record continuity, smoke test, firmware version, enclosure fit, photos, and lessons learned.",
+      "safeOutput": "Portfolio-grade build report",
+      "blockedContent": "No unsafe RF or live-target testing"
+    }
+  ]
+}
