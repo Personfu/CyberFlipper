@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberFlipper Workbench Manifest by FLLC: portfolio-grade 3D printing, soldering, sensor, Arduino, Raspberry Pi, ESP32, Badgelife, and public-safe payload build pipeline." />
+  <title>WORKBENCH MANIFEST — CYBERFLIPPER / FLLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fllc-visuals.css">
+</head>
+<body class="theme-dark visual-shell">
+  <div class="loading-screen" id="loadingScreen"><div class="loading-logo">WM</div><div class="loading-text">LOADING WORKBENCH MANIFEST</div><div class="loading-bar"><div class="loading-bar-fill"></div></div></div>
+  <div class="scan-line"></div><div class="hud-grid-overlay"></div><div class="site-background"><div class="site-overlay"></div></div>
+
+  <div class="hud-top-bar"><div class="d-flex align-items-center gap-2"><span class="hud-status-indicator online"></span><span>WORKBENCH: <span class="text-cyan">DOCUMENTED BUILDS</span></span></div><div class="d-lg-flex d-none gap-4"><span>UPTIME: <span id="uptime-clock" class="text-white">00:00:00</span></span><span>MODE: <span class="text-cyan">CAD · PCB · FIRMWARE · REPORT</span></span></div><div>SESSION: <span class="text-white" id="geo-location">LOCAL LAB</span></div></div>
+
+  <header class="cyber-header"><div class="container"><div class="row align-items-center py-3"><div class="col-md-7"><div class="d-flex align-items-center"><a href="index.html" style="text-decoration:none;"><div class="header-logo">CF</div></a><div class="ms-3"><h1 class="logo-text mb-0">WORKBENCH<span class="text-cyan">MANIFEST</span></h1><p class="subtitle mb-0">FLLC BUILD PIPELINE · PUBLIC DELIVERABLES</p></div></div></div><div class="col-md-5 text-md-end mt-3 mt-md-0"><a href="https://github.com/Personfu/CyberFlipper" class="btn btn-cyber" target="_blank" rel="noopener"><i class="bi bi-github"></i> ACCESS REPO</a></div></div></div></header>
+
+  <nav class="navbar navbar-expand-lg cyber-nav sticky-top"><div class="container"><button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="color:var(--cf-cyan);"><i class="bi bi-list fs-4"></i></button><div class="collapse navbar-collapse" id="mainNav"><ul class="navbar-nav mx-auto gap-1"><li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li><li class="nav-item"><a class="nav-link" href="engineering.html">ENGINEERING</a></li><li class="nav-item"><a class="nav-link active" href="workbench.html">WORKBENCH</a></li><li class="nav-item"><a class="nav-link" href="free-labs.html">FREE LABS</a></li><li class="nav-item"><a class="nav-link" href="intel.html"><i class="bi bi-cpu"></i> CVE INTEL</a></li><li class="nav-item"><a class="nav-link" href="download.html">DOWNLOAD</a></li><li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li></ul></div></div></nav>
+
+  <div class="cyber-ticker"><span class="ticker-track">⚡ FLLC WORKBENCH MANIFEST — STL · KICAD · BOM · FIRMWARE · SENSOR CSV · TEST REPORT · SAFE PAYLOAD DEMO · PHOTOS · CUSTOMER-READY BUILD LOG</span></div>
+
+  <main>
+    <section class="hero-section py-5">
+      <div class="container py-5">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-7">
+            <div class="hud-label mb-2">[ BUILD LOG STANDARD ]</div>
+            <h2 class="display-3 fw-black glitch-text mb-0" style="font-family:'Orbitron',monospace;font-weight:900;" data-text="PROOF ON THE BENCH">PROOF ON <span class="text-cyan">THE BENCH</span></h2>
+            <p class="lead hero-lead mt-4">This page turns CyberFlipper into a real engineering portfolio: every build has a housing, board/schematic, wiring notes, firmware version, sensor output, photos, safety boundary, and a clean customer-facing result.</p>
+            <div class="safety-banner mt-4"><i class="bi bi-shield-check"></i><span>Public workbench artifacts are safe by design: documented demos, owned hardware, classroom fixtures, consent screens, and local telemetry. Anything sensitive stays private and written-scope only.</span></div>
+            <div class="d-flex gap-3 flex-wrap mt-4"><a href="#pipeline" class="btn btn-cyber btn-lg"><i class="bi bi-diagram-3"></i> BUILD PIPELINE</a><a href="#manifest" class="btn btn-outline-cyber btn-lg"><i class="bi bi-clipboard-data"></i> DELIVERABLES</a><a href="engineering.html" class="btn btn-outline-cyber btn-lg"><i class="bi bi-cpu"></i> ENGINEERING FORGE</a></div>
+          </div>
+          <div class="col-lg-5">
+            <div class="blueprint-panel">
+              <div class="bp-label">FLLC-BENCH-001</div><div class="bp-line"></div>
+              <div class="spec-grid">
+                <div class="spec-tile"><div class="k">MCU</div><div class="v">ESP32 / RP2040 / Arduino</div></div>
+                <div class="spec-tile"><div class="k">SBC</div><div class="v">Raspberry Pi local dashboard</div></div>
+                <div class="spec-tile"><div class="k">SENSOR</div><div class="v">BME688 · UV · GPS · motion · OLED</div></div>
+                <div class="spec-tile"><div class="k">CASE</div><div class="v">3D print + heat-set inserts</div></div>
+              </div>
+              <div class="mt-4 d-flex flex-wrap gap-2"><span class="part-chip">STL</span><span class="part-chip">KiCad</span><span class="part-chip">BOM</span><span class="part-chip">Firmware</span><span class="part-chip">CSV</span><span class="part-chip">Report</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="pipeline">
+      <div class="container">
+        <div class="text-center mb-5"><div class="hud-label text-cyan">▸ WORKBENCH PIPELINE</div><h3 class="matrix-title mt-2">A repeatable build system for FLLC content.</h3><p class="text-white-50 mt-3">Every public build should be clear enough for a sponsor, instructor, client, or future teammate to inspect without guessing what happened.</p></div>
+        <div class="workbench-rail">
+          <div class="workbench-step" data-step="01"><h5>Scope + safety card</h5><p>Name the audience, owned hardware, expected output, no-go behaviors, and rollback path before any code or solder touches the bench.</p></div>
+          <div class="workbench-step" data-step="02"><h5>CAD + enclosure pass</h5><p>Draft the housing, stand, badge holder, sensor pod, or fixture. Record filament, tolerance, support settings, insert size, and fit-test photos.</p></div>
+          <div class="workbench-step" data-step="03"><h5>Electronics + soldering pass</h5><p>Build the schematic/pinout, assemble cleanly, inspect under light/magnification, verify continuity, and capture a smoke-test result.</p></div>
+          <div class="workbench-step" data-step="04"><h5>Firmware + telemetry pass</h5><p>Ship a boring first firmware: version print, blink/status LED, sensor read, serial log, CSV example, and safe failure behavior.</p></div>
+          <div class="workbench-step" data-step="05"><h5>Public demo + report</h5><p>Publish only safe demos: scope banner, consent portal, local logger, dashboard screenshot, BOM, build photos, and a defensive takeaway.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="manifest" style="background:linear-gradient(135deg,rgba(6,6,20,0.96),rgba(12,12,40,0.96));">
+      <div class="container">
+        <div class="text-center mb-5"><div class="hud-label text-cyan">▸ DELIVERABLE MANIFEST</div><h3 class="matrix-title mt-2">What every build should ship.</h3></div>
+        <div class="table-responsive">
+          <table class="manifest-table">
+            <thead><tr><th>Artifact</th><th>What it proves</th><th>Public-safe example</th></tr></thead>
+            <tbody>
+              <tr><td>STL / CAD render</td><td>Mechanical thinking, enclosure constraints, fit, repeatability.</td><td>Badge stand, sensor pod, Flipper GPIO shield case.</td></tr>
+              <tr><td>KiCad / schematic screenshot</td><td>Power, pinout, connector orientation, test points, wiring discipline.</td><td>SAO sensor add-on, LED/button teaching board.</td></tr>
+              <tr><td>BOM</td><td>Real procurement thinking: parts, quantity, alternates, risk, cost.</td><td>ESP32-C3, BME688, OLED, resistors, headers, fasteners.</td></tr>
+              <tr><td>Firmware</td><td>Versioned code, comments, safe IO, serial diagnostics, failure handling.</td><td>Sensor read + status LED + CSV serial output.</td></tr>
+              <tr><td>Payload card</td><td>Scope, consent, visibility, rollback, log output, defensive purpose.</td><td>Keystroke scope banner or ESP32 no-credential consent screen.</td></tr>
+              <tr><td>Test report</td><td>Continuity, smoke test, sensor output, enclosure fit, lessons learned.</td><td>One-page PDF/markdown customer-ready build note.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-5"><div class="hud-label text-cyan">▸ BUILD QUEUE</div><h3 class="matrix-title mt-2">Portfolio builds to produce next.</h3></div>
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-3"><div class="visual-card"><div class="visual-icon"><i class="bi bi-thermometer-half"></i></div><h5 class="hud-label text-cyan">Enviro SAO</h5><p class="text-white-50 small">Sensor badge add-on with BME688/BME280, OLED, LEDs, and CSV telemetry demo.</p><span class="badge-chip">Badge</span> <span class="badge-chip">Sensor</span></div></div>
+          <div class="col-md-6 col-xl-3"><div class="visual-card"><div class="visual-icon"><i class="bi bi-usb-plug"></i></div><h5 class="hud-label text-cyan">GPIO Trainer</h5><p class="text-white-50 small">Flipper-safe breakout with labeled pins, resistors, button, buzzer, LED, and continuity sheet.</p><span class="badge-chip">Flipper</span> <span class="badge-chip">GPIO</span></div></div>
+          <div class="col-md-6 col-xl-3"><div class="visual-card"><div class="visual-icon"><i class="bi bi-router"></i></div><h5 class="hud-label text-cyan">Consent Portal</h5><p class="text-white-50 small">ESP32 classroom-only portal showing scope and consent with no credential collection.</p><span class="badge-chip">ESP32</span> <span class="badge-chip">Safe demo</span></div></div>
+          <div class="col-md-6 col-xl-3"><div class="visual-card"><div class="visual-icon"><i class="bi bi-pc-display"></i></div><h5 class="hud-label text-cyan">Pi Bench HUD</h5><p class="text-white-50 small">Raspberry Pi local dashboard for photos, firmware versions, and sensor logs.</p><span class="badge-chip">Pi</span> <span class="badge-chip">Dashboard</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cyber-footer py-4 text-center"><p class="mb-1" style="color:rgba(221,224,240,0.35);font-size:0.7rem;letter-spacing:2px;">&copy; 2026 CYBERFLIPPER — FLLC / Furulie LLC</p><p style="color:var(--cf-muted);font-size:0.6rem;letter-spacing:1px;">WORKBENCH PROOF · DOCUMENTED BUILDS · SAFE PUBLIC PAYLOADS</p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script src="dashboard.js"></script>
+</body>
+</html>
