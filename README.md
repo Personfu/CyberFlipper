@@ -1,10 +1,11 @@
 # CyberFlipper
 
-**FLLC / Personfu developer hardware lab for Flipper Zero, Proxmark, Hak5-style training workflows, DEF CON Badgelife, DEF CON 34 SAO reference planning, NFC/RFID, RF/IR, tamper-evident practice, 3D printing, soldering, sensors, Arduino, Raspberry Pi, ESP32, and embedded security education.**
+**FLLC / Personfu developer hardware lab for Flipper Zero, Proxmark, Hak5-style training workflows, DEF CON Badgelife, DEF CON 34 SAO reference planning, NFC/RFID, RF/IR, tamper-evident practice, 3D printing, soldering, sensors, Arduino, Raspberry Pi, ESP32, red/blue payload education, and embedded security documentation.**
 
 Public site: `https://personfu.github.io/CyberFlipper/`  
 Engineering Forge: `https://personfu.github.io/CyberFlipper/engineering.html`  
 Workbench Manifest: `https://personfu.github.io/CyberFlipper/workbench.html`  
+CVE Audit Payloads: `https://personfu.github.io/CyberFlipper/cve-audits.html`  
 Primary FLLC site: `https://fllc.net`  
 Repository: `https://github.com/Personfu/CyberFlipper`
 
@@ -22,6 +23,7 @@ The public site now emphasizes:
 - Arduino, Raspberry Pi, and ESP32 build patterns for telemetry, dashboards, consent pages, and local logging
 - Tamper-evident inspection, seal taxonomy, and chain-of-custody thinking
 - Aerospace and embedded reliability habits: telemetry plans, firmware hygiene, and student-team documentation
+- Red-team validation cards and blue-team audit scripts that stay public-safe and authorized
 
 ## Engineering Forge
 
@@ -50,11 +52,30 @@ The Engineering Forge is intentionally positioned as educational/fan engineering
 
 This page exists to make the project look like real engineering work: proof on the bench, not loose claims.
 
+## CVE Audit Payload Library
+
+`web/cve-audits.html` turns the user's BadUSB-style concept into a safer public format: visible PowerShell report generators and red/blue payload cards.
+
+Current audit scripts:
+
+- `web/audits/CVE-2025-26399-SolarWinds-WHD-audit.ps1` — SolarWinds Web Help Desk inventory and exposure report.
+- `web/audits/CVE-2009-0238-Excel-audit.ps1` — legacy Excel / Office exposure and patch-evidence report.
+
+Supporting files:
+
+- `web/audits/README.md` — usage rules and safety standard.
+- `web/payloads.json` — public-safe red-team validation and blue-team response catalog.
+- `web/data/cve-feed.json` — tracked advisory feed displayed by the site.
+- `scripts/refresh-cve-feed.mjs` — refreshes public NVD metadata for tracked CVEs.
+- `.github/workflows/refresh-cve-feed.yml` — scheduled/manual GitHub Action that updates the feed.
+
+The audit scripts intentionally avoid hidden windows, execution-policy bypass examples, credential collection, persistence, exploitability tests, and live-target instructions. They are for owned systems, administered systems, classroom labs, and written-scope assessments.
+
 ## Authorized-use boundary
 
 This repository is for owned hardware, classroom labs, CTF ranges, client-approved scopes, and defensive education.
 
-Do not use CyberFlipper content for unauthorized access, credential capture, stealth, persistence, evasion, reverse shells, or testing against systems, cards, devices, RF environments, or networks you do not own or administer. Public content should reduce risk, teach defensive thinking, and produce clean documentation.
+Do not use CyberFlipper content for unauthorized access, credential capture, stealth, persistence, evasion, reverse shells, exploit chains, or testing against systems, cards, devices, RF environments, or networks you do not own or administer. Public content should reduce risk, teach defensive thinking, and produce clean documentation.
 
 ## Website map
 
@@ -63,11 +84,14 @@ web/
 ├── index.html          # FLLC dev lab landing page
 ├── engineering.html    # Engineering Forge: Badgelife, SAO, fabrication, sensors, safe payloads
 ├── workbench.html      # Workbench Manifest: build pipeline, artifacts, deliverables
+├── cve-audits.html     # safe CVE audit payload library and red/blue catalog
 ├── free-labs.html      # free safe starter labs and content lanes
 ├── about.html          # project positioning, policy, and service paths
 ├── stats.html          # content metrics and publication standards
 ├── download.html       # safe release/download guidance
 ├── intel.html          # CVE research dashboard
+├── audits/             # visible, read-only PowerShell audit scripts
+├── data/cve-feed.json  # auto-updated tracked CVE metadata
 ├── styles.css          # cyberpunk HUD theme
 ├── fllc-visuals.css    # Badgelife / SAO / hardware-lab visual layer
 └── dashboard.js        # shared UI animation/session script
@@ -101,8 +125,16 @@ Public payload examples must be boring on purpose. Acceptable examples include:
 - Sensor telemetry and CSV demos
 - Documentation scaffolds for authorized tests
 - Training payloads that are reversible, visible, and explained
+- CVE presence audits that collect product, version, service, patch, and exposure evidence
+- Blue-team response cards for patch tickets, detection notes, and lab validation
 
-Do not publish credential capture, persistence, stealth, evasion, exploitation chains, reverse shells, or instructions for live targets.
+Do not publish credential capture, persistence, stealth, evasion, exploitation chains, reverse shells, bypass flags, hidden execution, or instructions for live targets.
+
+## Auto-update behavior
+
+The GitHub Action in `.github/workflows/refresh-cve-feed.yml` runs daily and can also be triggered manually. It executes `scripts/refresh-cve-feed.mjs`, refreshes public advisory metadata for tracked CVEs, and commits changes to `web/data/cve-feed.json` only when that feed changes.
+
+This is repository content refresh, not endpoint behavior. It does not run on visitor machines.
 
 ## Download / install guidance
 
@@ -118,6 +150,7 @@ The public site is static HTML/CSS/JS under `web/`. Keep pages simple, readable,
 - Every RF/NFC topic must stay on owned test gear.
 - Every FLLC service path should point to a professional outcome.
 - Every hardware build should produce a portfolio artifact: BOM, photos, wiring notes, firmware version, test result, and next step.
+- Every CVE audit script should be visible, read-only, local-output, and tied to remediation documentation.
 
 ## Maintainer positioning
 
