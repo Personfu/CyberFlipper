@@ -1,0 +1,19 @@
+REM CyberFlipper Lab - Defender Prompt
+REM Safe behavior: types a defensive review prompt.
+DELAY 1000
+STRING DEFENDER REVIEW PROMPT
+ENTER
+STRING What changed?
+ENTER
+STRING Who owns the asset?
+ENTER
+STRING What is exposed?
+ENTER
+STRING What is patched?
+ENTER
+STRING What is monitored?
+ENTER
+STRING What is the rollback plan?
+ENTER
+STRING What evidence supports closure?
+ENTER
