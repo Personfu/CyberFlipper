@@ -1,0 +1,13 @@
+CYBERFLIPPER FIELD CARD
+
+1. Confirm written authorization.
+2. Confirm asset owner.
+3. Confirm test window.
+4. Confirm allowed techniques.
+5. Use lab-safe scripts only.
+6. Record system, date, location, and operator.
+7. Stop if scope is unclear.
+8. Report findings as risk + mitigation.
+
+SAFE DEFAULT:
+Observe, document, explain, and mitigate.
