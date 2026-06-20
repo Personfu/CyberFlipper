@@ -1,0 +1,15 @@
+REM CyberFlipper Lab - Keyboard Layout Test
+REM Safe behavior: types characters to verify layout only.
+DELAY 1000
+STRING CYBERFLIPPER KEYBOARD TEST
+ENTER
+STRING abcdefghijklmnopqrstuvwxyz
+ENTER
+STRING ABCDEFGHIJKLMNOPQRSTUVWXYZ
+ENTER
+STRING 0123456789
+ENTER
+STRING !@#$%^&*()_+-=[]{};':",./<>?
+ENTER
+STRING If this line looks wrong, change the BadUSB keyboard layout before any authorized demo.
+ENTER

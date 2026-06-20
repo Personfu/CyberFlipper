@@ -1,0 +1,15 @@
+CYBERFLIPPER RELEASE GATE
+
+PASS REQUIREMENTS:
+[ ] Device files are plain text or documented Flipper SD resources.
+[ ] BadUSB files are harmless and reversible.
+[ ] No downloads, execution chains, or encoded launchers.
+[ ] No credential collection.
+[ ] No persistence.
+[ ] No evasion or stealth.
+[ ] No destructive commands.
+[ ] No real RF/NFC/RFID secrets.
+[ ] No third-party targeting instructions.
+[ ] All upstream references reviewed for licensing.
+
+FAIL = DO NOT RELEASE.

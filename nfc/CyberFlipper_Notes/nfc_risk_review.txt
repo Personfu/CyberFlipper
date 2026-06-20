@@ -1,0 +1,21 @@
+CYBERFLIPPER NFC RISK REVIEW
+
+Allowed:
+- blank tag inventory
+- card technology identification notes
+- access-control policy review
+- lost badge response checklist
+
+Blocked:
+- real badge dumps
+- facility codes
+- cloned card data
+- bypass instructions
+
+Questions:
+1. Are badges uniquely issued?
+2. Is lost badge revocation tested?
+3. Is MFA used for sensitive areas?
+4. Are visitor badges time-limited?
+5. Are logs reviewed?
+6. Is tailgating controlled?

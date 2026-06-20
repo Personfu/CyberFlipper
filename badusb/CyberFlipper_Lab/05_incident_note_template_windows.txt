@@ -1,0 +1,28 @@
+REM CyberFlipper Lab - Windows Incident Note Template
+REM Safe behavior: opens Notepad and types an incident note form.
+DELAY 1000
+GUI r
+DELAY 500
+STRING notepad
+ENTER
+DELAY 1000
+STRING CYBERFLIPPER INCIDENT NOTE
+ENTER
+STRING Time observed:
+ENTER
+STRING System:
+ENTER
+STRING User present:
+ENTER
+STRING Symptoms:
+ENTER
+STRING Evidence collected:
+ENTER
+STRING Immediate containment:
+ENTER
+STRING Owner notified:
+ENTER
+STRING Follow-up:
+ENTER
+STRING Do not include passwords, tokens, keys, or private data in this note.
+ENTER

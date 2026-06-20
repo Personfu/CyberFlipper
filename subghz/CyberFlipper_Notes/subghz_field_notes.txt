@@ -1,0 +1,29 @@
+CYBERFLIPPER SUB-GHZ FIELD NOTES
+
+Purpose:
+Document authorized RF observations without storing real secrets.
+
+Allowed:
+- region/frequency planning notes
+- protocol taxonomy
+- lab-only signal labels
+- owner and permission notes
+- mitigation guidance
+
+Blocked:
+- real gate codes
+- brute-force lists
+- replay instructions
+- rolling-code attack steps
+- unauthorized transmission
+
+Field note template:
+DATE:
+LOCATION:
+OWNER:
+PERMISSION:
+REGION:
+OBSERVED DEVICE TYPE:
+FREQUENCY RANGE:
+ACTION TAKEN: observation only / lab demo
+MITIGATION:

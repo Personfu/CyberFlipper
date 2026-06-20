@@ -1,0 +1,21 @@
+CYBERFLIPPER IR / A/V REVIEW
+
+Allowed:
+- classroom or lab A/V inventory
+- benign remote-control documentation
+- owner-approved troubleshooting notes
+
+Blocked:
+- disruptive mass-control scripts
+- public-space interference
+- unauthorized control of equipment
+
+Room:
+Device:
+Owner:
+Remote model:
+Purpose:
+Mitigation:
+- lock control panels where appropriate
+- document replacement remotes
+- avoid shared unmanaged remotes in public areas

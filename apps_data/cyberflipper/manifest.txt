@@ -1,0 +1,23 @@
+CYBERFLIPPER DAILY PACK MANIFEST
+DATE: 2026-06-19
+MODE: SD-CARD ONLY
+FIRMWARE FLASH REQUIRED: NO
+AUTHORIZED LAB USE: YES
+
+FOLDERS:
+- badusb/CyberFlipper_Lab
+- infrared/CyberFlipper_Notes
+- nfc/CyberFlipper_Notes
+- subghz/CyberFlipper_Notes
+- lfrfid/CyberFlipper_Notes
+- assets/cyberflipper
+- docs/daily
+
+BLOCKED CONTENT:
+- credential harvesting
+- persistence
+- stealth/evasion
+- destructive commands
+- unauthorized RF transmission
+- access-control cloning
+- rolling-code replay

@@ -1,0 +1,34 @@
+# CyberFlipper Daily Changelog
+
+## 2026-06-19
+
+Added a lab-safe SD-card expansion pack:
+
+- `docs/daily/CYBERFLIPPER_DAILY_2026-06-19.md`
+- `docs/daily/KEV_TRIAGE_TEMPLATE.md`
+- `apps_data/cyberflipper/manifest.txt`
+- `apps_data/cyberflipper/field_card.txt`
+- `apps_data/cyberflipper/release_gate.txt`
+- `badusb/CyberFlipper_Lab/00_README_FIRST.txt`
+- `badusb/CyberFlipper_Lab/01_windows_scope_card.txt`
+- `badusb/CyberFlipper_Lab/02_linux_scope_card.txt`
+- `badusb/CyberFlipper_Lab/03_macos_scope_card.txt`
+- `badusb/CyberFlipper_Lab/04_keyboard_layout_test.txt`
+- `badusb/CyberFlipper_Lab/05_incident_note_template_windows.txt`
+- `badusb/CyberFlipper_Lab/06_meeting_room_av_inventory.txt`
+- `badusb/CyberFlipper_Lab/07_defender_prompt.txt`
+- `subghz/CyberFlipper_Notes/subghz_field_notes.txt`
+- `nfc/CyberFlipper_Notes/nfc_risk_review.txt`
+- `lfrfid/CyberFlipper_Notes/lf_rfid_inventory.txt`
+- `infrared/CyberFlipper_Notes/ir_av_review.txt`
+- `assets/cyberflipper/cyberflipper_logo_ascii.txt`
+- `assets/cyberflipper/cyberflipper_badge_128x64.xbm`
+
+Security posture:
+
+- No exploit execution.
+- No credential access.
+- No destructive commands.
+- No persistence.
+- No stealth/evasion.
+- No unauthorized RF/NFC/RFID instructions.
