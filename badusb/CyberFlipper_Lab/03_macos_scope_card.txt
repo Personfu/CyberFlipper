@@ -1,0 +1,28 @@
+REM CyberFlipper Lab - macOS Scope Card
+REM Safe behavior: opens TextEdit and types a checklist.
+DELAY 1000
+GUI SPACE
+DELAY 500
+STRING TextEdit
+ENTER
+DELAY 1500
+GUI n
+DELAY 500
+STRING CYBERFLIPPER AUTHORIZED LAB CHECKLIST
+ENTER
+STRING Date: 2026-06-19
+ENTER
+STRING Operator:
+ENTER
+STRING Asset Owner:
+ENTER
+STRING Written Permission: YES / NO
+ENTER
+STRING Test Window:
+ENTER
+STRING Allowed Actions:
+ENTER
+STRING Stop Condition: Any scope uncertainty
+ENTER
+STRING This demo typed a checklist only.
+ENTER
