@@ -1,0 +1,26 @@
+REM CyberFlipper Lab - Windows Scope Card
+REM Safe behavior: opens Notepad and types an authorization checklist.
+DELAY 1000
+GUI r
+DELAY 500
+STRING notepad
+ENTER
+DELAY 1000
+STRING CYBERFLIPPER AUTHORIZED LAB CHECKLIST
+ENTER
+STRING Date: 2026-06-19
+ENTER
+STRING Operator:
+ENTER
+STRING Asset Owner:
+ENTER
+STRING Written Permission: YES / NO
+ENTER
+STRING Test Window:
+ENTER
+STRING Allowed Actions:
+ENTER
+STRING Stop Condition: Any scope uncertainty
+ENTER
+STRING This demo typed a checklist only. No commands were executed beyond opening Notepad.
+ENTER
