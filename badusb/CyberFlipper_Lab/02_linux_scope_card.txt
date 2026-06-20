@@ -1,0 +1,23 @@
+REM CyberFlipper Lab - Linux Scope Card
+REM Safe behavior: opens a terminal and prints a checklist only.
+DELAY 1000
+CTRL ALT t
+DELAY 1000
+STRING echo CYBERFLIPPER AUTHORIZED LAB CHECKLIST
+ENTER
+STRING echo Date: 2026-06-19
+ENTER
+STRING echo Operator:
+ENTER
+STRING echo Asset Owner:
+ENTER
+STRING echo Written Permission: YES / NO
+ENTER
+STRING echo Test Window:
+ENTER
+STRING echo Allowed Actions:
+ENTER
+STRING echo Stop Condition: Any scope uncertainty
+ENTER
+STRING echo This demo prints a checklist only.
+ENTER
