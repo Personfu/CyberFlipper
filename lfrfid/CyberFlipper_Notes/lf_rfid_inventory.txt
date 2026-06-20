@@ -1,0 +1,16 @@
+CYBERFLIPPER LF RFID INVENTORY
+
+Use this sheet for authorized physical-security documentation.
+
+SITE:
+OWNER:
+DATE:
+READER LOCATION:
+CARD TYPE OBSERVED:
+POLICY OWNER:
+LOST BADGE PROCESS:
+REVOCATION SLA:
+VISITOR BADGE PROCESS:
+MITIGATION NOTES:
+
+Do not store real card identifiers in this file.
