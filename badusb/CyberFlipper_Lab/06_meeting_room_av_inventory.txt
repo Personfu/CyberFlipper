@@ -1,0 +1,23 @@
+REM CyberFlipper Lab - A/V Inventory Note
+REM Safe behavior: types a physical inventory checklist.
+DELAY 1000
+STRING CYBERFLIPPER A/V INVENTORY
+ENTER
+STRING Room:
+ENTER
+STRING Display:
+ENTER
+STRING Projector:
+ENTER
+STRING Speaker system:
+ENTER
+STRING IR remote present:
+ENTER
+STRING Network jack visible:
+ENTER
+STRING Control panel:
+ENTER
+STRING Notes:
+ENTER
+STRING Use this only as a documentation template.
+ENTER
