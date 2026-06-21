@@ -1,0 +1,16 @@
+APPROVAL STATUS - 2026-06-20
+
+STATUS: HOLD
+
+SAFE FOR REVIEW:
+- documentation
+- detection notes
+- approval gates
+- source links
+- visible local text marker
+
+NOT APPROVED FOR DEPLOYMENT:
+- upstream binaries
+- sensitive protocol examples
+- production data
+- third-party interaction
