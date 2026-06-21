@@ -1,0 +1,19 @@
+CYBERFLIPPER SD CARD COPYLIST - 2026-06-20
+
+Copy only after human review if this pack is approved:
+
+docs/daily/CYBERFLIPPER_DAILY_2026-06-20.md
+docs/daily/UPSTREAM_COMPARE_2026-06-20.md
+docs/daily/HUMAN_APPROVAL_GATE_2026-06-20.md
+docs/daily/BINARY_APP_INTAKE_CHECKLIST_2026-06-20.md
+docs/daily/DETECTION_NOTES_2026-06-20.md
+docs/daily/LAB_ONLY_PAYLOAD_POLICY_2026-06-20.md
+docs/daily/SOURCE_LINKS_2026-06-20.md
+docs/daily/RELEASE_NOTES_2026-06-20.md
+docs/daily/REVIEW_SUMMARY_2026-06-20.txt
+apps_data/cyberflipper/daily_review_2026-06-20.txt
+apps_data/cyberflipper/release_gate_2026-06-20.txt
+apps_data/cyberflipper/approval_matrix_2026-06-20.csv
+badusb/CyberFlipper_Lab/08_safe_keystroke_marker.txt
+
+Do not copy unreviewed upstream .fap applications into the SD-card release.
