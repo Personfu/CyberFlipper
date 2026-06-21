@@ -1,0 +1,13 @@
+NO-IMPORT LIST - 2026-06-20
+
+Do not import into CyberFlipper without human review:
+
+- Upstream prebuilt .fap bundles
+- RF transmit-capable demos
+- BLE/Wi-Fi/NRF24/ESP control or test apps
+- HID injector examples beyond visible local text-entry markers
+- NFC authenticator samples or screenshots
+- LF RFID write/wipe examples
+- Any production badge, card, key, credential, or access-control fixture
+
+Reason: these items may be legitimate in a controlled lab, but they require explicit owner-approved scope before release.
