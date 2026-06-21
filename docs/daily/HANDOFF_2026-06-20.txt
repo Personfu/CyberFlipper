@@ -1,0 +1,3 @@
+HANDOFF - 2026-06-20
+
+Review this daily pack in the staging fork. Apply to Fu-LLC/CyberFlipper only after repository permissions and human approval are resolved.
