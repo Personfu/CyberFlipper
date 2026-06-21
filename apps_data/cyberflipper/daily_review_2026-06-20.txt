@@ -1,0 +1,26 @@
+CYBERFLIPPER DAILY REVIEW CARD - 2026-06-20
+
+UPSTREAM WATCH:
+- DarkFlippers dev: API 87.10, NFC display changes, Bambu parser, BLE/app updates, Sub-GHz reliability fix.
+- UberGuidoZ main: RogueMaster API v87.2 application bundle update.
+
+APPROVAL REQUIRED:
+- prebuilt FAP import
+- NFC PWD/PACK screenshots or samples
+- LF RFID write/wipe workflows
+- Sub-GHz transmit examples
+- BLE/Wi-Fi/NRF24/ESP/HID-capable apps
+
+DEFAULT SAFE USE:
+- documentation
+- passive inventory
+- synthetic lab fixtures
+- receive-only RF notes
+- visible local text-entry demos
+
+DO NOT STORE:
+- real badge data
+- facility codes
+- card passwords or authenticators
+- live RF captures from third-party devices
+- credential, token, or host secret material
