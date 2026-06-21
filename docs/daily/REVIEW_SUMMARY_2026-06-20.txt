@@ -1,0 +1,23 @@
+CYBERFLIPPER DAILY REVIEW SUMMARY - 2026-06-20
+
+Prepared safe documentation updates only.
+
+KEY POINTS:
+- DarkFlippers dev moved through API 87.10 and includes NFC display changes, Bambu parser, LF RFID notes, Sub-GHz reliability notes, BLE/app updates.
+- UberGuidoZ main includes June RogueMaster FAP bundle updates. Treat as binary supply-chain intake.
+- Direct Fu-LLC/CyberFlipper write access remains blocked by GitHub integration permissions.
+- Staged branch created in Personfu/CyberFlipper for review.
+
+HOLD FOR HUMAN APPROVAL:
+- prebuilt FAP import
+- NFC PWD/PACK samples/screenshots
+- LF RFID write/wipe workflows
+- Sub-GHz transmit examples
+- BLE/Wi-Fi/NRF24/ESP/HID-capable app import
+
+SAFE TO REVIEW:
+- daily notes
+- source links
+- detection notes
+- lab-only payload policy
+- safe local text-entry marker
