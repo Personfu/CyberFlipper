@@ -1,0 +1,10 @@
+VERIFY BEFORE RELEASE - 2026-06-20
+
+[ ] Target owner approved publication
+[ ] CISA/vendor sources rechecked
+[ ] No real badge/card/RF/credential material
+[ ] No unreviewed FAP binaries
+[ ] BadUSB marker is visible text only
+[ ] Human approval gate completed or release remains HOLD
+
+DEFAULT: HOLD IF UNSURE
