@@ -1,0 +1,7 @@
+REM CyberFlipper authorized lab marker
+REM Purpose: visibly type a harmless marker into an already-open text editor.
+REM Scope: local lab documentation only.
+REM Prohibited: shell launch, network access, file access, collection, settings changes, hidden actions.
+DELAY 1000
+STRING CYBERFLIPPER AUTHORIZED LAB MARKER - SAFE TEXT ENTRY ONLY
+ENTER
