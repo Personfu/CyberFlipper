@@ -1,0 +1,8 @@
+item,source,status,review_action
+NFC PWD/PACK display,DarkFlippers 1f6a061 and 968bf30,HOLD,Approve only with synthetic lab data and redaction
+Bambu filament parser,DarkFlippers 45bca81,REVIEW,Approve for owned/synthetic filament tags only
+Sub-GHz endless TX fix,DarkFlippers e503173 and e13c82,TRACK,Document as reliability mitigation
+Sub-GHz protocol additions,DarkFlippers changelog,HOLD,Approve only with region/frequency/owner scope
+LF RFID T5577 blanking notes,DarkFlippers changelog,HOLD,Policy notes only unless blank lab media is confirmed
+RogueMaster FAP bundle,UberGuidoZ 29117c7,HOLD,Run binary intake checklist before import
+Safe keystroke marker,CyberFlipper local,OK,Visible local text entry only
