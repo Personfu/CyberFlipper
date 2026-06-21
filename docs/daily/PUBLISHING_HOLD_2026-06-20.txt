@@ -1,0 +1,3 @@
+PUBLISHING HOLD - 2026-06-20
+
+This daily pack is prepared for review. Do not publish or deploy until human approval clears sensitive upstream feature references and confirms target repository permissions.
