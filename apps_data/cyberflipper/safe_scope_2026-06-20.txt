@@ -1,0 +1,18 @@
+SAFE SCOPE - 2026-06-20
+
+IN:
+- notes
+- review gates
+- detection guidance
+- synthetic fixtures
+- visible local text marker
+
+OUT:
+- real badge/card data
+- third-party device interaction
+- credential material
+- unreviewed binaries
+- RF transmit examples
+- hidden host actions
+
+DEFAULT: HOLD FOR REVIEW
