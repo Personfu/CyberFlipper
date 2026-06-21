@@ -1,0 +1,6 @@
+OWNER ACTION - 2026-06-20
+
+1. Review staging branch.
+2. Complete human approval gate.
+3. Authorize GitHub app for Fu-LLC/CyberFlipper if direct updates are desired.
+4. Recheck CISA and vendor sources before public release.
