@@ -1,0 +1,21 @@
+CYBERFLIPPER RELEASE GATE - 2026-06-20
+
+STATUS: HOLD FOR HUMAN REVIEW
+
+RELEASE-SAFE NOW:
+- daily notes
+- source links
+- binary intake checklist
+- approval gate
+- safe local text-entry marker
+
+HOLD:
+- prebuilt FAP imports
+- NFC PWD/PACK samples or screenshots
+- LF RFID write/wipe examples
+- Sub-GHz transmit examples
+- BLE/Wi-Fi/NRF24/ESP/HID-capable app imports
+
+REVIEW OWNER:
+DATE:
+DECISION:
