@@ -1,0 +1,41 @@
+CYBERFLIPPER AUTHORIZED PAYLOAD DESIGN CARD
+
+Purpose:
+This card defines what is allowed in public CyberFlipper USB HID training material.
+
+Allowed public patterns:
+- typed consent banner
+- typed asset inventory form
+- typed meeting-room A/V checklist
+- typed incident note template
+- typed lab safety reminder
+- typed keyboard-layout verification text
+
+Not allowed in public repository files:
+- collection of secrets, tokens, session data, browser data, or private files
+- hidden host changes
+- stealth behavior
+- persistence
+- bypass or disabling of security controls
+- destructive changes
+- third-party targeting
+- network callbacks
+- instructions for unapproved use
+
+Minimum header for any lab-only example:
+
+TITLE:
+OWNER:
+AUTHORIZATION:
+LAB DEVICE:
+OPERATING SYSTEM:
+EXPECTED RESULT:
+ROLLBACK NEEDED: none / describe
+PUBLIC SAFE: yes / no
+HUMAN APPROVER:
+
+Safe demonstration pattern:
+The example may type a visible title, date, owner, and checklist into an already-open editor on a lab machine. It should not open system utilities, change settings, download files, run administrative actions, or interact with private data.
+
+Review decision:
+If the example does more than visible documentation text entry, keep it out of the public repository until a human maintainer approves it.
