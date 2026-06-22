@@ -1,0 +1,37 @@
+CYBERFLIPPER HUMAN APPROVAL QUEUE - 2026-06-21
+
+Status values:
+- READY-FOR-REVIEW
+- BLOCKED-PENDING-APPROVAL
+- APPROVED
+- REJECTED
+
+1. Community firmware imports
+Status: BLOCKED-PENDING-APPROVAL
+Reason: UberGuidoZ, RogueMaster, DarkFlippers, and other community trees may include files that require separate license, safety, and provenance review.
+Required approver: repository maintainer
+
+2. Protocol-sensitive docs
+Status: BLOCKED-PENDING-APPROVAL
+Reason: NFC, LF RFID, Sub-GHz, and IR notes can become unsafe if they include real identifiers, live captures, facility details, or unapproved transmission guidance.
+Required approver: lab owner and repository maintainer
+
+3. BadUSB/HID examples
+Status: READY-FOR-REVIEW
+Reason: Current public pattern is limited to visible text-entry documentation only.
+Required approver: repository maintainer before merge
+
+4. CISA KEV-derived content
+Status: READY-FOR-REVIEW
+Reason: Current update uses KEV as a defensive triage source only.
+Required approver: maintainer if naming any real product deployment, customer, or internal asset
+
+5. Hardware/SAO/GPIO notes
+Status: BLOCKED-PENDING-APPROVAL
+Reason: Public release should confirm pinout, voltage, current budget, bench-test status, photos, and accidental-disclosure review.
+Required approver: hardware owner
+
+6. Public site publication
+Status: BLOCKED-PENDING-APPROVAL
+Reason: Daily notes should be reviewed before they are linked from public pages.
+Required approver: repository maintainer
