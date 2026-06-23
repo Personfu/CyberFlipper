@@ -1,0 +1,1 @@
+Ignore extra marker files in review; they are harmless text notes created during staging.
