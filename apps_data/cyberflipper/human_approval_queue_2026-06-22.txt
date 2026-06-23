@@ -1,0 +1,42 @@
+CYBERFLIPPER HUMAN APPROVAL QUEUE - 2026-06-22
+
+Status: REVIEW REQUIRED BEFORE PUBLICATION OR DEPLOYMENT
+
+1. Fu-LLC repository access
+- Direct GitHub writes and cross-repository PR creation to Fu-LLC/CyberFlipper returned 403 Resource not accessible by integration.
+- Required action: Fu-LLC organization owner must authorize the GitHub integration before direct publication there.
+
+2. Upstream source verification
+- Verify UberGuidoZ/Flipper commit dates and commit IDs before publishing daily notes.
+- Verify DarkFlippers/unleashed-firmware commit dates and commit IDs before publishing daily notes.
+- Verify official flipperdevices/flipperzero-firmware release details before publishing compatibility notes.
+
+3. Community firmware references
+- Do not import community firmware, binaries, app packs, examples, or assets without maintainer review.
+- Confirm license, provenance, source branch, hash, and safety posture.
+
+4. CISA KEV statements
+- Official CISA KEV browser fetch returned 403 during this run.
+- Do not claim new KEV entries until a maintainer verifies the official catalog or feed directly.
+
+5. USB HID training material
+- Public examples may only type visible text into an already-open document.
+- Any host interaction beyond visible text entry requires maintainer approval.
+
+6. NFC/RFID material
+- Public notes must use blank training tags, synthetic examples, or redacted inventory templates.
+- Any real card, badge, reader, facility, or customer information requires maintainer approval and should normally remain private.
+
+7. RF and infrared material
+- Public notes must stay at ethics, inventory, and mitigation level.
+- Captures, control sequences, public-space examples, and operational artifacts require approval and should normally remain private.
+
+8. Flipper One and future hardware references
+- Treat public reporting as planning context only.
+- Do not publish technical assumptions or build guidance until official sources are reviewed.
+
+Reviewer sign-off:
+Name:
+Date:
+Decision:
+Notes:
