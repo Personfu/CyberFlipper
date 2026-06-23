@@ -1,0 +1,31 @@
+CYBERFLIPPER HUMAN APPROVAL QUEUE - 2026-06-22
+
+Status: review required before publication or deployment
+
+1. Fu-LLC repository write access
+   - Current integration path cannot write directly to Fu-LLC.
+   - Required approval: organization maintainer authorization or manual promotion path.
+
+2. CISA KEV verification
+   - Official CISA page and JSON feed returned HTTP 403 in this run.
+   - Required approval: human verification of latest KEV entries before any current KEV delta is claimed.
+
+3. UberGuidoZ/Flipper recent commits
+   - Recent observed items: RogueMaster merge and FAP API v87.2 updates.
+   - Required approval: source provenance, license review, and compatibility-only framing.
+
+4. DarkFlippers NFC parser/display changes
+   - Recent observed items: Bambu Lab filament spool parser and MIFARE Ultralight/NTAG PWD/PACK display changes.
+   - Required approval: source license, parser safety, screenshot redaction, and authentication-field handling.
+
+5. App-bundle and community firmware references
+   - Recent observed items: app bumps and privacy-sensitive app references.
+   - Required approval: no binary imports; review privacy implications before public documentation.
+
+6. USB HID lab examples
+   - Safe status: checklist-only documentation added.
+   - Required approval: any runnable example must remain limited to visible text-entry and isolated lab hosts.
+
+7. RF/NFC/RFID/IR/GPIO artifacts
+   - Current update includes no live artifacts.
+   - Required approval: any future artifact must be owner-approved, redacted, and stored according to evidence-handling rules.
