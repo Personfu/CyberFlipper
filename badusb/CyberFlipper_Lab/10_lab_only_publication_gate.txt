@@ -1,0 +1,47 @@
+CYBERFLIPPER LAB-ONLY USB HID PUBLICATION GATE
+
+Purpose:
+This card is a review gate for classroom or owned-lab USB HID training notes. It is not a device-control script.
+
+Allowed public patterns:
+- type a visible consent banner
+- type the lab scope and owner name
+- type a checklist into an already-open editor
+- type a reminder to lock the screen after testing
+- type a local incident-note template for documentation practice
+
+Requires human approval:
+- opening applications or system tools
+- changing host settings
+- using shell or scripting interpreters
+- interacting with browsers, password managers, terminals, admin consoles, email, chat, or cloud tools
+- collecting host, user, browser, network, token, cookie, badge, card, or facility data
+- using non-lab systems or public/shared equipment
+
+Blocked for public release:
+- hidden or misleading behavior
+- credential handling
+- persistence or stealth behavior
+- bypass or evasion language
+- destructive actions
+- third-party system interaction
+- real customer, facility, card, remote, RF, or host artifacts
+
+Minimum review record:
+Date:
+Reviewer:
+Lab owner:
+Host type:
+Firmware version:
+SD-card pack version:
+Training purpose:
+Expected visible output:
+Data retained:
+Approval decision:
+
+Safe example outcome:
+The device types only a visible message such as:
+CYBERFLIPPER AUTHORIZED LAB CHECK - SCOPE VERIFIED - NO HOST CHANGES
+
+Release rule:
+If the example does anything beyond visible text entry into an already-open document, do not publish it without maintainer approval.
