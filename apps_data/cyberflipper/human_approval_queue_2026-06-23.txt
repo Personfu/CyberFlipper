@@ -1,0 +1,35 @@
+CyberFlipper Human Approval Queue — 2026-06-23
+
+Status: OPEN
+
+1. Fu-LLC repository write access
+   - Finding: Direct branch creation in Fu-LLC/CyberFlipper returned 403 Resource not accessible by integration.
+   - Required approval/action: Organization owner must authorize the GitHub integration or manually apply this PR.
+
+2. README safety rewrite
+   - Finding: Current README contains offensive capability framing around signal capture, HID injection, wireless tooling, and third-party payload ecosystems.
+   - Required approval/action: Rewrite into authorized-lab, defensive, consent-based language before public release.
+
+3. CISA KEV claims
+   - Finding: Official CISA KEV page and JSON feed returned 403 through the browser in this run.
+   - Required approval/action: Human must verify the official catalog before publishing any new KEV-specific claims.
+
+4. Community firmware references
+   - Finding: UberGuidoZ and DarkFlippers upstreams include FAP/API, protocol, firmware, and community-maintained changes.
+   - Required approval/action: Review provenance, licensing, build reproducibility, and safety language before import or publication.
+
+5. USB HID documentation
+   - Finding: Only visible text-entry documentation is allowed in this update.
+   - Required approval/action: Any shell, terminal, network, host-modifying, or encoded example must be rejected unless separately authorized and safety reviewed.
+
+6. RF/NFC/RFID/IR materials
+   - Finding: Protocol-sensitive materials can be lawful in labs but risky in public repositories.
+   - Required approval/action: Ensure no live keys, live captures, facility data, replayable material, or unauthorized test instructions are committed.
+
+7. Binary artifacts
+   - Finding: Binary apps, packaged firmware, dumps, or captures require provenance review.
+   - Required approval/action: Do not merge binary artifacts without source, license, hash, and purpose review.
+
+8. Public deployment
+   - Finding: The update is staged for review only.
+   - Required approval/action: Maintainer approval required before merging into Fu-LLC or publishing public release notes.

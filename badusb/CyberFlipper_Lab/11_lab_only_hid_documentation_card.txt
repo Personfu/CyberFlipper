@@ -1,0 +1,44 @@
+CyberFlipper Lab-Only HID Documentation Card
+Date: 2026-06-23
+
+Purpose:
+This card defines the only approved HID training pattern for this daily update: visible text entry into a user-opened editor on a lab-owned host.
+
+Allowed:
+- Type a consent banner.
+- Type a checklist.
+- Type an inventory note.
+- Type a test identifier.
+- Type a reminder to stop and request review.
+
+Not allowed:
+- Shell or terminal automation.
+- Credential prompts or collection.
+- Network access.
+- File retrieval.
+- Host configuration changes.
+- Persistence.
+- Stealth or evasion.
+- Destructive actions.
+- Third-party system interaction.
+
+Operator checklist:
+1. Confirm written authorization.
+2. Confirm the host is a lab-owned test host.
+3. Confirm the user has opened a plain text editor.
+4. Confirm no sensitive data is visible on screen.
+5. Run only visible text-entry documentation.
+6. Save the resulting note only if the lab owner approves.
+7. Stop immediately if the device output differs from the approved text.
+
+Approved sample text:
+CYBERFLIPPER AUTHORIZED LAB NOTE
+Scope: visible text-entry demonstration only.
+No host changes requested.
+No credentials requested.
+No network activity requested.
+Reviewer: ____________________
+Approval ticket: ______________
+
+Publication status:
+Human approval required before any HID example beyond this text-entry card is added to the repository.
