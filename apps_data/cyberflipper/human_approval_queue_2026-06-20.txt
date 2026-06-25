@@ -1,0 +1,33 @@
+CYBERFLIPPER HUMAN APPROVAL QUEUE — 2026-06-20
+
+Hold these categories for explicit human review before publication, deployment, or SD-card release.
+
+1. Firmware and apps
+- Any executable firmware image
+- Any FAP binary
+- Any binary-only artifact
+- Any source import with unclear provenance
+- Any app with network capability
+
+2. Protocol-sensitive material
+- NFC low-level workflows
+- LF RFID read/write/emulation procedure
+- Sub-GHz protocol implementation notes
+- IR mass-control or public-space control examples
+- GPIO hardware-control examples that could affect real devices
+
+3. BadUSB material
+- Anything beyond benign text-entry checklists
+- Anything that launches tools to modify the host
+- Anything that handles credentials, secrets, tokens, cookies, keys, or private files
+- Anything that opens network connections
+- Anything that changes security settings
+
+4. Public claims
+- Any claim that a named third-party product, facility, vehicle, gate, badge system, or alarm can be bypassed
+- Any reproduction note based on non-owned infrastructure
+- Any regulatory or jurisdiction-sensitive RF statement
+
+5. Release decision
+Current daily branch recommendation: documentation-only review branch may be published.
+Current executable/binary/protocol recommendation: hold until human approval.

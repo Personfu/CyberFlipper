@@ -1,0 +1,38 @@
+CYBERFLIPPER SAFE PAYLOAD REVIEW CHECKLIST
+
+Purpose: verify that a lab payload is documentation-only or benign text-entry only.
+
+REVIEWER:
+DATE:
+PAYLOAD NAME:
+TARGET LAB HOST OWNER:
+AUTHORIZATION RECORD:
+
+ALLOWED CONTENT CHECKS
+[ ] Types a banner or checklist only
+[ ] Uses normal keyboard input only
+[ ] Does not open network connections
+[ ] Does not launch programs for system modification
+[ ] Does not change host settings
+[ ] Does not read, request, collect, print, or transmit secrets
+[ ] Does not create persistence
+[ ] Does not include stealth or evasion language
+[ ] Does not delete, encrypt, corrupt, or disable files/services
+[ ] Does not target third-party systems
+
+HOLD FOR HUMAN APPROVAL IF ANY ARE TRUE
+[ ] executable action beyond normal text entry
+[ ] protocol-sensitive behavior
+[ ] RF/NFC/RFID/IR operational step
+[ ] external hardware control
+[ ] credential, token, cookie, or key handling
+[ ] host security setting change
+[ ] network interaction
+[ ] public deployment
+
+DECISION
+[ ] approve for documentation branch
+[ ] hold for human review
+[ ] reject
+
+NOTES:
