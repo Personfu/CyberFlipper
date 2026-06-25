@@ -1,0 +1,1 @@
+Accidental marker files added during staging are documentation-only and may be removed by a maintainer if desired.

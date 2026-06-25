@@ -1,0 +1,28 @@
+CYBERFLIPPER DAILY MANIFEST - 2026-06-22
+
+Documentation files:
+- docs/daily/CYBERFLIPPER_DAILY_2026-06-22.md
+- docs/daily/UPSTREAM_COMPARISON_2026-06-22.md
+- docs/daily/DEFENSIVE_SOURCE_DIGEST_2026-06-22.md
+- docs/daily/NFC_HARDWARE_FIRMWARE_REVIEW_2026-06-22.md
+- docs/daily/DETECTION_MITIGATION_GUIDANCE_2026-06-22.md
+- docs/daily/LAB_ONLY_AUTHORIZED_TESTING_EXAMPLES_2026-06-22.md
+- docs/daily/FU_LLC_WRITE_STATUS_2026-06-22.md
+- docs/daily/REVIEW_PR_STATUS_2026-06-22.md
+- docs/daily/CHANGELOG_INDEX_APPEND_2026-06-22.md
+
+Lab cards:
+- badusb/CyberFlipper_Lab/10_authorized_lab_payload_review_card.txt
+
+Data/control files:
+- apps_data/cyberflipper/human_approval_queue_2026-06-22.txt
+- apps_data/cyberflipper/manifest_2026-06-22.txt
+
+Safety summary:
+- documentation-only
+- no binaries
+- no live signal captures
+- no card dumps
+- no production identifiers
+- no host-modifying examples
+- human approval required before publication or deployment

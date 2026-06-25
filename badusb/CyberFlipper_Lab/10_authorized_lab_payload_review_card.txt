@@ -1,0 +1,37 @@
+CYBERFLIPPER AUTHORIZED LAB USB HID REVIEW CARD
+
+Purpose:
+This card is for reviewing USB HID demonstration files before they are used in a controlled lab. It is not a runnable payload and contains no host commands.
+
+Allowed example pattern:
+- open a plain text editor manually
+- run only visible text-entry demonstrations
+- type the scope, operator, date, and approval fields
+- stop immediately if the wrong host, window, or keyboard layout is detected
+
+Required scope fields:
+- lab host asset tag:
+- operator:
+- approving owner:
+- date:
+- test purpose:
+- expected visible output:
+- rollback required: no host changes expected
+
+Reviewer checklist:
+[ ] File only types harmless text into a visible editor.
+[ ] File does not open system tools or change settings.
+[ ] File does not access files, networks, credentials, browsers, terminals, shells, or privileged prompts.
+[ ] File does not download, execute, encode, hide, persist, disable, erase, exfiltrate, or evade.
+[ ] File has a clear owner, scope, date, and stop condition.
+[ ] File was tested only on an isolated owner-approved lab host.
+
+Stop conditions:
+- unexpected keyboard layout
+- unexpected operating system
+- unexpected active window
+- any prompt for elevated permission
+- any production host or uncontrolled environment
+
+Publication rule:
+Publish checklists and screenshots of typed scope banners only. Do not publish host-modifying examples or environment-specific automation.
