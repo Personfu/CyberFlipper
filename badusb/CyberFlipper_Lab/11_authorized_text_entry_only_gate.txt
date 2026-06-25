@@ -1,0 +1,36 @@
+CyberFlipper Lab-Only Text-Entry Gate
+
+Purpose:
+This file is a documentation checklist for reviewing BadUSB-style examples before publication. It is not a payload and should not automate host changes.
+
+Allowed content:
+- Type an authorization reminder.
+- Type a test scope statement.
+- Type an asset inventory prompt.
+- Type an incident note template.
+- Type a safety checklist.
+
+Blocked content:
+- Credential collection.
+- Persistence.
+- Evasion or stealth.
+- Destructive actions.
+- Security-control changes.
+- Network callbacks.
+- Downloader behavior.
+- Third-party exploitation.
+- Commands targeting systems outside the written test scope.
+
+Reviewer checklist:
+[ ] The file only produces visible text entry.
+[ ] The file does not launch a shell, browser, interpreter, or settings panel.
+[ ] The file does not read files, modify files, or change system settings.
+[ ] The file does not reference real credentials, tokens, keys, cookies, badges, remotes, card dumps, or signal captures.
+[ ] The file states the authorized lab scope.
+[ ] The file has a maintainer approval entry before release.
+
+Suggested visible text for lab demos:
+CyberFlipper authorized lab check: confirm written scope, asset owner, test window, device ID, and observer before continuing.
+
+Publication decision:
+If any checklist item fails, do not publish. Move the item to the human approval queue.

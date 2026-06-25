@@ -1,0 +1,33 @@
+CyberFlipper Human Approval Queue — 2026-06-24
+
+Status: Required before publishing or deployment.
+
+1. Fu-LLC README safety wording
+   - Review current public wording around payloads, access-control artifacts, signal captures, and third-party tooling.
+   - Replace offensive or ambiguous claims with authorized-lab and defensive-governance language.
+
+2. CISA KEV claims
+   - Official KEV browser/feed access failed from automation.
+   - Human must verify the catalog directly before claiming newly added KEV entries.
+
+3. Community firmware imports
+   - UberGuidoZ/RogueMaster and DarkFlippers/Unleashed changes are awareness inputs only.
+   - Do not import binaries, FAP packages, firmware changes, or protocol dictionaries until source, license, provenance, and safety reviews are complete.
+
+4. Protocol-sensitive material
+   - Require written approval before adding material involving access-control systems, rolling-code systems, Sub-GHz transmission, NFC/RFID dumps, hotel-key examples, vehicle-signal examples, or IR control sets.
+
+5. USB HID / BadUSB content
+   - Allow only visible text-entry examples.
+   - Escalate anything that opens applications, uses shells, changes settings, reads files, writes files, or uses network resources.
+
+6. Release packaging
+   - Verify release archive contents before publication.
+   - Remove real credential-like material, real signal captures, real card dumps, private U2F assets, and any third-party material without redistribution approval.
+
+Approval fields:
+- Reviewer:
+- Date:
+- Scope approved:
+- Exceptions:
+- Publication decision:
