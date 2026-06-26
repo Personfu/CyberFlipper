@@ -1,0 +1,32 @@
+CyberFlipper Human Approval Queue — 2026-06-25
+
+Approval required before publication or deployment:
+
+1. Fu-LLC README safety rewrite
+   - Replace high-risk language around capture, synthesis, brute-force, payloads, reverse shells, and third-party payload repositories.
+   - Confirm all public claims match actual safe repository contents.
+
+2. CISA KEV claims
+   - Official CISA KEV page/feed returned HTTP 403 during this run.
+   - Do not claim new KEV entries until a human verifies the official catalog or an approved mirror.
+
+3. UberGuidoZ/RogueMaster-derived content
+   - Latest visible main activity references RogueMaster merge and FAP API v87.2 updates.
+   - Do not import binaries, apps, or modules without source/license/hash/behavior review.
+
+4. DarkFlippers/unleashed-firmware references
+   - Latest visible dev activity includes protocol-sensitive hotfix and raw-protocol cleanup references.
+   - Do not publish operational protocol details.
+
+5. BadUSB/HID material
+   - Only visible text-entry documentation is allowed by default.
+   - Anything that opens tools, modifies settings, touches credentials, uses network access, or changes the host must be rejected or formally reviewed.
+
+6. RF/NFC/RFID/IR material
+   - No real-world captures, dumps, keys, identifiers, access artifacts, facility remotes, gate/vehicle/control signals, or brute-force sets in public releases.
+
+7. Firmware/tooling discussion
+   - Public notes may discuss compatibility and governance.
+   - Build, flash, bypass, exploit, or operational attack guidance is out of scope.
+
+Default release decision: documentation-only content may proceed to review. No operational artifacts approved.
