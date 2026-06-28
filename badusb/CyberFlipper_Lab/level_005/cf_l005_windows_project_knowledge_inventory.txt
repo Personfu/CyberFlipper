@@ -1,0 +1,11 @@
+REM CyberFlipper Level 005 - Windows Project and Knowledge Inventory
+REM Safe: visible local inventory of project-management and knowledge-base tools only.
+REM Output: Desktop report opened in Notepad.
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell -NoProfile
+ENTER
+DELAY 1200
+STRING $r="$env:USERPROFILE\Desktop\cyberflipper_l005_project_knowledge_inventory.txt"; "CYBERFLIPPER LEVEL 005 - WINDOWS PROJECT KNOWLEDGE INVENTORY" | Out-File $r; Get-Date | Out-File $r -Append; $names="Notion|Asana|Trello|Jira|Project|Confluence|Basecamp|Evernote|Obsidian|OneNote"; Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*,HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* -ErrorAction SilentlyContinue | Where-Object {$_.DisplayName -match $names} | Select DisplayName,DisplayVersion,Publisher,InstallDate | Sort DisplayName | Format-Table -Auto | Out-File $r -Append; notepad $r
+ENTER
