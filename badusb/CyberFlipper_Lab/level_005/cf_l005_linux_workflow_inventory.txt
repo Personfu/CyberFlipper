@@ -1,0 +1,8 @@
+REM CyberFlipper Level 005 - Linux Workflow Inventory
+REM Safe: visible local inventory of communication and project workflow tools only.
+REM Output: home-directory report opened with xdg-open.
+DELAY 1000
+CTRL ALT t
+DELAY 1000
+STRING OUT="$HOME/cyberflipper_l005_workflow_inventory.txt"; echo "CYBERFLIPPER LEVEL 005 - LINUX WORKFLOW INVENTORY" > "$OUT"; date >> "$OUT"; for app in thunderbird slack teams zoom discord webex skypeforlinux whatsapp-for-linux notion obsidian libreoffice keepassxc bitwarden filezilla; do if command -v "$app" >/dev/null 2>&1; then echo "$app FOUND $(command -v "$app")" >> "$OUT"; else echo "$app NOT FOUND" >> "$OUT"; fi; done; xdg-open "$OUT"
+ENTER
