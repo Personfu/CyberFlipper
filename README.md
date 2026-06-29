@@ -1,161 +1,184 @@
 # CyberFlipper
 
-**FLLC / Personfu developer hardware lab for Flipper Zero, Proxmark, Hak5-style training workflows, DEF CON Badgelife, DEF CON 34 SAO reference planning, NFC/RFID, RF/IR, tamper-evident practice, 3D printing, soldering, sensors, Arduino, Raspberry Pi, ESP32, red/blue payload education, and embedded security documentation.**
+Developer-focused Flipper Zero lab content for SD-card organization, BadUSB training, IR/NFC/RFID notes, GPIO practice, firmware review notes, hardware documentation, and defensive security education.
 
-Public site: `https://personfu.github.io/CyberFlipper/`  
-Engineering Forge: `https://personfu.github.io/CyberFlipper/engineering.html`  
-Workbench Manifest: `https://personfu.github.io/CyberFlipper/workbench.html`  
-CVE Audit Payloads: `https://personfu.github.io/CyberFlipper/cve-audits.html`  
-Primary FLLC site: `https://fllc.net`  
-Repository: `https://github.com/Personfu/CyberFlipper`
+CyberFlipper is maintained for practical builders: people who want clean file layouts, readable payloads, repeatable tests, and documentation that can survive public review.
 
-## What this repository is
+## Repository Focus
 
-CyberFlipper is being cleaned up into a professional public content hub and lab asset repository. The goal is to publish free, useful, defensible developer content while creating a clear path to FLLC services such as workshops, documentation cleanup, hardware lab kits, student training, portfolio projects, and authorized assessment support.
+| Area | Purpose |
+|---|---|
+| `badusb/` | Flipper-readable `.txt` training scripts with visible local output. |
+| `badusb/CyberFlipper_Lab/` | Progressive Level 001-099 curriculum. |
+| `docs/daily/` | Daily research notes, source-watch summaries, and release notes. |
+| `docs/community/` | Feature matrices, attribution notes, validation checklists, and project positioning. |
+| `infrared/` | IR organization and remote-control learning material. |
+| `nfc/` | NFC notes for owned cards, lab tags, and test fixtures. |
+| `lfrfid/` | 125 kHz RFID notes for owned cards, lab tags, and test fixtures. |
+| `subghz/` | Region-aware Sub-GHz documentation and receive-only learning notes. |
+| `apps/` | App catalog notes, compatibility notes, and `.fap` organization references. |
+| `hardware/` | GPIO, soldering, sensors, badge/SAO planning, fixtures, and bench notes. |
+| `web/` | Public project pages, payload catalog views, and developer-facing documentation. |
 
-The public site now emphasizes:
+## BadUSB Training Standard
 
-- Flipper Zero SD-card organization, IR/NFC/RFID learning sets, GPIO safety, and app notes
-- Proxmark and NFC/RFID lab notebooks for owned cards and test tags
-- Hak5-style payload engineering concepts framed as logged, reversible, authorized training cases
-- DEF CON Badgelife PCB planning, DEF CON 34 SAO spec-sheet reference, BOMs, soldering practice, and bring-up notes
-- 3D-printed housings, badge stands, fixtures, sensor pods, cable relief, and heat-set insert planning
-- Arduino, Raspberry Pi, and ESP32 build patterns for telemetry, dashboards, consent pages, and local logging
-- Tamper-evident inspection, seal taxonomy, and chain-of-custody thinking
-- Aerospace and embedded reliability habits: telemetry plans, firmware hygiene, and student-team documentation
-- Red-team validation cards and blue-team audit scripts that stay public-safe and authorized
+Every CyberFlipper BadUSB file should be:
 
-## Engineering Forge
+- Plain `.txt` compatible with Flipper Zero BadUSB / DuckyScript-style syntax.
+- Visible to the user while running.
+- Local-output only.
+- Named clearly by level and platform.
+- Written to create a `cyberflipper_` report file.
+- Documented in the level README.
+- Reviewed before merge when it launches PowerShell, Terminal, shell, reads logs, lists services, or inventories installed software.
 
-`web/engineering.html` is the flagship build showcase. It includes:
-
-- A CSS-rendered badge/SAO visual system for a more polished Badgelife identity
-- A direct CTA to the official DEF CON 34 SAO spec sheet
-- Safe SAO planning guidance: power budget, header orientation, mechanical fit, firmware bring-up, BOM, and test flow
-- 3D printing, soldering, sensor, Arduino, Raspberry Pi, ESP32, Flipper, and Proxmark content lanes
-- Public surface-level payload examples that stay harmless and classroom-safe
-
-The Engineering Forge is intentionally positioned as educational/fan engineering content. CyberFlipper/FLLC does not claim official DEF CON affiliation.
-
-## Workbench Manifest
-
-`web/workbench.html` is the portfolio-grade build pipeline. It turns FLLC hardware content into repeatable deliverables:
-
-- Scope and safety card
-- CAD/STL or enclosure render
-- KiCad/schematic or wiring reference
-- BOM with part alternates and substitution risks
-- Firmware with version output, serial diagnostics, and safe failure behavior
-- Sensor telemetry examples such as CSV logs or dashboard screenshots
-- Public-safe payload cards: consent prompts, scope banners, local-only logs, and defensive test cases
-- Test report: continuity, smoke test, enclosure fit, photos, and lessons learned
-
-This page exists to make the project look like real engineering work: proof on the bench, not loose claims.
-
-## CVE Audit Payload Library
-
-`web/cve-audits.html` turns the user's BadUSB-style concept into a safer public format: visible PowerShell report generators and red/blue payload cards.
-
-Current audit scripts:
-
-- `web/audits/CVE-2025-26399-SolarWinds-WHD-audit.ps1` — SolarWinds Web Help Desk inventory and exposure report.
-- `web/audits/CVE-2009-0238-Excel-audit.ps1` — legacy Excel / Office exposure and patch-evidence report.
-
-Supporting files:
-
-- `web/audits/README.md` — usage rules and safety standard.
-- `web/payloads.json` — public-safe red-team validation and blue-team response catalog.
-- `web/data/cve-feed.json` — tracked advisory feed displayed by the site.
-- `scripts/refresh-cve-feed.mjs` — refreshes public NVD metadata for tracked CVEs.
-- `.github/workflows/refresh-cve-feed.yml` — scheduled/manual GitHub Action that updates the feed.
-
-The audit scripts intentionally avoid hidden windows, execution-policy bypass examples, credential collection, persistence, exploitability tests, and live-target instructions. They are for owned systems, administered systems, classroom labs, and written-scope assessments.
-
-## Authorized-use boundary
-
-This repository is for owned hardware, classroom labs, CTF ranges, client-approved scopes, and defensive education.
-
-Do not use CyberFlipper content for unauthorized access, credential capture, stealth, persistence, evasion, reverse shells, exploit chains, or testing against systems, cards, devices, RF environments, or networks you do not own or administer. Public content should reduce risk, teach defensive thinking, and produce clean documentation.
-
-## Website map
+Preferred commands:
 
 ```text
-web/
-├── index.html          # FLLC dev lab landing page
-├── engineering.html    # Engineering Forge: Badgelife, SAO, fabrication, sensors, safe payloads
-├── workbench.html      # Workbench Manifest: build pipeline, artifacts, deliverables
-├── cve-audits.html     # safe CVE audit payload library and red/blue catalog
-├── free-labs.html      # free safe starter labs and content lanes
-├── about.html          # project positioning, policy, and service paths
-├── stats.html          # content metrics and publication standards
-├── download.html       # safe release/download guidance
-├── intel.html          # CVE research dashboard
-├── audits/             # visible, read-only PowerShell audit scripts
-├── data/cve-feed.json  # auto-updated tracked CVE metadata
-├── styles.css          # cyberpunk HUD theme
-├── fllc-visuals.css    # Badgelife / SAO / hardware-lab visual layer
-└── dashboard.js        # shared UI animation/session script
+REM
+DELAY
+STRING
+ENTER
+GUI
+CTRL
+ALT
+SHIFT
+TAB
+ESC
 ```
 
-## Free public labs
+Avoid fragile behavior: hidden windows, keyboard-layout-specific symbols where possible, hard-coded focus assumptions, silent execution, destructive commands, remote callbacks, credential stores, browser profile data, cookies, tokens, passwords, persistence, evasion, or privilege-abuse logic.
 
-The Free Labs page starts with 12 safe starter modules:
+## Level Ladder
 
-1. Flipper SD Hygiene
-2. IR Remote Baseline
-3. NFC Tag Anatomy
-4. Proxmark Notes
-5. GPIO Bring-Up
-6. Badgelife Build Log
-7. Tamper-Evident Inspection
-8. RF Listening Ethics
-9. Payload Documentation
-10. Aerospace Telemetry Mindset
-11. FLLC Portfolio Writeup
-12. Workshop Kit Plan
+| Level | Theme | Developer output |
+|---|---|---|
+| 001 | Host identity | Basic host and OS reports. |
+| 002 | Application inventory | Browser, office, PDF, and desktop tool reports. |
+| 003 | Event and app review | Local event summaries and installed app views. |
+| 004 | Business stack review | Productivity, design, backup, sync, and security tooling visibility. |
+| 005 | Communications workflow | Chat, meeting, project, and knowledge-base software reports. |
+| 006 | Community desktop review | Cross-platform desktop review suite. |
+| 020 | IR and detection engineering | Triage reports, event counts, patch posture, backup posture, report manifests. |
+| 030 | Benign validation | Detection-rule worksheets and tabletop emulation notes. |
+| 040 | Firmware and app review | Firmware/API changes, app catalog notes, compatibility tables. |
+| 060 | Evidence discipline | Hash manifests, metadata discipline, chain-of-custody notes. |
+| 080 | Sandboxed research | Local-only lab harnesses and mitigation-first analysis templates. |
+| 099 | Capstone | Full authorized lab workflow with docs, scripts, detection notes, and review checklist. |
 
-Each module is designed to create a documented deliverable and a defensive takeaway.
+## Current Community Pack
 
-## Public payload example policy
+Level 006 and Level 020 are the active developer baselines.
 
-Public payload examples must be boring on purpose. Acceptable examples include:
+Recommended files to review first:
 
-- Scope banners and consent prompts
-- Local-only log creation
-- Sensor telemetry and CSV demos
-- Documentation scaffolds for authorized tests
-- Training payloads that are reversible, visible, and explained
-- CVE presence audits that collect product, version, service, patch, and exposure evidence
-- Blue-team response cards for patch tickets, detection notes, and lab validation
+```text
+badusb/CyberFlipper_Lab/level_006/README.md
+badusb/CyberFlipper_Lab/level_006/cf_l006_windows_desktop_stack_audit.txt
+badusb/CyberFlipper_Lab/level_006/cf_l006_windows_browser_review.txt
+badusb/CyberFlipper_Lab/level_006/cf_l006_linux_desktop_stack_audit.txt
+badusb/CyberFlipper_Lab/level_006/cf_l006_macos_workstation_review.txt
+badusb/CyberFlipper_Lab/level_020/README.md
+docs/community/CYBERFLIPPER_COMMUNITY_FEATURE_MATRIX.md
+docs/community/CYBERFLIPPER_SOURCE_ATTRIBUTION_2026-06-29.md
+```
 
-Do not publish credential capture, persistence, stealth, evasion, exploitation chains, reverse shells, bypass flags, hidden execution, or instructions for live targets.
+## SD Card Layout
 
-## Auto-update behavior
+CyberFlipper is distributed as SD-card content. No firmware flash is required for the training files.
 
-The GitHub Action in `.github/workflows/refresh-cve-feed.yml` runs daily and can also be triggered manually. It executes `scripts/refresh-cve-feed.mjs`, refreshes public advisory metadata for tracked CVEs, and commits changes to `web/data/cve-feed.json` only when that feed changes.
+Expected root layout:
 
-This is repository content refresh, not endpoint behavior. It does not run on visitor machines.
+```text
+badusb/
+infrared/
+nfc/
+lfrfid/
+subghz/
+apps/
+dolphin/
+u2f/
+docs/
+hardware/
+web/
+```
 
-## Download / install guidance
+Install flow:
 
-Use GitHub Releases when available. For Flipper Zero content packs, prefer qFlipper SD-card copy workflows and back up your SD card before replacing files. Do not flash firmware or run device content unless you understand the update path and have a rollback plan.
+1. Copy the needed folders to the Flipper Zero SD card.
+2. Keep level folders intact.
+3. Run BadUSB files from the Flipper interface.
+4. Confirm the host output file appears visibly.
+5. Record firmware version, host OS, keyboard layout, and test result.
 
-## Development notes
+## Source Watch
 
-The public site is static HTML/CSS/JS under `web/`. Keep pages simple, readable, and safe:
+CyberFlipper tracks ideas from the Flipper Zero ecosystem and converts them into safe documentation, lab validation, detection engineering, and defensive training.
 
-- Every public lab must name the lawful scope.
-- Every tool note must include a defensive use case.
-- Every payload concept must be reversible and logged.
-- Every RF/NFC topic must stay on owned test gear.
-- Every FLLC service path should point to a professional outcome.
-- Every hardware build should produce a portfolio artifact: BOM, photos, wiring notes, firmware version, test result, and next step.
-- Every CVE audit script should be visible, read-only, local-output, and tied to remediation documentation.
+Watched repositories and topics:
 
-## Maintainer positioning
+| Source | What to extract |
+|---|---|
+| `flipperdevices/flipperzero-firmware` | Official firmware behavior, APIs, hardware notes, compatibility changes. |
+| `flipperdevices/flipper-application-catalog` | App metadata, app packaging patterns, catalog changes. |
+| `DarkFlippers/unleashed-firmware` | Community firmware changes, app compatibility, feature deltas. |
+| `Flipper-XFW/Xtreme-Firmware` | Community UX patterns, firmware feature organization, compatibility notes. |
+| `RogueMaster/flipperzero-firmware-wPlugins` | Plugin ecosystem tracking and app compatibility notes. |
+| `UberGuidoZ/Flipper` | Community file organization, payload structure, examples, and SD-card layout ideas. |
+| `UberGuidoZ/Flipper-IRDB` | IR database organization and attribution patterns. |
+| `Lucaslhm/Flipper-IRDB` | IR collection structure and remote taxonomy. |
+| `RocketGod-git/ProtoPirate` | Project presentation, feature matrices, protocol documentation style. |
+| `SkeletonMan03/FZEasyMarauderFlash` | Flashing workflow documentation and setup UX ideas. |
+| `kbembedded/Flipper-Zero-Game-Boy-Pokemon-Trading` | GPIO timing, retro hardware documentation, test fixtures. |
+| `DarkFlippers/Multi_Fuzzer` | Reader testing safety notes and lab-only validation patterns. |
+| `DarkFlippers/qFlipper` | Desktop update workflow and device-management notes. |
 
-CyberFlipper is part of the FLLC public display and revenue path. Free content should prove capability without handing out misuse workflows. Professional work should be routed to FLLC for training, implementation, documentation, and lab-kit buildouts.
+Risky topics such as jamming, Wi-Fi attack tooling, fuzzing, cracking, and offensive firmware are only used for safety notes, defensive detection ideas, lawful lab disclaimers, and mitigation-first documentation.
 
----
+## Developer Validation Checklist
 
-© 2026 FLLC / Furulie LLC / Personfu. For authorized security education and defensive engineering only.
+Before opening or merging a PR:
+
+```text
+[ ] File names are clear and platform-specific.
+[ ] BadUSB files are plain text.
+[ ] Commands stay visible.
+[ ] Output file uses cyberflipper_ prefix.
+[ ] No credential, token, cookie, browser-profile, password-manager, VPN-secret, or message-content collection.
+[ ] No persistence, stealth, evasion, destructive behavior, or privilege-abuse chain.
+[ ] No RF transmission abuse, jamming, Wi-Fi cracking, or captive credential capture.
+[ ] Level README exists.
+[ ] Daily/source notes exist when the update came from ecosystem research.
+[ ] Human review is requested for shell-launching or host-inventory scripts.
+```
+
+## Contribution Format
+
+Use this structure for new levels:
+
+```text
+badusb/CyberFlipper_Lab/level_0XX/
+  README.md
+  cf_l0XX_windows_<topic>.txt
+  cf_l0XX_linux_<topic>.txt
+  cf_l0XX_macos_<topic>.txt
+
+docs/daily/YYYY-MM-DD-cyberflipper-level-0XX.md
+```
+
+README sections per level:
+
+```text
+Purpose
+Files
+Expected output
+Defensive value
+Detection notes
+Review requirements
+```
+
+## Project Boundary
+
+CyberFlipper is for owned hardware, classroom labs, CTF ranges, client-approved scopes, defensive education, and public-safe developer documentation.
+
+Do not use this repository for unauthorized access, credential capture, stealth, persistence, evasion, reverse shells, destructive actions, exploitation against third-party systems, RF abuse, or network abuse.
