@@ -1,0 +1,36 @@
+CyberFlipper Lab-Only Payload Documentation Card
+Date: 2026-06-25
+
+Purpose
+- Document whether a proposed USB HID training file is safe for authorized lab use.
+- This card is documentation-only and is safe to type into a text editor.
+
+Allowed lab-only behavior
+- Type a visible banner.
+- Type a checklist.
+- Type test metadata supplied by the operator.
+- Stop after text entry.
+
+Not allowed
+- Opening shells, terminals, browsers, settings panels, system tools, network tools, or administrative consoles.
+- Downloading or running files.
+- Reading, copying, prompting for, or transmitting credentials or secrets.
+- Creating persistence, scheduled tasks, services, login items, shortcuts, startup entries, or background jobs.
+- Disabling security tools, logging, updates, prompts, or protections.
+- Deleting, encrypting, modifying, or exfiltrating user data.
+- Interacting with third-party systems without explicit written authorization.
+
+Review fields
+- File name:
+- Author:
+- Intended lab host:
+- Approved text editor:
+- Visible text only: yes / no
+- Network access: must be no
+- Host modification beyond text entry: must be no
+- Credentials or secrets touched: must be no
+- Reviewer:
+- Approval decision:
+
+Operator statement
+I confirm this example is limited to visible text entry in an authorized lab and does not modify the host beyond normal typing.
