@@ -1,0 +1,36 @@
+REM CyberFlipper Level 060 - macOS SD Provenance and SBOM-Lite
+REM Safe: visible local report for an authorized CyberFlipper SD-card lab folder only.
+DELAY 1000
+GUI SPACE
+DELAY 500
+STRING Terminal
+ENTER
+DELAY 1200
+STRING OUT="$HOME/Desktop/cyberflipper_l060_macos_sd_provenance.txt"
+ENTER
+STRING TARGET=""
+ENTER
+STRING for p in "$HOME/Desktop/CyberFlipper_SD_CARD" "$HOME/Downloads/CyberFlipper_SD_CARD" "/Volumes/FLIPPER SD" "/Volumes/FLIPPER"; do [ -d "$p" ] && TARGET="$p" && break; done
+ENTER
+STRING echo "CYBERFLIPPER LEVEL 060 - MACOS SD PROVENANCE AND SBOM-LITE" > "$OUT"
+ENTER
+STRING date >> "$OUT"
+ENTER
+STRING echo "== AUTHORIZED LAB SCOPE ==" >> "$OUT"
+ENTER
+STRING echo "This report is for a CyberFlipper SD-card folder or removable lab media only." >> "$OUT"
+ENTER
+STRING echo "== TARGET ==" >> "$OUT"; if [ -n "$TARGET" ]; then echo "$TARGET" >> "$OUT"; else echo "No default lab folder found. Create Desktop/CyberFlipper_SD_CARD or mount lab SD media." >> "$OUT"; fi
+ENTER
+STRING if [ -n "$TARGET" ]; then echo "== TOP LEVEL FOLDERS ==" >> "$OUT"; find "$TARGET" -maxdepth 1 -type d -print >> "$OUT"; fi
+ENTER
+STRING if [ -n "$TARGET" ]; then echo "== FILE TYPE COUNTS ==" >> "$OUT"; find "$TARGET" -maxdepth 5 -type f | sed 's/.*\.//' | sort | uniq -c | sort -nr >> "$OUT"; fi
+ENTER
+STRING if [ -n "$TARGET" ]; then echo "== SAMPLE FILE MANIFEST FIRST 200 FILES ==" >> "$OUT"; find "$TARGET" -maxdepth 5 -type f -print | head -200 >> "$OUT"; fi
+ENTER
+STRING if [ -n "$TARGET" ]; then echo "== SHA256 FIRST 100 FILES ==" >> "$OUT"; find "$TARGET" -maxdepth 5 -type f -print0 2>/dev/null | head -z -n 100 | xargs -0 shasum -a 256 2>/dev/null >> "$OUT"; fi
+ENTER
+STRING echo "== REVIEW NOTES ==" >> "$OUT"; echo "Check attribution, license notes, folder purpose, source URL, and public-release approval before publishing." >> "$OUT"
+ENTER
+STRING open -a TextEdit "$OUT"
+ENTER
